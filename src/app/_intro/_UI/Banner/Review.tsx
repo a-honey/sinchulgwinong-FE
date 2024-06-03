@@ -1,13 +1,13 @@
 import Container from "./Container";
 
-const Review = () => {
+const ReviewBox = () => {
   return (
     <Container
       beforeTitle="현재 쌓은 포인트로"
       pointTitle="리뷰 3개"
       afterTitle="를 볼 수 있어요!"
     >
-      <div>
+      <div className="flex">
         <div>
           <div>쌓인 포인트</div>
           <div>200 P</div>
@@ -26,4 +26,4 @@ const Review = () => {
   );
 };
 
-export default Review;
+export default ReviewBox;

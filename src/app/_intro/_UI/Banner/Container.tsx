@@ -12,12 +12,12 @@ const Container = ({
   afterTitle,
 }: ContainerProps) => {
   return (
-    <div>
-      <div>
+    <div className="p-[40px]">
+      <h3 className="flex">
         {beforeTitle}
-        <span>{pointTitle}</span>
+        <span className="text-[#7C3B00]">{pointTitle}</span>
         {afterTitle}
-      </div>
+      </h3>
       {children}
     </div>
   );

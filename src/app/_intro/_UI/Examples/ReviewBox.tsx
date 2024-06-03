@@ -9,7 +9,7 @@ const ReviewBox = () => {
       afterTitle="를 확인하세요!"
       description="리뷰 확인하고 일 시작하세요"
     >
-      <div>
+      <div className="grid grid-cols-2 w-full gap-[25px]">
         <ReviewCard />
         <ReviewCard />
       </div>
