@@ -6,15 +6,15 @@ import ReviewBox from "./_intro/_UI/Examples/ReviewBox";
 
 export default function Home() {
   return (
-    <main>
-      <div className="flex p-[65px]">
+    <main className="flex flex-col gap-[120px]">
+      <div className="flex flex-col mt-[130px] gap-[50px]">
         <AdSlider />
-        <div className="flex flex-col">
+        <div className="flex justify-between gap-[55px]">
           <Review />
           <Job />
         </div>
       </div>
-      <div className="bg-[#FFFAEE]">
+      <div className="bg-primary1">
         <JobBox />
         <ReviewBox />
       </div>

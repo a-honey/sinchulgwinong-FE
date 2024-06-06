@@ -1,20 +1,17 @@
 import AdSlide from "./AdSlide";
+import SearchObject from "@/assets/icons/SearchObject";
 
 const AdSlider = () => {
   return (
-    <div>
-      <div>
-        <AdSlide />
-      </div>
-      <div className="flex">
-        <div>nav</div>
-        <button className="bg-[#E88900] text-white px-[50px] py-[40px]">
-          이전
-        </button>
-        <button className="bg-[#FFB600] text-white px-[50px] py-[40px]">
-          다음
-        </button>
-      </div>
+    <div className="flex w-full h-[200px] justify-between bg-gray1 relative">
+      <button className="bg-gray2">이전</button>
+      <AdSlide />
+      <button className="bg-gray2">다음</button>
+      <SearchObject
+        className="absolute right-[250px] bottom-[30px]"
+        width={164}
+        height={130.79}
+      />
     </div>
   );
 };

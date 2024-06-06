@@ -1,5 +1,9 @@
 const QnA = () => {
-  return <div>고객센터페이지입니다.</div>;
+  return (
+    <main className="mt-[72px]">
+      <h1 className="text-[36px]">FAQ</h1>
+    </main>
+  );
 };
 
 export default QnA;

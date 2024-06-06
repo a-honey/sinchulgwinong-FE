@@ -23,3 +23,5 @@ const SearchIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
     </svg>
   );
 };
+
+export default SearchIcon;

@@ -24,7 +24,11 @@ const Header = () => {
         </Link>
         <nav className="flex">
           {PATHS.map((path) => (
-            <Link key={path.ko} href={path.to} className="w-[144px]">
+            <Link
+              key={path.ko}
+              href={path.to}
+              className="w-[144px] text-[24px] font-bold"
+            >
               {path.ko}
             </Link>
           ))}

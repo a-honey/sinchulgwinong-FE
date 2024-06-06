@@ -14,15 +14,15 @@ const Container = ({
   afterTitle,
 }: ContainerProps) => {
   return (
-    <section className="relative flex flex-col items-center p-[65px]">
+    <section className="relative flex flex-col p-[65px] gap-[70px]">
       <div>
         <div>
-          <div className="flex">
+          <div className="flex text-[36px]">
             <div>{beforeTitle}</div>
             <div>{pointTitle}</div>
             <div>{afterTitle}</div>
           </div>
-          <div>{description}</div>
+          <div className="text-[20px]">{description}</div>
         </div>
         <div className="absolute top-[65px] right-[65px]">슬라이더</div>
       </div>
