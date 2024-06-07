@@ -14,9 +14,9 @@ const Header = () => {
   return (
     <>
       <div className="flex justify-end gap-[20px] pt-[30px] pb-[16px] pr-[60px] border-b border-[#B0B0B0]">
-        <div>번역</div>
         <Link href={"/sign-in"}>로그인</Link>
-        <Link href={"/sign-in"}>회원가입</Link>
+        <Link href={"/sign-up"}>회원가입</Link>
+        <Link href={"/my-page/user"}>마이페이지</Link>
       </div>
       <header className="flex justify-between items-center px-[100px] py-[13px]  border-b border-[#777777]">
         <Link href="/">
