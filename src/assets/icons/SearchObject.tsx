@@ -15,7 +15,7 @@ const SearchObject: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
         rx="8.5"
         fill="white"
         stroke="#E88900"
-        stroke-width="3"
+        strokeWidth="3"
       />
       <rect
         x="123.977"
@@ -26,7 +26,7 @@ const SearchObject: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
         transform="rotate(-50.5102 123.977 96.1645)"
         fill="white"
         stroke="#E88900"
-        stroke-width="3"
+        strokeWidth="3"
       />
       <circle
         cx="118.899"
@@ -34,13 +34,13 @@ const SearchObject: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
         r="22.28"
         fill="white"
         stroke="#E88900"
-        stroke-width="3"
+        strokeWidth="3"
       />
       <path
         d="M127.223 70.3613V92.9523"
         stroke="#E88900"
-        stroke-width="3"
-        stroke-linecap="round"
+        strokeWidth="3"
+        strokeLinecap="round"
       />
       <path
         d="M30.9141 113.069C30.9141 124.212 39.6833 128.919 44.068 129.879H122.248C116.456 129.879 113.584 122.595 113.584 113.069H30.9141Z"
@@ -49,14 +49,14 @@ const SearchObject: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
       <path
         d="M52.3164 47.7695H101.66"
         stroke="#E88900"
-        stroke-width="3"
-        stroke-linecap="round"
+        strokeWidth="3"
+        strokeLinecap="round"
       />
       <path
         d="M52.3164 57.2812H90.3644"
         stroke="#E88900"
-        stroke-width="3"
-        stroke-linecap="round"
+        strokeWidth="3"
+        strokeLinecap="round"
       />
     </svg>
   );

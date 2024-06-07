@@ -1,22 +1,36 @@
 "use client";
 
 import List from "../_components/List";
+import Map from "../_components/Map";
 import { useState } from "react";
 
 const THEAD = ["지역", "모집제목/모집자명", "급여", "근무기간", "모집기간"];
 
 const JobInfo = () => {
-  const [isFilter, setIsFilter] = useState(true);
+  const [mode, setMode] = useState<"filter" | "map">("filter");
+
   return (
     <main>
       <div className="flex justify-between mt-[72px]">
         <h1 className="text-[36px]">전체 농촌 일거리</h1>
         <div>
-          <button>상세</button>
-          <button>지도</button>
+          <button
+            onClick={() => {
+              setMode("filter");
+            }}
+          >
+            상세
+          </button>
+          <button
+            onClick={() => {
+              setMode("map");
+            }}
+          >
+            지도
+          </button>
         </div>
       </div>
-      {isFilter ? (
+      {mode === "filter" && (
         <div className="flex flex-col gap-[15px]">
           <div className="flex gap-[20px]">
             <div>필터</div>
@@ -31,9 +45,8 @@ const JobInfo = () => {
             <div className="bg-gray1">태그</div>
           </div>
         </div>
-      ) : (
-        <div>지도</div>
       )}
+      {mode === "map" && <Map />}
       <div className="flex flex-col">
         <List>
           <List.Header count={200} />
