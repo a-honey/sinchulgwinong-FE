@@ -1,6 +1,7 @@
 import BannerCard from "./BannerCard";
 import Container from "./Container";
 import JobCard from "./JobCard";
+import SearchObject from "@/assets/icons/SearchObject";
 
 const JobBox = () => {
   return (
@@ -15,6 +16,7 @@ const JobBox = () => {
           moveTo=""
           title="채용 정보"
           description="더 많은 주변 농촌 일자리 정보를 확인하세요"
+          icon={<SearchObject width={111.93} height={82} />}
         />
         <JobCard />
         <JobCard />

@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(inter.className, "max-w-[1440px] m-auto")}>
+      <body className={cn(inter.className, "max-w-[1200px] m-auto")}>
         <Script
           type="text/javascript"
           strategy="beforeInteractive"
