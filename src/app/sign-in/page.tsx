@@ -1,6 +1,6 @@
 "use client";
 
-import Button from "../_components/Button";
+import Button from "../../components/Button";
 import { useState } from "react";
 
 const SignIn = () => {

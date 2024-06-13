@@ -1,11 +1,11 @@
 import "../styles/globals.css";
 
-import Footer from "./_components/Footer";
-import Header from "./_components/Header";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import Script from "next/script";
-import cn from "@/utils/cn";
+import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(inter.className, "max-w-[1440px] m-auto")}>
+      <body className={cn(inter.className, "w-[1200px] m-auto")}>
         <Script
           type="text/javascript"
           strategy="beforeInteractive"

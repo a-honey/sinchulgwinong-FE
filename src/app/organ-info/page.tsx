@@ -1,4 +1,4 @@
-import List from "../_components/List";
+import List from "../../components/List";
 
 const THEAD = ["지역", "기업명", "기업리뷰", "업종", "별점"];
 

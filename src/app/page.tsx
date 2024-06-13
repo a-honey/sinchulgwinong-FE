@@ -1,8 +1,8 @@
-import AdSlider from "./_intro/_UI/Banner/AdSlider";
-import Job from "./_intro/_UI/Banner/Job";
-import JobBox from "./_intro/_UI/Examples/JobBox";
-import Review from "./_intro/_UI/Banner/Review";
-import ReviewBox from "./_intro/_UI/Examples/ReviewBox";
+import AdSlider from "./intro/ui/Banner/AdSlider";
+import Job from "./intro/ui/Banner/Job";
+import JobBox from "./intro/ui/Examples/JobBox";
+import Review from "./intro/ui/Banner/Review";
+import ReviewBox from "./intro/ui/Examples/ReviewBox";
 
 export default function Home() {
   return (
