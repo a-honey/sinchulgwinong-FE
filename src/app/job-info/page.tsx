@@ -1,7 +1,7 @@
 "use client";
 
-import List from "../_components/List";
-import Map from "../_components/Map";
+import List from "../../components/List";
+import Map from "../../components/Map";
 import { useState } from "react";
 
 const THEAD = ["지역", "모집제목/모집자명", "급여", "근무기간", "모집기간"];

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import List from "../_components/List";
-import SearchForm from "../_components/SearchForm";
+import List from "../../components/List";
+import SearchForm from "../../components/SearchForm";
 
 const THEAD = ["번호", "제목", "작성자", "작성일", "조회"];
 

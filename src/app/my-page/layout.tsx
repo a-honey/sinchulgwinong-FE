@@ -1,4 +1,4 @@
-import Nav from "./_UI/Nav";
+import Nav from "./ui/Nav";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (

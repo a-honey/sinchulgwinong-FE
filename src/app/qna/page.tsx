@@ -1,5 +1,5 @@
 import Link from "next/link";
-import List from "../_components/List";
+import List from "../../components/List";
 
 const THEAD = ["번호", "제목", "작성일", "조회"];
 const QnA = () => {
