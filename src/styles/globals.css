@@ -77,11 +77,21 @@
 
 @layer components {
   .title1 {
+    font-size: 32px;
+    line-height: 45px;
+    font-weight: regular;
+  }
+  .title1 {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: regular;
+  }
+  .subTitle1 {
     font-size: 20px;
     line-height: 28px;
     font-weight: medium;
   }
-  .title2 {
+  .subTitle2 {
     font-size: 16px;
     line-height: auto;
     font-weight: regular;

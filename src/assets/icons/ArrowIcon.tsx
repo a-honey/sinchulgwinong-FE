@@ -5,11 +5,13 @@ type Weight = "regular" | "bold";
 interface ArrowIconProps extends React.SVGProps<SVGSVGElement> {
   direction?: Direction;
   weight?: Weight;
+  color?: "white" | "black";
 }
 
 const ArrowIcon = ({
   direction = "right",
   weight = "regular",
+  color = "black",
   ...props
 }: ArrowIconProps) => {
   const getRotation = () => {
@@ -47,7 +49,7 @@ const ArrowIcon = ({
     >
       <path
         d="M19 34L3 18L19 2"
-        stroke="white"
+        stroke={color}
         strokeWidth={getWeight()}
         strokeLinecap="round"
       />

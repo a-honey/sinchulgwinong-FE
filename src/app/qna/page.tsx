@@ -1,5 +1,6 @@
 import Link from "next/link";
 import List from "../../components/List";
+import SearchForm from "@/components/SearchForm";
 
 const THEAD = ["번호", "제목", "작성일", "조회"];
 const QnA = () => {
@@ -7,10 +8,9 @@ const QnA = () => {
     <main className="mt-[72px]">
       <h1 className="text-[36px]">FAQ</h1>
       <div className="flex gap-[20px]">
-        <div className="w-full">
-          <input className="border " />
-          <button className="bg-primary3">검색</button>
-        </div>
+        <SearchForm>
+          <SearchForm.Input />
+        </SearchForm>
         <Link
           href="/community/writing"
           className="bg-primary2 px-[36px] py-[25px] text-[20px]"
