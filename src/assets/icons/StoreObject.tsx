@@ -1,0 +1,89 @@
+const StoreObject: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
+  return (
+    <svg
+      viewBox="0 0 88 97"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M70.5589 2H18.697C18.5443 2 18.4001 2.06972 18.3052 2.1893L1.64297 23.1982C1.38305 23.5259 1.61644 24.0089 2.03471 24.0089H85.0478C85.4507 24.0089 85.6882 23.5568 85.4594 23.2251L70.9705 2.21613C70.8772 2.08081 70.7233 2 70.5589 2Z"
+        fill="#FFFAEE"
+        stroke="#E88900"
+        stroke-width="3"
+        stroke-linecap="round"
+      />
+      <path
+        d="M29.8396 2L18.0762 23.6295"
+        stroke="#E88900"
+        stroke-width="3"
+        stroke-linecap="round"
+      />
+      <path
+        d="M57.9199 2L68.5449 24.0089"
+        stroke="#E88900"
+        stroke-width="3"
+        stroke-linecap="round"
+      />
+      <path
+        d="M43.5 2V24.0089"
+        stroke="#E88900"
+        stroke-width="3"
+        stroke-linecap="round"
+      />
+      <path
+        d="M9.56188 30.8391C3.05394 30.8391 1.65293 26.2856 1.76591 24.0088H17.6973C17.6971 26.2856 16.0698 30.8391 9.56188 30.8391Z"
+        fill="white"
+        stroke="#E88900"
+        stroke-width="3"
+        stroke-linecap="round"
+      />
+      <path
+        d="M26.2572 30.8391C19.7493 30.8391 18.3482 26.2856 18.4612 24.0088H34.3926C34.3924 26.2856 32.7651 30.8391 26.2572 30.8391Z"
+        fill="white"
+        stroke="#E88900"
+        stroke-width="3"
+        stroke-linecap="round"
+      />
+      <path
+        d="M43.7123 30.8391C37.2043 30.8391 35.8033 26.2856 35.9163 24.0088H51.8477C51.8475 26.2856 50.2202 30.8391 43.7123 30.8391Z"
+        fill="white"
+        stroke="#E88900"
+        stroke-width="3"
+        stroke-linecap="round"
+      />
+      <path
+        d="M60.4095 30.8391C53.9016 30.8391 52.5006 26.2856 52.6136 24.0088H68.5449C68.5448 26.2856 66.9175 30.8391 60.4095 30.8391Z"
+        fill="white"
+        stroke="#E88900"
+        stroke-width="3"
+        stroke-linecap="round"
+      />
+      <path
+        d="M77.1048 30.8391C70.5969 30.8391 69.1959 26.2856 69.3089 24.0088H85.2402C85.2401 26.2856 83.6128 30.8391 77.1048 30.8391Z"
+        fill="white"
+        stroke="#E88900"
+        stroke-width="3"
+        stroke-linecap="round"
+      />
+      <mask id="path-10-inside-1_624_427" fill="white">
+        <rect x="5.55273" y="60.4375" width="78.1696" height="35.6696" rx="1" />
+      </mask>
+      <rect
+        x="5.55273"
+        y="60.4375"
+        width="78.1696"
+        height="35.6696"
+        rx="1"
+        fill="white"
+        stroke="#E88900"
+        stroke-width="6"
+        mask="url(#path-10-inside-1_624_427)"
+      />
+      <path d="M10.1074 31.2188V60.817" stroke="#FFB600" stroke-width="3" />
+      <path d="M77.6523 31.2188V60.817" stroke="#FFB600" stroke-width="3" />
+    </svg>
+  );
+};
+
+export default StoreObject;

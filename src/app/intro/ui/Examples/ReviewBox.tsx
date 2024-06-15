@@ -2,7 +2,7 @@ import BannerCard from "./BannerCard";
 import Container from "./Container";
 import Paths from "@/constants/paths";
 import ReviewCard from "./ReviewCard";
-import WritingObject from "@/assets/icons/WritingObject";
+import StoreObject from "@/assets/icons/StoreObject";
 
 const ReviewBox = () => {
   return (
@@ -12,19 +12,16 @@ const ReviewBox = () => {
       afterTitle="를 확인하세요!"
       description="리뷰 확인하고 일 시작하세요"
     >
-      <div className="grid grid-cols-1-1-2 h-[362px] w-full gap-[25px]">
-        <BannerCard
-          moveTo=""
-          title="리뷰 확인"
-          description="기업 리뷰를 확인하세요"
-        />
+      <div className="grid grid-cols-4 h-[362px] w-full gap-[25px]">
         <BannerCard
           moveTo={Paths.QNA}
           color="primary4"
-          title="리뷰 작성"
-          description="리뷰 작성하고 포인트 받아가세요~"
-          icon={<WritingObject width={85} height={83.02} />}
+          title="기업 정보"
+          description="기업 정보를 확인하세요"
+          icon={<StoreObject width={85} height={94.11} />}
         />
+        <ReviewCard />
+        <ReviewCard />
         <ReviewCard />
       </div>
     </Container>

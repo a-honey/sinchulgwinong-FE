@@ -13,9 +13,9 @@ const Container = ({
 }: ContainerProps) => {
   return (
     <div className="w-[680px] p-[40px] shadow-lg border">
-      <h3 className="flex text-[36px]">
+      <h3 className="title1 flex text-[36px]">
         {beforeTitle}
-        <span className="text-[#7C3B00]">{pointTitle}</span>
+        <span className="point text-[#7C3B00]">{pointTitle}</span>
         {afterTitle}
       </h3>
       {children}

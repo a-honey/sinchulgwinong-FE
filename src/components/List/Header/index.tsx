@@ -4,9 +4,20 @@ interface HeaderProps {
 
 export const Header = ({ count }: HeaderProps) => {
   return (
-    <div className="flex justify-between">
-      <div>총 {count} 개</div>
-      <div>select</div>
+    <div className="relative w-full h-[80px]">
+      <div className="absolute bottom-[10px] detail1 text-gray3">
+        총 {count} 개
+      </div>
+      <div className="absolute right-0 bottom-[20px] flex gap-[20px]">
+        <div>
+          <input type="checkbox" />
+          <label>접수중</label>
+        </div>
+        <select>
+          <option>최신순</option>
+          <option>최신순</option>
+        </select>
+      </div>
     </div>
   );
 };
