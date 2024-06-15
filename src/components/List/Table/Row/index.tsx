@@ -1,12 +1,21 @@
+import { cn } from "@/lib/utils";
+
 interface RowProps {
-  names: string[];
+  isFirst?: boolean;
+  names: React.ReactNode[];
 }
 
-export const Row = ({ names }: RowProps) => {
+export const Row = ({ isFirst = false, names }: RowProps) => {
   return (
     <tr>
       {names.map((name, index) => (
-        <td key={index} className="text-center py-[10px]">
+        <td
+          key={index}
+          className={cn(
+            "text-center py-[20px]",
+            !isFirst && "border-b-[1px] border-b-[#A2A2A2]"
+          )}
+        >
           {name}
         </td>
       ))}

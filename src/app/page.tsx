@@ -1,4 +1,5 @@
 import AdSlider from "./intro/ui/Banner/AdSlider";
+import ChatObject from "@/assets/icons/ChatObject";
 import Job from "./intro/ui/Banner/Job";
 import JobBox from "./intro/ui/Examples/JobBox";
 import Review from "./intro/ui/Banner/Review";
@@ -14,7 +15,10 @@ export default function Home() {
           <Job />
         </div>
       </div>
-      <div className="bg-primary1">
+      <div className="relative bg-primary1">
+        <div className="absolute right-[100px] top-[-50px]">
+          <ChatObject width={97.5} height={96.85} />
+        </div>
         <JobBox />
         <ReviewBox />
       </div>

@@ -1,38 +1,46 @@
 const ChatObject: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
-      width="147"
-      height="161"
-      viewBox="0 0 147 161"
+      width="98"
+      height="98"
+      viewBox="0 0 98 98"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      {...props}
     >
-      <path
-        d="M39.3815 79.3333C61.1314 79.3333 78.7631 61.574 78.7631 39.6667C78.7631 17.7594 61.1314 0 39.3815 0C17.6317 0 0 17.7594 0 39.6667C0 61.574 17.6317 79.3333 39.3815 79.3333Z"
-        fill="#FFB600"
-      />
-      <path
-        d="M132.815 44.9883H32.167C26.0098 44.9883 21.0312 50.0029 21.0312 56.2047V114.251C21.0312 117.895 23.1649 121.006 26.2334 122.459C26.7617 122.705 27.1884 123.114 27.3916 123.667L39.4418 156.538C40.0718 158.237 42.4086 158.38 43.2418 156.784L59.8235 124.506C60.1893 123.81 60.9005 123.38 61.6727 123.38H132.815C138.973 123.38 143.951 118.365 143.951 112.164V56.2047C143.951 50.0029 138.973 44.9883 132.815 44.9883Z"
-        fill="white"
-        stroke="#E88900"
-        strokeWidth="3"
-        strokeMiterlimit="10"
-      />
-      <path
-        d="M44.5234 74.2573H82.5028"
-        stroke="#7C3B00"
-        strokeWidth="2"
-        strokeMiterlimit="10"
-        strokeLinecap="round"
-      />
-      <path
-        d="M44.5234 92.0234H127.351"
-        stroke="#7C3B00"
-        strokeWidth="2"
-        strokeMiterlimit="10"
-        strokeLinecap="round"
-      />
+      <ellipse cx="49.25" cy="49.258" rx="48.75" ry="48.425" fill="#FFDB80" />
+      <g clipPath="url(#clip0_745_1873)">
+        <path
+          d="M72.2405 28.2725H25.4538C22.5916 28.2725 20.2773 30.5929 20.2773 33.4626V60.3228C20.2773 62.0087 21.2692 63.4483 22.6956 64.1207C22.9412 64.2344 23.1395 64.4238 23.234 64.6795L28.8355 79.8902C29.1284 80.6763 30.2147 80.7426 30.602 80.0038L38.31 65.0678C38.48 64.7458 38.8107 64.5469 39.1696 64.5469H72.2405C75.1027 64.5469 77.417 62.2265 77.417 59.3567V33.4626C77.417 30.5929 75.1027 28.2725 72.2405 28.2725Z"
+          fill="white"
+          stroke="#E88900"
+          strokeWidth="3"
+          strokeMiterlimit="10"
+        />
+        <path
+          d="M31.1973 41.8164H48.8521"
+          stroke="#E88900"
+          strokeWidth="2"
+          strokeMiterlimit="10"
+          strokeLinecap="round"
+        />
+        <path
+          d="M31.1973 50.0371H69.6997"
+          stroke="#E88900"
+          strokeWidth="2"
+          strokeMiterlimit="10"
+          strokeLinecap="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_745_1873">
+          <rect
+            width="68.3333"
+            height="74.5"
+            fill="white"
+            transform="translate(10.5 7.45508)"
+          />
+        </clipPath>
+      </defs>
     </svg>
   );
 };

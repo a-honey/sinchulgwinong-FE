@@ -4,9 +4,9 @@ interface HeadProps {
 
 export const Head = ({ titles }: HeadProps) => {
   return (
-    <tr className="border-t-2 border-b-2 border-black">
+    <tr className=" border-t-[1px] border-t-black border-b-[1px] border-b-[#A2A2A2]">
       {titles.map((title, index) => (
-        <th scope="col" key={index}>
+        <th scope="col" key={index} className="title2 py-[30px]">
           {title}
         </th>
       ))}
