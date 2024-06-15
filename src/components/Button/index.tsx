@@ -11,7 +11,7 @@ const Button = ({ varients, className, onClick, text }: ButtonProps) => {
       case "yellow":
         return "bg-[#FFE6A6] text-black";
       default:
-        return "bg-white text-black";
+        return "";
     }
   };
 

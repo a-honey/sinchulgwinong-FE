@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Paths from "@/constants/paths";
+import { getUrlSearch } from "@/lib/getUrlSearch";
 import logo from "@/assets/logos/logo_main.png";
 
 const PATHS = [
@@ -9,6 +10,11 @@ const PATHS = [
   { ko: "커뮤니티", to: Paths.COMMUNITY },
   { ko: "고객센터", to: Paths.QNA },
 ];
+
+const getisActiveUrl = (path: string) => {
+  const url = getUrlSearch();
+  return path.split("/")[1] === url;
+};
 
 const Header = () => {
   return (
@@ -27,9 +33,12 @@ const Header = () => {
             <Link
               key={path.ko}
               href={path.to}
-              className="w-[144px] text-[24px] font-bold"
+              className="relative flex justify-center w-[144px] text-[24px] font-bold"
             >
               {path.ko}
+              {getisActiveUrl(path.to) && (
+                <span className="absolute bottom-[-40px] left-0 right-0 bg-primary3 h-[5px]" />
+              )}
             </Link>
           ))}
         </nav>
