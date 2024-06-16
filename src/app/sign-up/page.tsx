@@ -1,6 +1,7 @@
 "use client";
 
 import Button from "../../components/Button";
+import postEmployeeSignUp from "@/api/auth/postEmployeeSignUp";
 import { useState } from "react";
 
 const SignUp = () => {
@@ -14,7 +15,7 @@ const SignUp = () => {
           <Button
             text="구직자"
             onClick={() => {
-              setMode("employee");
+              postEmployeeSignUp();
             }}
           />
           <Button

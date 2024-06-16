@@ -1,6 +1,7 @@
 "use client";
 
 import Button from "../../components/Button";
+import postEmployeeSignIn from "@/api/auth/postEmployeeSignIn";
 import { useState } from "react";
 
 const SignIn = () => {
@@ -47,6 +48,9 @@ const SignIn = () => {
               text="카카오 계정으로 로그인"
             />
             <Button
+              onClick={() => {
+                postEmployeeSignIn();
+              }}
               className="bg-[#FFC56F] py-[25px] w-[700px]"
               text="이메일로 로그인"
             />
@@ -60,3 +64,7 @@ const SignIn = () => {
 };
 
 export default SignIn;
+
+SignIn.getLayout = function getLayout(page: React.ReactElement) {
+  return { page };
+};

@@ -1,7 +1,14 @@
+"use client";
+
 import Image from "next/image";
 import logo from "@/assets/logos/logo_main.png";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
+  const currentPathname = usePathname();
+
+  if (["/sign-in", "/sign-up"].includes(currentPathname)) return;
+
   return (
     <footer className="flex flex-col gap-[24px] px-[50px] py-[80px]">
       <div className="flex justify-between">
