@@ -6,7 +6,7 @@ const EmployeeLoginTypeButtons = ({
   toggleIsEmailLoginFormOpen: () => void;
 }) => {
   return (
-    <>
+    <div className="flex flex-col gap-[30px]">
       <Button
         className="bg-[#EEEEEE] py-[25px] w-[700px]"
         text="구글 계정으로 로그인"
@@ -23,7 +23,7 @@ const EmployeeLoginTypeButtons = ({
         text="이메일로 로그인"
         isRound
       />
-    </>
+    </div>
   );
 };
 

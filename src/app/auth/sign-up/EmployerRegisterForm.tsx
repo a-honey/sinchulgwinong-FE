@@ -1,5 +1,6 @@
 import Button from "@/components/Button";
 import { Input } from "@/components/ui/input";
+import InputPolicyAgree from "../ui/InputPolicyAgree";
 
 const EmployerRegisterForm = () => {
   return (
@@ -11,21 +12,14 @@ const EmployerRegisterForm = () => {
       <Input placeholder="닉네임 입력" />
       <Input placeholder="전화번호 입력" />
       <div>
-        <Input type="checkbox" />
-        <label>서비스 이용 약관 동의</label>
-        <div>자세히 보기</div>
+        <InputPolicyAgree label="현재 활동 중이신가요?" />
       </div>
-      <div>
-        <Input type="checkbox" />
-        <label>개인정보 수집 및 이용 동의</label>
-        <div>자세히 보기</div>
-      </div>
-      <div>
-        <Input type="checkbox" />
-        <label>위치기반서비스 이용 동의</label>
-        <div>자세히 보기</div>
-      </div>
-      <Button varients="yellow" text="회원가입" />
+      <Button
+        varients="yellow"
+        text="회원가입"
+        className="px-[30px] py-[17px]"
+        isRound
+      />
     </form>
   );
 };
