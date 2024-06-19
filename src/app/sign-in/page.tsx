@@ -1,63 +1,46 @@
 "use client";
 
+import UserTypeSelectBox, { UserAuthType } from "./ui/UserTypeSelectBox";
+
 import Button from "../../components/Button";
-import postEmployeeSignIn from "@/api/auth/postEmployeeSignIn";
+import EamilLoginForm from "./ui/EmailLoginForm";
+import EmployeeLoginTypeButtons from "./ui/EmployeeLoginTypeButtons";
+import Image from "next/image";
+import logo from "@/assets/logos/logo_main.png";
 import { useState } from "react";
+import useToggle from "@/hooks/useToggle";
 
 const SignIn = () => {
-  const [mode, setMode] = useState("employee");
+  const [mode, setMode] = useState<UserAuthType>("employee");
+
+  const changeMode = (mode: UserAuthType) => {
+    setMode(mode);
+  };
+
+  const {
+    isOpen: isEmailLoginFormOpen,
+    toggleIsOpen: toggleIsEmailLoginFormOpen,
+  } = useToggle();
+
   return (
-    <div className="mt-[200px] flex flex-col items-center">
+    <div className="mt-[100px] flex flex-col items-center">
       <div className="flex flex-col items-center gap-[60px]">
         <div className="flex flex-col items-center">
-          <h1 className="title1">신출귀농</h1>
+          <Image src={logo} alt="신출귀농 로고" width={142} height={88} />
           <div className="title2">로그인 후 모든 서비스를 이용해 보세요!</div>
         </div>
-        <div>
-          <Button
-            className={
-              mode === "employee"
-                ? "bg-[#D9D9D9] px-[30px] py-[17px]"
-                : "px-[30px] py-[17px]"
-            }
-            text="구직자"
-            onClick={() => {
-              setMode("employee");
-            }}
-          />
-          <Button
-            className={
-              mode === "employer"
-                ? "bg-[#D9D9D9] px-[30px] py-[17px]"
-                : "px-[30px] py-[17px]"
-            }
-            text="구직자"
-            onClick={() => {
-              setMode("employer");
-            }}
-          />
+        <UserTypeSelectBox mode={mode} changeMode={changeMode} />
+        <div className="w-[700px]">
+          {!isEmailLoginFormOpen &&
+            (mode === "employee" ? (
+              <EmployeeLoginTypeButtons
+                toggleIsEmailLoginFormOpen={toggleIsEmailLoginFormOpen}
+              />
+            ) : (
+              <div>구인자</div>
+            ))}
+          {isEmailLoginFormOpen && <EamilLoginForm />}
         </div>
-        {mode === "employee" ? (
-          <div className="flex flex-col gap-[30px]">
-            <Button
-              className="bg-[#EEEEEE] py-[25px] w-[700px]"
-              text="구글 계정으로 로그인"
-            />
-            <Button
-              className="bg-[#FFD600] py-[25px] w-[700px]"
-              text="카카오 계정으로 로그인"
-            />
-            <Button
-              onClick={() => {
-                postEmployeeSignIn();
-              }}
-              className="bg-[#FFC56F] py-[25px] w-[700px]"
-              text="이메일로 로그인"
-            />
-          </div>
-        ) : (
-          <div>구인자</div>
-        )}
       </div>
     </div>
   );

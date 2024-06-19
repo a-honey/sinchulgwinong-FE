@@ -1,57 +1,48 @@
 "use client";
 
-import Button from "../../components/Button";
-import postEmployeeSignUp from "@/api/auth/postEmployeeSignUp";
+import UserTypeSelectBox, {
+  UserAuthType,
+} from "../sign-in/ui/UserTypeSelectBox";
+
+import EmployeeEmailRegisterForm from "./ui/EmployeeEmailRegisterForm";
+import EmployeeRegisterTypeButtons from "./ui/EmployeeRegisterTypeButtons";
+import EmployerRegisterForm from "./ui/EmployerRegisterForm";
+import Image from "next/image";
+import logo from "@/assets/logos/logo_main.png";
 import { useState } from "react";
+import useToggle from "@/hooks/useToggle";
 
 const SignUp = () => {
-  const [mode, setMode] = useState("employee");
+  const [mode, setMode] = useState<UserAuthType>("employee");
+
+  const changeMode = (mode: UserAuthType) => {
+    setMode(mode);
+  };
+
+  const {
+    isOpen: isEmailRegisterFormOpen,
+    toggleIsOpen: toggleIsEmailRegisterFormOpen,
+  } = useToggle();
+
   return (
-    <div className="flex flex-col items-center">
-      <div className="flex flex-col items-center">
-        <h1>신출귀농</h1>
-        <div>회원가입 후 모든 서비스를 이용해 보세요!</div>
-        <div>
-          <Button
-            text="구직자"
-            onClick={() => {
-              postEmployeeSignUp();
-            }}
-          />
-          <Button
-            text="구직자"
-            onClick={() => {
-              setMode("employer");
-            }}
-          />
+    <div className="mt-[100px] flex flex-col items-center">
+      <div className="flex flex-col gap-[58px] items-center">
+        <div className="flex flex-col items-center">
+          <Image src={logo} alt="신출귀농 로고" width={142} height={88} />
+          <div>회원가입 후 모든 서비스를 이용해 보세요!</div>
         </div>
-        {mode === "employee" ? (
-          <div className="flex flex-col">
-            <Button
-              className="bg-[#EEEEEE]"
-              text="구글 계정으로 회원가입"
-              onClick={() => {
-                console.log("hi");
-              }}
-            />
-            <Button
-              className="bg-[#FFD600]"
-              text="카카오 계정으로 회원가입"
-              onClick={() => {
-                console.log("hi");
-              }}
-            />
-            <Button
-              className="bg-[#FFC56F]"
-              text="이메일로 회원가입"
-              onClick={() => {
-                console.log("hi");
-              }}
-            />
-          </div>
-        ) : (
-          <div>구인자</div>
-        )}
+        <UserTypeSelectBox mode={mode} changeMode={changeMode} />
+        <div className="w-[688px]">
+          {mode === "employee" &&
+            (isEmailRegisterFormOpen ? (
+              <EmployeeEmailRegisterForm />
+            ) : (
+              <EmployeeRegisterTypeButtons
+                toggleIsEmailRegisterFormOpen={toggleIsEmailRegisterFormOpen}
+              />
+            ))}
+          {mode === "employer" && <EmployerRegisterForm />}
+        </div>
       </div>
     </div>
   );

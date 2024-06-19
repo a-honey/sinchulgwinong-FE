@@ -1,16 +1,18 @@
 import setTokenLocalStorage from "@/lib/setTokenLocalStorage";
 
-export default async function postEmployeeSignIn() {
+interface SignInBody {
+  email: string;
+  password: string;
+}
+
+export default async function postEmployeeSignIn(body: SignInBody) {
   try {
     const response = await fetch("http://3.35.171.211/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        email: "example@example.com",
-        password: "password",
-      }),
+      body: JSON.stringify(body),
     });
 
     if (!response.ok) {
