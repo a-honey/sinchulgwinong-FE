@@ -2,15 +2,35 @@
 
 import Button from "@/components/Button";
 import { Input } from "@/components/ui/input";
+import { UserAuthType } from "./UserTypeSelectBox";
 import postEmployeeSignIn from "@/api/auth/postEmployeeSignIn";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 // TODO: server action으로 바꾸기
-const EamilLoginForm = () => {
+const EamilLoginForm = ({ mode }: { mode: UserAuthType }) => {
+  const router = useRouter();
   const [loginBody, setLoginBody] = useState({ email: "", password: "" });
 
-  const onSubmit = () => {
-    postEmployeeSignIn(loginBody);
+  const onLoginSuccess = () => {
+    router.push("/");
+  };
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (mode === "employee") {
+      postEmployeeSignIn({
+        body: loginBody,
+        onSuccess: onLoginSuccess,
+        onError: () => {
+          console.log("로그인 실패");
+        },
+      });
+    }
+    if (mode === "employer") {
+      console.log("hi");
+    }
   };
 
   return (

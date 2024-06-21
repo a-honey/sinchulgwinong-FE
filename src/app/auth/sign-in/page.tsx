@@ -1,10 +1,10 @@
 "use client";
 
 import UserTypeSelectBox, { UserAuthType } from "./UserTypeSelectBox";
+import { useEffect, useState } from "react";
 
 import EamilLoginForm from "./EmailLoginForm";
 import EmployeeLoginTypeButtons from "./EmployeeLoginTypeButtons";
-import { useState } from "react";
 import useToggle from "@/hooks/useToggle";
 
 const SignIn = () => {
@@ -17,7 +17,15 @@ const SignIn = () => {
   const {
     isOpen: isEmailLoginFormOpen,
     toggleIsOpen: toggleIsEmailLoginFormOpen,
+    changeIsOpenFalse: changeIsEmailLoginFormOpenFalse,
   } = useToggle();
+
+  // TODO EmailLogin 에서 구직자이면서 마운트될 때 변경하기
+  useEffect(() => {
+    if (mode === "employer") {
+      changeIsEmailLoginFormOpenFalse();
+    }
+  }, [changeIsEmailLoginFormOpenFalse, isEmailLoginFormOpen, mode]);
 
   return (
     <>
@@ -28,7 +36,9 @@ const SignIn = () => {
             toggleIsEmailLoginFormOpen={toggleIsEmailLoginFormOpen}
           />
         )}
-        {(mode === "employer" || isEmailLoginFormOpen) && <EamilLoginForm />}
+        {(mode === "employer" || isEmailLoginFormOpen) && (
+          <EamilLoginForm mode={mode} />
+        )}
       </div>
     </>
   );

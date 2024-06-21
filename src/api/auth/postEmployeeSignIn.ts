@@ -1,3 +1,4 @@
+import apiInstance from "../apiInstance";
 import setTokenLocalStorage from "@/lib/setTokenLocalStorage";
 
 interface SignInBody {
@@ -5,26 +6,33 @@ interface SignInBody {
   password: string;
 }
 
-export default async function postEmployeeSignIn(body: SignInBody) {
-  try {
-    const response = await fetch("http://3.35.171.211/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
+interface postEmployeeSignInProps {
+  body: SignInBody;
+  onSuccess?: () => void;
+  onError?: (string?: any) => void;
+}
 
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
+export default async function postEmployeeSignIn({
+  body,
+  onError,
+  onSuccess,
+}: postEmployeeSignInProps) {
+  try {
+    const response = await apiInstance.post("/auth/login", body);
 
     const authHeader = response.headers.get("Authorization");
 
     if (authHeader) {
       setTokenLocalStorage(authHeader);
     }
+
+    if (!response.ok) {
+      const res = await response.json();
+      onError?.(res?.message);
+    }
+
+    onSuccess?.();
   } catch (error) {
-    console.error("Error:", error);
+    onError?.(error);
   }
 }
