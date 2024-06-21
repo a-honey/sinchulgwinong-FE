@@ -1,8 +1,7 @@
 import AdSlider from "./intro/ui/Banner/AdSlider";
+import BannerBox from "./intro/ui/Banner/BannerBox";
 import ChatObject from "@/assets/icons/ChatObject";
-import Job from "./intro/ui/Banner/Job";
 import JobBox from "./intro/ui/Examples/JobBox";
-import Review from "./intro/ui/Banner/Review";
 import ReviewBox from "./intro/ui/Examples/ReviewBox";
 
 export default function Home() {
@@ -10,10 +9,7 @@ export default function Home() {
     <main className="flex flex-col gap-[120px]">
       <div className="flex flex-col mt-[130px] gap-[50px]">
         <AdSlider />
-        <div className="flex justify-between gap-[55px]">
-          <Review />
-          <Job />
-        </div>
+        <BannerBox />
       </div>
       <div className="relative bg-primary1">
         <div className="absolute right-[100px] top-[-50px]">
