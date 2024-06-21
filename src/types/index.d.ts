@@ -10,3 +10,5 @@ interface CommunityPost {
   createdAt: Date;
   modifiedAt: Date;
 }
+
+export type LoginType = "EMAIL" | "USER" | "GOOGLE";
