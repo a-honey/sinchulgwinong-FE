@@ -1,6 +1,10 @@
 import Container from "./Container";
+import getMyPoint from "@/api/point/getMyPoint";
+import useUpdateFetch from "@/hooks/useUpdateFetch";
 
 const ReviewBox = () => {
+  const { isFetching, data: communityPosts } = useUpdateFetch(getMyPoint);
+
   return (
     <Container
       beforeTitle="현재 쌓은 포인트로"

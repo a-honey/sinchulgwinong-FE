@@ -2,10 +2,17 @@ import { cn } from "@/lib/utils";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
+  isRound?: boolean;
   varients?: "yellow";
   onClick?: () => void;
 }
-const Button = ({ varients, className, onClick, text }: ButtonProps) => {
+const Button = ({
+  varients,
+  isRound = false,
+  className,
+  onClick,
+  text,
+}: ButtonProps) => {
   const getVarients = () => {
     switch (varients) {
       case "yellow":
@@ -16,7 +23,14 @@ const Button = ({ varients, className, onClick, text }: ButtonProps) => {
   };
 
   return (
-    <button className={cn(className, getVarients())} onClick={onClick}>
+    <button
+      className={cn(
+        className,
+        getVarients(),
+        isRound ? "rounded rounded-[15px]" : ""
+      )}
+      onClick={onClick}
+    >
       {text}
     </button>
   );
