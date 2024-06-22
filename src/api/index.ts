@@ -25,7 +25,7 @@ class Api {
     return Api.instance;
   }
 
-  private async request(endpoint: string, options: RequestInit) {
+  private async request<T>(endpoint: string, options: RequestInit): Promise<T> {
     const url = `${this.baseURL}${endpoint}`;
     const response = await fetch(url, {
       ...options,
@@ -35,34 +35,35 @@ class Api {
       },
     });
 
-    return response;
+    const data = await response.json();
+    return data as T;
   }
 
-  public async get(endpoint: string, headers?: HeadersInit) {
-    return this.request(endpoint, {
+  public async get<T>(endpoint: string, headers?: HeadersInit): Promise<T> {
+    return this.request<T>(endpoint, {
       method: "GET",
       headers,
     });
   }
 
-  public async post(endpoint: string, body: any, headers?: HeadersInit) {
-    return this.request(endpoint, {
+  public async post<T>(endpoint: string, body: any, headers?: HeadersInit) {
+    return this.request<T>(endpoint, {
       method: "POST",
       body: JSON.stringify(body),
       headers,
     });
   }
 
-  public async put(endpoint: string, body: any, headers?: HeadersInit) {
-    return this.request(endpoint, {
+  public async put<T>(endpoint: string, body: any, headers?: HeadersInit) {
+    return this.request<T>(endpoint, {
       method: "PUT",
       body: JSON.stringify(body),
       headers,
     });
   }
 
-  public async delete(endpoint: string, headers?: HeadersInit) {
-    return this.request(endpoint, {
+  public async delete<T>(endpoint: string, headers?: HeadersInit) {
+    return this.request<T>(endpoint, {
       method: "DELETE",
       headers,
     });

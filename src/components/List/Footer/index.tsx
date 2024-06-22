@@ -1,11 +1,5 @@
-interface FooterProps {
-  count?: number;
-}
+import Pagination, { PaginationProps } from "@/components/Pagination";
 
-export const Footer = ({ count }: FooterProps) => {
-  return (
-    <div className="flex justify-center">
-      <div>페이지네이션</div>
-    </div>
-  );
+export const Footer = (props: PaginationProps) => {
+  return <Pagination {...props} />;
 };

@@ -1,11 +1,19 @@
+import { CommunityPostType, ResponseDTO, ResponsePagination } from "@/types";
+
 import apiInstance from "../apiInstance";
+
+interface CommunityPostsType extends ResponsePagination {
+  totalBoardCount: number;
+  boards: CommunityPostType[];
+}
 
 export default async function getCommunityPosts() {
   try {
-    const response = await apiInstance.get(`/boards`);
+    const response = await apiInstance.get<ResponseDTO<CommunityPostsType>>(
+      `/boards`
+    );
 
-    const res = await response.json();
-    return res;
+    return response.data;
   } catch (e) {
     console.log(e);
   }

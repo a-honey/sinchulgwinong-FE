@@ -25,7 +25,7 @@ const EmployeeEmailRegisterForm = () => {
   const email = watch("email");
 
   const onSubmit = (data: Omit<EmployeeSignUpBody, "loginType">) => {
-    postEmployeeSignUp({ ...data, loginType: "EMAIL", agreeToTerms: true });
+    postEmployeeSignUp({ ...data, loginType: "NORMAL", agreeToTerms: true });
   };
 
   return (

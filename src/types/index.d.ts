@@ -1,8 +1,8 @@
-interface ResponseDTO<T> {
+export interface ResponseDTO<T> {
   message: string;
   data: T;
 }
-interface CommunityPost {
+export interface CommunityPostType {
   userId: number;
   boardId: number;
   title: string;
@@ -11,4 +11,10 @@ interface CommunityPost {
   modifiedAt: Date;
 }
 
-export type LoginType = "EMAIL" | "USER" | "GOOGLE";
+export type LoginType = "EMAIL" | "USER" | "GOOGLE" | "NORMAL";
+
+export interface ResponsePagination {
+  currentPage: number;
+  totalPages: number;
+  pageSize: number;
+}

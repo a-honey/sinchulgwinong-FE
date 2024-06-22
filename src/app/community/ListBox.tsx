@@ -1,53 +1,30 @@
 "use client";
 
-import { Suspense, useEffect } from "react";
-
+import Blank from "@/components/Blank";
 import List from "../../components/List";
+import { Suspense } from "react";
 import getCommunityPosts from "@/api/community/getCommunityPosts";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
 
 const THEAD = ["번호", "제목", "작성자", "작성일", "조회"];
 const ListBox = () => {
-  const { isFetching, data: communityPosts } =
-    useUpdateFetch(getCommunityPosts);
-
-  console.log(communityPosts);
+  const { data } = useUpdateFetch(getCommunityPosts);
 
   return (
     <Suspense fallback={<div>로딩중</div>}>
       <List>
-        <List.Header count={200} />
+        <List.Header count={data?.totalBoardCount ?? 0} />
         <List.Table className="w-full">
           <List.Table.Head titles={THEAD} />
-          <List.Table.Row
-            names={[
-              "10",
-              "과수원 사장님 어떠신가요?",
-              "뽀송이",
-              "24.05.28",
-              "30",
-            ]}
-          />
-          <List.Table.Row
-            names={[
-              "10",
-              "과수원 사장님 어떠신가요?",
-              "뽀송이",
-              "24.05.28",
-              "30",
-            ]}
-          />
-          <List.Table.Row
-            names={[
-              "10",
-              "과수원 사장님 어떠신가요?",
-              "뽀송이",
-              "24.05.28",
-              "30",
-            ]}
-          />
+          {(!data || data?.boards.length === 0) && <Blank />}
         </List.Table>
-        <List.Footer />
+        <List.Footer
+          onPageChange={() => {
+            console.log("");
+          }}
+          currentPage={!data ? 1 : data.currentPage + 1}
+          totalPages={!data ? 1 : data.totalPages + 1}
+        />
       </List>
     </Suspense>
   );
