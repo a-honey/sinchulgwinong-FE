@@ -15,6 +15,9 @@ export interface PaginationProps {
 
 export type LoginType = "EMAIL" | "USER" | "GOOGLE" | "NORMAL";
 
+export type SalaryType = "DAILY" | "WEEKLY" | "MONTHLY";
+
+export type JobStatusType = "JOBOPEN" | "JOBCLOSED";
 export interface CommunityPostType {
   userId: number;
   boardId: number;
@@ -34,8 +37,8 @@ export interface JobPostType {
   salaryAmount: number;
   sex: "string";
   address: "string";
-  jobStatus: "JOBOPEN";
-  salaryType: "DAILY";
+  jobStatus: JobStatusType;
+  salaryType: SalaryType;
   accessUrls: ["string"];
   createdAt: "2024-06-22T05:42:57.745Z";
   modifiedAt: "2024-06-22T05:42:57.745Z";
