@@ -6,7 +6,6 @@ import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import Script from "next/script";
 import { cn } from "@/lib/utils";
-import { headers } from "next/headers";
 
 const inter = Inter({ subsets: ["latin"] });
 

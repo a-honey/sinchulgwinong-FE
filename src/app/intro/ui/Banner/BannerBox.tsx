@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 
 import Job from "./Job";
-import Review from "./Job";
 import ReviewBlack from "./ReviewBlank";
+import ReviewBox from "./Review";
 
 const BannerBox = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -18,7 +18,7 @@ const BannerBox = () => {
 
   return (
     <div className="flex justify-between gap-[55px]">
-      {isLogin ? <Review /> : <ReviewBlack />}
+      {isLogin ? <ReviewBox /> : <ReviewBlack />}
       <Job />
     </div>
   );

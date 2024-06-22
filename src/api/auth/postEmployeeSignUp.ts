@@ -13,6 +13,8 @@ export interface EmployeeSignUpBody {
   loginType: LoginType;
 }
 
+interface SignUpProps {}
+
 export default async function postEmployeeSignUp(body: EmployeeSignUpBody) {
   try {
     const response = await apiInstance.post<ResponseDTO<string>>(

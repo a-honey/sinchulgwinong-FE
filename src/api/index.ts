@@ -2,7 +2,9 @@ import { baseURL } from "@/constants/env";
 
 interface ApiConfig {
   baseURL: string;
-  headers?: HeadersInit;
+  headers?: HeadersInit & {
+    Authorization?: string;
+  };
 }
 
 class Api {
@@ -14,8 +16,20 @@ class Api {
     this.baseURL = config.baseURL || baseURL!;
     this.headers = config.headers || {
       "Content-Type": "application/json",
-      Authorization: "",
     };
+  }
+
+  public setAuthorizationToken(token: string) {
+    this.headers = { ...this.headers, Authorization: `${token}` };
+  }
+
+  public setAuthorizationTokenLocalStorage() {
+    if (typeof window !== "undefined" && localStorage.getItem("accessToken")) {
+      this.headers = {
+        ...this.headers,
+        Authorization: `${localStorage.getItem("accessToken")}`,
+      };
+    }
   }
 
   public static getInstance(config: ApiConfig): Api {
@@ -26,6 +40,8 @@ class Api {
   }
 
   private async request<T>(endpoint: string, options: RequestInit): Promise<T> {
+    this.setAuthorizationTokenLocalStorage();
+
     const url = `${this.baseURL}${endpoint}`;
     const response = await fetch(url, {
       ...options,

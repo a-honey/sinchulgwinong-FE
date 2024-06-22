@@ -15,9 +15,10 @@ export interface PaginationProps {
 
 export type LoginType = "EMAIL" | "USER" | "GOOGLE" | "NORMAL";
 
-export type SalaryType = "DAILY" | "WEEKLY" | "MONTHLY";
+export type SalaryType = "DAILY" | "WEEKLY" | "MONTHLY" | "YEAR";
 
 export type JobStatusType = "JOBOPEN" | "JOBCLOSED";
+
 export interface CommunityPostType {
   userId: number;
   boardId: number;
