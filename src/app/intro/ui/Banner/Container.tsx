@@ -1,23 +1,12 @@
 interface ContainerProps {
-  beforeTitle: string;
-  pointTitle: string;
-  afterTitle: string;
+  textElement: React.ReactNode;
   children: React.ReactNode;
 }
 
-const Container = ({
-  children,
-  beforeTitle,
-  pointTitle,
-  afterTitle,
-}: ContainerProps) => {
+const Container = ({ children, textElement }: ContainerProps) => {
   return (
     <div className="w-[680px] p-[40px] shadow-lg border">
-      <h3 className="title1 flex text-[36px]">
-        {beforeTitle}
-        <span className="point text-[#7C3B00]">{pointTitle}</span>
-        {afterTitle}
-      </h3>
+      {textElement}
       {children}
     </div>
   );

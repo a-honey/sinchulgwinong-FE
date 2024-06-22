@@ -2,6 +2,19 @@ export interface ResponseDTO<T> {
   message: string;
   data: T;
 }
+export interface ResponsePagination {
+  currentPage: number;
+  totalPages: number;
+  pageSize: number;
+}
+
+export interface PaginationProps {
+  page: number;
+  size: number;
+}
+
+export type LoginType = "EMAIL" | "USER" | "GOOGLE" | "NORMAL";
+
 export interface CommunityPostType {
   userId: number;
   boardId: number;
@@ -11,10 +24,19 @@ export interface CommunityPostType {
   modifiedAt: Date;
 }
 
-export type LoginType = "EMAIL" | "USER" | "GOOGLE" | "NORMAL";
-
-export interface ResponsePagination {
-  currentPage: number;
-  totalPages: number;
-  pageSize: number;
+export interface JobPostType {
+  jobBoardId: number;
+  cpUserId: number;
+  jobTitle: "string";
+  jobContent: "string";
+  jobStartDate: "2024-06-22";
+  jobEndDate: "2024-06-22";
+  salaryAmount: number;
+  sex: "string";
+  address: "string";
+  jobStatus: "JOBOPEN";
+  salaryType: "DAILY";
+  accessUrls: ["string"];
+  createdAt: "2024-06-22T05:42:57.745Z";
+  modifiedAt: "2024-06-22T05:42:57.745Z";
 }

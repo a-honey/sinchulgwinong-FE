@@ -1,17 +1,21 @@
 "use client";
 
-import { PostBody } from "@/api/community/postCommunityPost";
+import postCommunityPost, { PostBody } from "@/api/community/postCommunityPost";
+
+import Button from "@/components/Button";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 const Writing = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<PostBody>();
 
-  const onSubmit = () => {
-    console.log("제출");
+  const onSubmit = (data: PostBody) => {
+    postCommunityPost(data);
   };
 
   return (
@@ -26,15 +30,28 @@ const Writing = () => {
           placeholder="제목을 입력해주세요."
           {...register("boardTitle", { required: true })}
         />
+        {errors.boardTitle && (
+          <span className="text-red">제목을 입력해주세요.</span>
+        )}
         <textarea
           className="w-full p-[20px] border"
           rows={15}
           placeholder="글을 입력해주세요."
           {...register("boardContent", { required: true })}
         />
-        <div className="flex gap-[10px]">
-          <button type="button">취소</button>
-          <button type="submit">등록</button>
+        {errors.boardContent && (
+          <span className="text-red">내용을 입력해주세요</span>
+        )}
+        <div className="flex gap-[10px] w-[200px]">
+          <Button
+            type="button"
+            text="취소"
+            className="border border-[#787878]"
+            onClick={() => {
+              router.back();
+            }}
+          />
+          <Button type="submit" text="등록" varients="yellow" />
         </div>
       </form>
     </main>

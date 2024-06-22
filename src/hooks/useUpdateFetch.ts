@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
  */
 
 const useUpdateFetch = <T>(
-  fn: (args?: any) => Promise<T>,
+  fn: () => Promise<T>,
   updateState?: (data: T) => void
 ) => {
   const [data, setData] = useState<T | undefined>();

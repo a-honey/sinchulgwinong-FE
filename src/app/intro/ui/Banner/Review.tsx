@@ -7,9 +7,15 @@ const ReviewBox = () => {
 
   return (
     <Container
-      beforeTitle="현재 쌓은 포인트로"
-      pointTitle="리뷰 3개"
-      afterTitle="를 볼 수 있어요!"
+      textElement={
+        <h3 className="text-[32px]">
+          현재 쌓은{" "}
+          <span className="text-[32px] font-semibold text-[#7C3B00]">
+            포인트
+          </span>
+          로 리뷰 3개를 볼 수 있어요!
+        </h3>
+      }
     >
       <div className="flex">
         <div>

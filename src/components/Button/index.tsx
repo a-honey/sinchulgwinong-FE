@@ -25,9 +25,9 @@ const Button = ({
   return (
     <button
       className={cn(
-        className,
+        "px-[10px] py-[25px] rounded rounded-[15px] w-full",
         getVarients(),
-        isRound ? "rounded rounded-[15px]" : ""
+        className
       )}
       onClick={onClick}
     >

@@ -1,4 +1,9 @@
-import { CommunityPostType, ResponseDTO, ResponsePagination } from "@/types";
+import {
+  CommunityPostType,
+  PaginationProps,
+  ResponseDTO,
+  ResponsePagination,
+} from "@/types";
 
 import apiInstance from "../apiInstance";
 
@@ -7,10 +12,13 @@ interface CommunityPostsType extends ResponsePagination {
   boards: CommunityPostType[];
 }
 
-export default async function getCommunityPosts() {
+export default async function getCommunityPosts({
+  page,
+  size,
+}: PaginationProps) {
   try {
     const response = await apiInstance.get<ResponseDTO<CommunityPostsType>>(
-      `/boards`
+      `/boards?page=${page}&size=${size}`
     );
 
     return response.data;
