@@ -54,9 +54,9 @@ class Api {
     });
   }
 
-  public async put<T>(endpoint: string, body: any, headers?: HeadersInit) {
+  public async patch<T>(endpoint: string, body: any, headers?: HeadersInit) {
     return this.request<T>(endpoint, {
-      method: "PUT",
+      method: "PATCH",
       body: JSON.stringify(body),
       headers,
     });

@@ -12,13 +12,13 @@ export interface CommunityPostsType extends ResponsePagination {
   boards: CommunityPostType[];
 }
 
-export default async function getCommunityPosts({
+export default async function getMyCommunityPosts({
   page,
   size,
 }: PaginationProps) {
   try {
     const response = await apiInstance.get<ResponseDTO<CommunityPostsType>>(
-      `/boards?page=${page}&size=${size}`
+      `/boards/my-boards?page=${page}&size=${size}`
     );
 
     return response.data;
