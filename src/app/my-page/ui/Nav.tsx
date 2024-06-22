@@ -28,7 +28,7 @@ const Nav = () => {
       </PageNavItem>
       <PageNavItem>
         <PageNavItem.Label icon={<NavChat />} text="채팅" />
-        <PageNavItem.Item moveTo="info" text="채팅 목록" />
+        <PageNavItem.Item moveTo="/my-page/chat" text="채팅 목록" />
       </PageNavItem>
     </div>
   );

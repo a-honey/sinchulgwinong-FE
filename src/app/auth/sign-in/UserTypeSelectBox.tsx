@@ -10,14 +10,14 @@ interface UserTypeSelectBoxProps {
 
 const UserTypeSelectBox = ({ mode, changeMode }: UserTypeSelectBoxProps) => {
   return (
-    <div>
+    <div className="flex gap-[10px]">
       <Button
         className={
           mode === "employee"
             ? "bg-primary3 px-[30px] py-[17px]"
             : "px-[30px] py-[17px]"
         }
-        text="구직자"
+        text="구인자"
         onClick={() => {
           changeMode("employee");
         }}

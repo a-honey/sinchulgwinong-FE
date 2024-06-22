@@ -11,7 +11,7 @@ interface ArrowIconProps extends React.SVGProps<SVGSVGElement> {
 const ArrowIcon = ({
   direction = "right",
   weight = "regular",
-  color = "black",
+  color = "white",
   ...props
 }: ArrowIconProps) => {
   const getRotation = () => {
