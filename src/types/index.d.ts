@@ -2,12 +2,16 @@ export interface ResponseDTO<T> {
   message: string;
   data: T;
 }
-export interface ResponsePagination {
+export interface ResponseOffsetPagination {
   currentPage: number;
   totalPages: number;
   pageSize: number;
 }
 
+export interface ResponseCursorPagination<T> {
+  data: T[];
+  hasNextPage: boolean;
+}
 export interface PaginationProps {
   page: number;
   size: number;

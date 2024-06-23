@@ -2,7 +2,7 @@ import {
   CommentType,
   PaginationProps,
   ResponseDTO,
-  ResponsePagination,
+  ResponseOffsetPagination,
 } from "@/types";
 
 import apiInstance from "../../apiInstance";
@@ -10,7 +10,7 @@ import apiInstance from "../../apiInstance";
 interface CommentsProps extends PaginationProps {
   boardId: number;
 }
-export interface CommentsType extends ResponsePagination {
+export interface CommentsType extends ResponseOffsetPagination {
   totalCommentCount: number;
   comment: CommentType[];
 }

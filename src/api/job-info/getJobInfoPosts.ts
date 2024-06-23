@@ -2,12 +2,12 @@ import {
   JobPostType,
   PaginationProps,
   ResponseDTO,
-  ResponsePagination,
+  ResponseOffsetPagination,
 } from "@/types";
 
 import apiInstance from "../apiInstance";
 
-interface CommunityPostsType extends ResponsePagination {
+interface CommunityPostsType extends ResponseOffsetPagination {
   totalJobBoardCount: number;
   jobBoardResponseDTOS: JobPostType[];
 }

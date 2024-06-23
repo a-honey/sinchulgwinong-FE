@@ -2,12 +2,12 @@ import {
   CommunityPostType,
   PaginationProps,
   ResponseDTO,
-  ResponsePagination,
+  ResponseOffsetPagination,
 } from "@/types";
 
 import apiInstance from "../apiInstance";
 
-export interface CommunityPostsType extends ResponsePagination {
+export interface CommunityPostsType extends ResponseOffsetPagination {
   totalBoardCount: number;
   boards: CommunityPostType[];
 }

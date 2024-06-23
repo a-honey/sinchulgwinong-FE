@@ -1,6 +1,7 @@
-import { ResponsePagination } from "@/types";
+import { ResponseOffsetPagination } from "@/types";
 
-export interface PaginationProps extends Omit<ResponsePagination, "pageSize"> {
+export interface PaginationProps
+  extends Omit<ResponseOffsetPagination, "pageSize"> {
   onPageChange: (page: number) => void;
 }
 
