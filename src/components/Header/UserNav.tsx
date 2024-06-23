@@ -2,11 +2,10 @@
 
 import Link from "next/link";
 import Paths from "@/constants/paths";
-import { getIsLogin } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 
 const UserNav = () => {
-  const isLogin = getIsLogin();
+  const isLogin = !!localStorage.getItem("accessToken");
   const router = useRouter();
 
   const handleLogout = () => {

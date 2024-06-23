@@ -5,10 +5,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function getIsLogin() {
-  return !!localStorage.getItem("accessToken");
-}
-
 export function getFormattedDate(date: Date | string, joiner: string = ".") {
   const typedDate = new Date(date);
 

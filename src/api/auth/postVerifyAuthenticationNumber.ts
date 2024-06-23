@@ -1,3 +1,4 @@
+import { ResponseDTO } from "@/types";
 import apiInstance from "../apiInstance";
 
 export interface VerifyAuthenticationNumberBody {
@@ -8,11 +9,12 @@ export default async function postVerifyAuthenticationNumber(
   body: VerifyAuthenticationNumberBody
 ) {
   try {
-    const response = await apiInstance.post(`/email/verifyCode`, body);
+    const response = await apiInstance.post<ResponseDTO<string>>(
+      `/email/verifyCode`,
+      body
+    );
 
-    const res = await response.json();
-    console.log(res.message);
-    return res.data;
+    return response.data;
   } catch (e) {
     console.log(e);
   }
