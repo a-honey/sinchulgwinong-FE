@@ -44,7 +44,7 @@ const ListBox = () => {
               <List.Table.Row
                 key={row.jobBoardId}
                 onClick={() => {
-                  router.push(`/job-info/detail/${row.jobBoardId}`);
+                  router.push(`/job-info/detail/?jobBoardId=${row.jobBoardId}`);
                 }}
                 names={data}
               />

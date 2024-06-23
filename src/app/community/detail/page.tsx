@@ -1,20 +1,32 @@
 "use client";
 
+import { Suspense, useCallback } from "react";
+
 import CommentBox from "./CommentBox";
 import getCommunityPost from "@/api/community/getCommunityPost";
 import { getFormattedDate } from "@/lib/utils";
-import { useCallback } from "react";
-import { useParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
 
-const Detail = () => {
-  const params = useParams();
+const Page = () => {
+  return (
+    <Suspense fallback={<div>로딩중</div>}>
+      <Detail />
+    </Suspense>
+  );
+};
 
-  const boardId = +params.id;
+export default Page;
+
+const Detail = () => {
+  const searchParams = useSearchParams();
+
+  const boardId = +searchParams.get("boardId")!;
 
   const { data } = useUpdateFetch(
     useCallback(() => getCommunityPost(boardId), [boardId])
   );
+
   if (!data) return;
 
   return (
@@ -38,5 +50,3 @@ const Detail = () => {
     </main>
   );
 };
-
-export default Detail;

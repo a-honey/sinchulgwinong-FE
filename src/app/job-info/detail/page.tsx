@@ -1,23 +1,33 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
+import { Suspense, useCallback } from "react";
 
 import ChatIcon from "@/assets/icons/ChatIcon";
 import ContentBox from "./ContentBox";
 import EmployerBox from "./EmployerBox";
 import InfoBox from "./InfoBox";
 import ScrapIcon from "@/assets/icons/ScrapIcon";
-import getEmployerInfo from "@/api/employer/getEmployerInfo";
 import getJobInfoPost from "@/api/job-info/getJobInfoPost";
-import { useCallback } from "react";
+import { useSearchParams } from "next/navigation";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
 
 const Page = () => {
-  const params = useParams();
-  const jobBoardId = params.id;
+  return (
+    <Suspense fallback={<div>로딩중</div>}>
+      <Detail />
+    </Suspense>
+  );
+};
+
+export default Page;
+
+const Detail = () => {
+  const searchParams = useSearchParams();
+
+  const jobBoardId = +searchParams.get("jobBoardId")!;
 
   const { data } = useUpdateFetch(
-    useCallback(() => getJobInfoPost(+jobBoardId), [jobBoardId])
+    useCallback(() => getJobInfoPost(jobBoardId), [jobBoardId])
   );
 
   if (!data) return;
@@ -47,5 +57,3 @@ const Page = () => {
     </main>
   );
 };
-
-export default Page;
