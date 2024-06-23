@@ -1,4 +1,5 @@
-import { LoginType } from "@/types";
+import { LoginType, ResponseDTO } from "@/types";
+
 import apiInstance from "../apiInstance";
 
 export interface EmployeeSignUpBody {
@@ -12,13 +13,16 @@ export interface EmployeeSignUpBody {
   loginType: LoginType;
 }
 
+interface SignUpProps {}
+
 export default async function postEmployeeSignUp(body: EmployeeSignUpBody) {
   try {
-    const response = await apiInstance.post(`/auth/signup`, body);
+    const response = await apiInstance.post<ResponseDTO<string>>(
+      `/auth/signup`,
+      body
+    );
 
-    const res = await response.json();
-    console.log(res.message);
-    return res.data;
+    return response.data;
   } catch (e) {
     console.log(e);
   }

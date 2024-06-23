@@ -2,7 +2,9 @@ import { baseURL } from "@/constants/env";
 
 interface ApiConfig {
   baseURL: string;
-  headers?: HeadersInit;
+  headers?: HeadersInit & {
+    Authorization?: string;
+  };
 }
 
 class Api {
@@ -14,8 +16,20 @@ class Api {
     this.baseURL = config.baseURL || baseURL!;
     this.headers = config.headers || {
       "Content-Type": "application/json",
-      Authorization: "",
     };
+  }
+
+  public setAuthorizationToken(token: string) {
+    this.headers = { ...this.headers, Authorization: `${token}` };
+  }
+
+  public setAuthorizationTokenLocalStorage() {
+    if (typeof window !== "undefined" && localStorage.getItem("accessToken")) {
+      this.headers = {
+        ...this.headers,
+        Authorization: `${localStorage.getItem("accessToken")}`,
+      };
+    }
   }
 
   public static getInstance(config: ApiConfig): Api {
@@ -25,7 +39,9 @@ class Api {
     return Api.instance;
   }
 
-  private async request(endpoint: string, options: RequestInit) {
+  private async request<T>(endpoint: string, options: RequestInit): Promise<T> {
+    this.setAuthorizationTokenLocalStorage();
+
     const url = `${this.baseURL}${endpoint}`;
     const response = await fetch(url, {
       ...options,
@@ -35,34 +51,35 @@ class Api {
       },
     });
 
-    return response;
+    const data = await response.json();
+    return data as T;
   }
 
-  public async get(endpoint: string, headers?: HeadersInit) {
-    return this.request(endpoint, {
+  public async get<T>(endpoint: string, headers?: HeadersInit): Promise<T> {
+    return this.request<T>(endpoint, {
       method: "GET",
       headers,
     });
   }
 
-  public async post(endpoint: string, body: any, headers?: HeadersInit) {
-    return this.request(endpoint, {
+  public async post<T>(endpoint: string, body: any, headers?: HeadersInit) {
+    return this.request<T>(endpoint, {
       method: "POST",
       body: JSON.stringify(body),
       headers,
     });
   }
 
-  public async put(endpoint: string, body: any, headers?: HeadersInit) {
-    return this.request(endpoint, {
-      method: "PUT",
+  public async patch<T>(endpoint: string, body: any, headers?: HeadersInit) {
+    return this.request<T>(endpoint, {
+      method: "PATCH",
       body: JSON.stringify(body),
       headers,
     });
   }
 
-  public async delete(endpoint: string, headers?: HeadersInit) {
-    return this.request(endpoint, {
+  public async delete<T>(endpoint: string, headers?: HeadersInit) {
+    return this.request<T>(endpoint, {
       method: "DELETE",
       headers,
     });

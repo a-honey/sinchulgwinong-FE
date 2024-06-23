@@ -1,3 +1,4 @@
+import { ResponseDTO } from "@/types";
 import apiInstance from "../apiInstance";
 
 export interface EmployerSignUpBody {
@@ -17,11 +18,12 @@ export interface EmployerSignUpBody {
 
 export default async function postEmployerSignUp(body: EmployerSignUpBody) {
   try {
-    const response = await apiInstance.post(`/auth/cp-signup`, body);
+    const response = await apiInstance.post<ResponseDTO<string>>(
+      `/auth/cp-signup`,
+      body
+    );
 
-    const res = await response.json();
-    console.log(res.message);
-    return res.data;
+    return response.data;
   } catch (e) {
     console.log(e);
   }

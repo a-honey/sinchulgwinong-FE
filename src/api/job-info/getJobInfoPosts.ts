@@ -1,12 +1,28 @@
+import {
+  JobPostType,
+  PaginationProps,
+  ResponseDTO,
+  ResponseOffsetPagination,
+} from "@/types";
+
 import apiInstance from "../apiInstance";
 
-export default async function getJobInfoPosts() {
-  try {
-    const response = await apiInstance.get(`/jobBoards`);
+interface CommunityPostsType extends ResponseOffsetPagination {
+  totalJobBoardCount: number;
+  jobBoardResponseDTOS: JobPostType[];
+}
 
-    const res = await response.json();
-    console.log(res.message);
-    return res.data;
+export default async function getJobInfoPosts({ page, size }: PaginationProps) {
+  try {
+    const params = new URLSearchParams({
+      page: page.toString(),
+      size: size.toString(),
+    });
+    const response = await apiInstance.get<ResponseDTO<CommunityPostsType>>(
+      `/job-boards?${params}`
+    );
+
+    return response.data;
   } catch (e) {
     console.log(e);
   }

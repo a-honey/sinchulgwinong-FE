@@ -25,7 +25,7 @@ const EmployeeEmailRegisterForm = () => {
   const email = watch("email");
 
   const onSubmit = (data: Omit<EmployeeSignUpBody, "loginType">) => {
-    postEmployeeSignUp({ ...data, loginType: "EMAIL", agreeToTerms: true });
+    postEmployeeSignUp({ ...data, loginType: "NORMAL", agreeToTerms: true });
   };
 
   return (
@@ -81,7 +81,7 @@ const EmployeeEmailRegisterForm = () => {
         />
       </div>
       <Button
-        varients="yellow"
+        variants="yellow"
         text="회원가입"
         className="px-[30px] py-[17px]"
         isRound

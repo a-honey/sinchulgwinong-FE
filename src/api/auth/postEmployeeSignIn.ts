@@ -1,4 +1,5 @@
 import apiInstance from "../apiInstance";
+import { baseURL } from "@/constants/env";
 import setTokenLocalStorage from "@/lib/setTokenLocalStorage";
 
 interface SignInBody {
@@ -18,12 +19,16 @@ export default async function postEmployeeSignIn({
   onSuccess,
 }: postEmployeeSignInProps) {
   try {
-    const response = await apiInstance.post("/auth/login", body);
+    const response = await fetch(`${baseURL}/auth/login`, {
+      method: "POST",
+      body: JSON.stringify(body),
+    });
 
     const authHeader = response.headers.get("Authorization");
 
     if (authHeader) {
       setTokenLocalStorage(authHeader);
+      apiInstance.setAuthorizationToken(authHeader);
     }
 
     if (!response.ok) {

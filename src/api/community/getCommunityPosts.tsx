@@ -1,11 +1,27 @@
+import {
+  CommunityPostType,
+  PaginationProps,
+  ResponseDTO,
+  ResponseOffsetPagination,
+} from "@/types";
+
 import apiInstance from "../apiInstance";
 
-export default async function getCommunityPosts() {
-  try {
-    const response = await apiInstance.get(`/boards`);
+export interface CommunityPostsType extends ResponseOffsetPagination {
+  totalBoardCount: number;
+  boards: CommunityPostType[];
+}
 
-    const res = await response.json();
-    return res;
+export default async function getCommunityPosts({
+  page,
+  size,
+}: PaginationProps) {
+  try {
+    const response = await apiInstance.get<ResponseDTO<CommunityPostsType>>(
+      `/boards?page=${page}&size=${size}`
+    );
+
+    return response.data;
   } catch (e) {
     console.log(e);
   }

@@ -1,4 +1,5 @@
-import { LoginType } from "@/types";
+import { LoginType, ResponseDTO } from "@/types";
+
 import apiInstance from "../apiInstance";
 
 export interface SendAuthenticationNumberBody {
@@ -9,11 +10,12 @@ export default async function postSendAuthenticationNumber(
   body: SendAuthenticationNumberBody
 ) {
   try {
-    const response = await apiInstance.post(`/email/sendCode`, body);
+    const response = await apiInstance.post<ResponseDTO<string>>(
+      `/email/sendCode`,
+      body
+    );
 
-    const res = await response.json();
-    console.log(res.message);
-    return res.data;
+    return response.data;
   } catch (e) {
     console.log(e);
   }

@@ -17,7 +17,7 @@ const ChatListBlack = () => {
         <Link href="/job-info">
           <Button
             text="채용 정보 보러가기 >"
-            varients="yellow"
+            variants="yellow"
             className="p-[20px]"
           />
         </Link>
