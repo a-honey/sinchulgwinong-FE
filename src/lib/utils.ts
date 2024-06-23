@@ -14,3 +14,7 @@ export function getFormattedDate(date: Date | string, joiner: string = ".") {
 
   return `${year}${joiner}${month}${joiner}${day}`;
 }
+
+export function getIsLogin() {
+  return true;
+}

@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 
 const Writing = () => {
   return (
-    <>
+    <main>
       <h2 className="title1 mb-[50px]">채용 글 작성</h2>
       <div className="flex flex-col gap-[60px]">
         <div className="flex flex-col gap-[20px]">
@@ -24,7 +24,7 @@ const Writing = () => {
           </div>
         </div>
       </div>
-    </>
+    </main>
   );
 };
 

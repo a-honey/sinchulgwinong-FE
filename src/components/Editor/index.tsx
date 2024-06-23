@@ -1,13 +1,10 @@
+"use client";
+
 import "react-quill/dist/quill.snow.css";
 
-import React, {
-  ReactChild,
-  ReactFragment,
-  RefObject,
-  useMemo,
-  useState,
-} from "react";
-import ReactQuill, { Quill } from "react-quill";
+import React, { useMemo, useState } from "react";
+
+import dynamic from "next/dynamic";
 
 const formats = [
   "font",
@@ -30,7 +27,7 @@ const formats = [
 
 const Editor = () => {
   const [values, setValues] = useState<any>();
-
+  const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
   const modules = useMemo(() => {
     return {
       toolbar: {
@@ -51,13 +48,17 @@ const Editor = () => {
   }, []);
 
   return (
-    <ReactQuill
-      className="w-full h-full"
-      theme="snow"
-      modules={modules}
-      formats={formats}
-      onChange={setValues}
-    />
+    <>
+      {ReactQuill && (
+        <ReactQuill
+          className="w-full h-full"
+          theme="snow"
+          modules={modules}
+          formats={formats}
+          onChange={setValues}
+        />
+      )}
+    </>
   );
 };
 export default Editor;
