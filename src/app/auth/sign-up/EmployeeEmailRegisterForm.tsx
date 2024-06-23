@@ -81,7 +81,7 @@ const EmployeeEmailRegisterForm = () => {
         />
       </div>
       <Button
-        varients="yellow"
+        variants="yellow"
         text="회원가입"
         className="px-[30px] py-[17px]"
         isRound

@@ -50,7 +50,7 @@ const EamilLoginForm = ({ mode }: { mode: UserAuthType }) => {
       />
       <Button
         type="submit"
-        varients="yellow"
+        variants="yellow"
         text="이메일로 로그인"
         className="py-[25px]"
         isRound

@@ -27,7 +27,7 @@ const CommentForm = ({ boardId }: { boardId: number }) => {
         placeholder="댓글을 입력해주세요."
         {...register("commentContent")}
       />
-      <Button className="w-[150px]" varients="yellow" text="등록" />
+      <Button className="w-[150px]" variants="yellow" text="등록" />
     </form>
   );
 };

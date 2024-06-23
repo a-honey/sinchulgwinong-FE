@@ -51,7 +51,7 @@ const Writing = () => {
               router.back();
             }}
           />
-          <Button type="submit" text="등록" varients="yellow" />
+          <Button type="submit" text="등록" variants="yellow" />
         </div>
       </form>
     </main>

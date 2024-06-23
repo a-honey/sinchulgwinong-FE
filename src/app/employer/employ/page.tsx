@@ -12,7 +12,7 @@ const Employ = () => {
         <Link href="/employer/employ/writing">
           <Button
             text="채용글 작성하기"
-            varients="yellow"
+            variants="yellow"
             className="subTitle1 w-full p-[20px]"
           />
         </Link>
