@@ -44,3 +44,12 @@ export interface JobPostType {
   createdAt: "2024-06-22T05:42:57.745Z";
   modifiedAt: "2024-06-22T05:42:57.745Z";
 }
+
+export interface CommentType {
+  commentId: number;
+  userId: number;
+  boardId: number;
+  commentContent: string;
+  createdAt: "2024-06-23T05:25:28.151Z";
+  modifiedAt: "2024-06-23T05:25:28.151Z";
+}

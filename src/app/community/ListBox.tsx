@@ -5,6 +5,7 @@ import { Suspense, useCallback } from "react";
 import Blank from "@/components/Blank";
 import List from "../../components/List";
 import getCommunityPosts from "@/api/community/getCommunityPosts";
+import { getFormattedDate } from "@/lib/utils";
 import usePagination from "@/hooks/usePagination";
 import { useRouter } from "next/navigation";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
@@ -35,7 +36,7 @@ const ListBox = () => {
                 `${row.boardId}`,
                 row.title,
                 `${row.userId}`,
-                `${row.createdAt}`,
+                `${getFormattedDate(row.createdAt)}`,
               ];
               return (
                 <List.Table.Row

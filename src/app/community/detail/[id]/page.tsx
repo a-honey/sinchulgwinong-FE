@@ -1,25 +1,40 @@
+"use client";
+
+import CommentBox from "./CommentBox";
+import getCommunityPost from "@/api/community/getCommunityPost";
+import { getFormattedDate } from "@/lib/utils";
+import { useCallback } from "react";
+import { useParams } from "next/navigation";
+import useUpdateFetch from "@/hooks/useUpdateFetch";
+
 const Detail = () => {
+  const params = useParams();
+
+  const boardId = +params.id;
+
+  const { data } = useUpdateFetch(
+    useCallback(() => getCommunityPost(boardId), [boardId])
+  );
+  if (!data) return;
+
   return (
-    <main>
-      <div>
-        <div>
-          <h1 className="text-[36px]">과수원 사장님 어떠신가요?</h1>
-          <div>
-            <div>뽀송이 | 2023.05.212</div>
+    <main className="p-[20px]">
+      <section className="p-[20px] border">
+        <div className="border-b py-[20px] flex flex-col gap-[20px]">
+          <h1 className="text-[36px]">{data.title}</h1>
+          <div className="flex justify-between">
+            <div>
+              뽀송이 |{" "}
+              <span className="text-[#9F9F9F]">
+                {getFormattedDate(data.createdAt)}
+              </span>
+            </div>
             <div>조회 30 | 스크랩20 | 댓글2</div>
           </div>
         </div>
-        <div>고양이 과수원 사장님 안녕ㄹ하셍용</div>
-        <div>
-          <div>댓글 1개</div>
-          <div>
-            <div className="flex">
-              <div>양옹잉|2024.05.12</div>
-              <div>사장님짱이시네욤</div>
-            </div>
-          </div>
-        </div>
-      </div>
+        <div className="my-[60px]">{data?.content}</div>
+        <CommentBox boardId={boardId} />
+      </section>
     </main>
   );
 };

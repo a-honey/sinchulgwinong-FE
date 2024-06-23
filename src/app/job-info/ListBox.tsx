@@ -1,8 +1,9 @@
 "use client";
 
+import Badge from "@/components/Badge";
 import Blank from "@/components/Blank";
-import Link from "next/link";
 import List from "../../components/List";
+import { getFormattedDate } from "@/lib/utils";
 import getJobInfoPosts from "@/api/job-info/getJobInfoPosts";
 import { useCallback } from "react";
 import usePagination from "@/hooks/usePagination";
@@ -32,9 +33,12 @@ const ListBox = () => {
           data.jobBoardResponseDTOS.map((row) => {
             const data = [
               `${row.address}`,
-              row.jobTitle,
-              `${row.salaryAmount}`,
-              `${row.createdAt}`,
+              <div key={row.jobBoardId}>
+                <Badge text={row.salaryType} />
+                {row.salaryAmount}
+              </div>,
+              `${row.jobTitle}`,
+              `${getFormattedDate(row.createdAt)}`,
             ];
             return (
               <List.Table.Row
