@@ -31,7 +31,7 @@ const Pagination = ({
       pageNumbers.push(
         <button
           key={i}
-          onClick={() => handlePageChange(i)}
+          onClick={() => handlePageChange(i - 1)}
           className={`px-2 py-1 mx-1 ${
             currentPage === i ? "text-black" : "text-gray3"
           }`}

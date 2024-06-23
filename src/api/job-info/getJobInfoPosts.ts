@@ -19,7 +19,7 @@ export default async function getJobInfoPosts({ page, size }: PaginationProps) {
       size: size.toString(),
     });
     const response = await apiInstance.get<ResponseDTO<CommunityPostsType>>(
-      `/jobBoards?${params}`
+      `/job-boards?${params}`
     );
 
     return response.data;

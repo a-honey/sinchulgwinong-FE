@@ -3,14 +3,17 @@
 import Link from "next/link";
 import Paths from "@/constants/paths";
 import { getIsLogin } from "@/lib/utils";
-import useLogout from "@/hooks/useLogout";
+import { useRouter } from "next/navigation";
 
 const UserNav = () => {
   const isLogin = getIsLogin();
-  const logout = useLogout;
+  const router = useRouter();
 
   const handleLogout = () => {
-    logout();
+    if (typeof window === "undefined") return;
+    localStorage.removeItem("accessToken");
+    router.push("/");
+    return;
   };
 
   return (

@@ -3,11 +3,12 @@ import { cn } from "@/lib/utils";
 interface RowProps {
   isFirst?: boolean;
   names: React.ReactNode[];
+  onClick?: () => void;
 }
 
-export const Row = ({ isFirst = false, names }: RowProps) => {
+export const Row = ({ isFirst = false, names, onClick }: RowProps) => {
   return (
-    <tr>
+    <tr onClick={onClick}>
       {names.map((name, index) => (
         <td
           key={index}

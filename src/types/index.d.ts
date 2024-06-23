@@ -40,7 +40,7 @@ export interface JobPostType {
   address: "string";
   jobStatus: JobStatusType;
   salaryType: SalaryType;
-  accessUrls: ["string"];
+  accessUrls: string[];
   createdAt: "2024-06-22T05:42:57.745Z";
   modifiedAt: "2024-06-22T05:42:57.745Z";
 }
