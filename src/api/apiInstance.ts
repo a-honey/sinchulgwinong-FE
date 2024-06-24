@@ -1,7 +1,8 @@
 import Api from ".";
+import { baseURL } from "@/constants/env";
 
 const apiInstance = Api.getInstance({
-  baseURL: "http://3.35.171.211",
+  baseURL: baseURL ?? "",
 });
 
 export default apiInstance;
