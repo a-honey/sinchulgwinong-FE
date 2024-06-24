@@ -1,5 +1,6 @@
 import { cn, getFormattedDate } from "@/lib/utils";
 
+import Blank from "@/components/Blank";
 import Button from "@/components/Button";
 import CommentForm from "./CommentForm";
 import { Input } from "@/components/ui/input";
@@ -16,7 +17,8 @@ const CommentBox = ({ boardId }: { boardId: number }) => {
     <section>
       <CommentForm boardId={boardId} />
       <div className="mt-[15px] flex flex-col gap-[10px]">
-        <div>댓글 {data?.totalCommentCount}개</div>
+        <div>댓글 {data?.totalCommentCount ?? 0}개</div>
+        {data?.comment.length === 0 && <Blank />}
         {data?.comment.map((comment, index) => (
           <div
             key={comment.commentId}

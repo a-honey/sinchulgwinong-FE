@@ -24,7 +24,7 @@ const ListBox = () => {
 
   return (
     <List>
-      <List.Header count={200} />
+      <List.Header count={data?.totalJobBoardCount ?? 0} />
       <List.Table className="w-full">
         <List.Table.Head titles={THEAD} />
         {!data || data?.jobBoardResponseDTOS.length === 0 ? (
