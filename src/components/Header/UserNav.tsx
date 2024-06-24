@@ -2,18 +2,23 @@
 
 import Link from "next/link";
 import Paths from "@/constants/paths";
-import { getIsLogin } from "@/lib/utils";
+import { useEffect } from "react";
+import useIsLogin from "@/hooks/useIsLogin";
 import { useRouter } from "next/navigation";
 
 const UserNav = () => {
-  const isLogin = getIsLogin();
+  const { isLogin } = useIsLogin();
   const router = useRouter();
 
   const handleLogout = () => {
-    router.push("/");
+    if (typeof window !== "undefined" && localStorage) {
+      localStorage.removeItem("accessToken");
+      router.push(Paths.HOME);
+    }
     return;
   };
 
+  useEffect(() => {}, [isLogin]);
   return (
     <div className="flex justify-end gap-[20px] pt-[30px] pb-[16px] pr-[60px] border-b border-[#B0B0B0]">
       {isLogin && (

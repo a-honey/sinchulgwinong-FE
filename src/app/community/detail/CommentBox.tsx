@@ -15,7 +15,7 @@ const CommentBox = ({ boardId }: { boardId: number }) => {
   return (
     <section>
       <CommentForm boardId={boardId} />
-      <div>
+      <div className="mt-[15px] flex flex-col gap-[10px]">
         <div>댓글 {data?.totalCommentCount}개</div>
         {data?.comment.map((comment, index) => (
           <div
@@ -25,7 +25,9 @@ const CommentBox = ({ boardId }: { boardId: number }) => {
               index === 0 && "border-t"
             )}
           >
-            <div>양옹잉|{getFormattedDate(comment.createdAt)}</div>
+            <div>
+              {comment.nickName} | {getFormattedDate(comment.createdAt)}
+            </div>
             <div>{comment.commentContent}</div>
           </div>
         ))}

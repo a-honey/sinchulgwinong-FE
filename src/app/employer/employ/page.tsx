@@ -6,7 +6,9 @@ const Employ = () => {
   return (
     <>
       <h2 className="title1 mb-[50px]">작성 목록</h2>
-      <Container title="작성한 채용 글 목록" subTitle="작성한 글 내역" />
+      <Container title="작성한 채용 글 목록" subTitle="작성한 글 내역">
+        <></>
+      </Container>
       <div className="flex flex-col">
         <div className="subTitle1">채용글 작성하기</div>
         <Link href="/employer/employ/writing">

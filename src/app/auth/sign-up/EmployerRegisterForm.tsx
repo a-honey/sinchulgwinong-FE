@@ -25,6 +25,7 @@ const EmployerRegisterForm = () => {
 
   const onSubmit = (data: Omit<EmployerSignUpBody, "hiringStatus">) => {
     postEmployerSignUp({ ...data, hiringStatus: false });
+    alert("사업자번호를 인증해주세요.");
   };
 
   return (

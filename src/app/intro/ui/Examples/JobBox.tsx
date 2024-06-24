@@ -1,9 +1,14 @@
+"use client";
+
 import BannerCard from "./BannerCard";
 import Container from "./Container";
 import JobCard from "./JobCard";
 import SearchObject from "@/assets/icons/SearchObject";
+import getJobInfoPosts from "@/api/job-info/getJobInfoPosts";
+import useUpdateFetch from "@/hooks/useUpdateFetch";
 
 const JobBox = () => {
+  const { data } = useUpdateFetch(() => getJobInfoPosts({ page: 0, size: 3 }));
   return (
     <Container
       beforeTitle="주변"
@@ -18,9 +23,16 @@ const JobBox = () => {
           description="더 많은 주변 농촌 일자리 정보를 확인하세요"
           icon={<SearchObject width={111.93} height={82} />}
         />
-        <JobCard />
-        <JobCard />
-        <JobCard />
+        {data?.jobBoardResponseDTOS.map((job) => (
+          <JobCard
+            key={job.jobBoardId}
+            title={job.jobTitle}
+            content={job.jobContent}
+            address={job.address}
+            salaryAmount={job.salaryAmount}
+            salaryType={job.salaryType}
+          />
+        ))}
       </div>
     </Container>
   );

@@ -34,7 +34,7 @@ const ListBox = () => {
             data.boards.map((row) => {
               const data = [
                 `${row.boardId}`,
-                row.title,
+                `${row.title} (${row.commentCount})`,
                 `${row.userId}`,
                 `${getFormattedDate(row.createdAt)}`,
               ];

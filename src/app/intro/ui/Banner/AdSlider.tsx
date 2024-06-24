@@ -1,8 +1,15 @@
+"use client";
+
 import AdSlide from "./AdSlide";
 import ArrowIcon from "@/assets/icons/ArrowIcon";
 import SearchObject from "@/assets/icons/SearchObject";
+import getAdJobInfoPosts from "@/api/job-info/getAdJobInfoPosts";
+import useUpdateFetch from "@/hooks/useUpdateFetch";
 
 const AdSlider = () => {
+  const { data } = useUpdateFetch(getAdJobInfoPosts);
+
+  console.log(data);
   return (
     <div className="flex w-full h-[200px] py-[40px] px-[120px] justify-between items-center bg-gray1 relative">
       <button className="absolute left-[40px] flex justify-center items-center bg-gray2 w-[40px] h-[40px] rounded rounded-[50px]">

@@ -6,15 +6,18 @@ import Button from "@/components/Button";
 import { Input } from "@/components/ui/input";
 import InputAgree from "../ui/InputAgree";
 import InputAuthenticationNumber from "../ui/InputAuthenticationNumber";
+import Paths from "@/constants/paths";
 import postSendAuthenticationNumber from "@/api/auth/postSendAuthenticationNumber";
 import postVerifyAuthenticationNumber from "@/api/auth/postVerifyAuthenticationNumber";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 function allElementsOn(arr: string[]) {
   return arr.every((element) => element === "on");
 }
 
 const EmployeeEmailRegisterForm = () => {
+  const router = useRouter();
   const {
     watch,
     register,
@@ -26,6 +29,7 @@ const EmployeeEmailRegisterForm = () => {
 
   const onSubmit = (data: Omit<EmployeeSignUpBody, "loginType">) => {
     postEmployeeSignUp({ ...data, loginType: "NORMAL", agreeToTerms: true });
+    router.push(Paths.LOGIN);
   };
 
   return (

@@ -1,11 +1,12 @@
 import Container from "./Container";
+import ReviewBlack from "./ReviewBlank";
 import { ReviewFee } from "@/constants/variables";
 import getMyPoint from "@/api/user/getMyPoint";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
 
 const ReviewBox = () => {
-  const { isFetching, data } = useUpdateFetch(getMyPoint);
-  if (!data) return;
+  const { data } = useUpdateFetch(getMyPoint);
+  if (!data) return <ReviewBlack />;
 
   return (
     <Container

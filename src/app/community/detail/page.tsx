@@ -36,12 +36,12 @@ const Detail = () => {
           <h1 className="text-[36px]">{data.title}</h1>
           <div className="flex justify-between">
             <div>
-              뽀송이 |{" "}
+              {data.nickName} |{" "}
               <span className="text-[#9F9F9F]">
                 {getFormattedDate(data.createdAt)}
               </span>
             </div>
-            <div>조회 30 | 스크랩20 | 댓글2</div>
+            <div>댓글{data.commentCount}</div>
           </div>
         </div>
         <div className="my-[60px]">{data?.content}</div>

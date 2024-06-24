@@ -4,6 +4,7 @@ import Button from "@/components/Button";
 import { Input } from "@/components/ui/input";
 import { UserAuthType } from "./UserTypeSelectBox";
 import postEmployeeSignIn from "@/api/auth/postEmployeeSignIn";
+import useIsLogin from "@/hooks/useIsLogin";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -12,7 +13,10 @@ const EamilLoginForm = ({ mode }: { mode: UserAuthType }) => {
   const router = useRouter();
   const [loginBody, setLoginBody] = useState({ email: "", password: "" });
 
+  const { handleIsLogin } = useIsLogin();
+
   const onLoginSuccess = () => {
+    handleIsLogin(true);
     router.push("/");
   };
 

@@ -1,8 +1,9 @@
 interface ContainerProps {
   title: string;
   subTitle: string;
+  children: React.ReactElement;
 }
-const Container = ({ title, subTitle }: ContainerProps) => {
+const Container = ({ title, subTitle, children }: ContainerProps) => {
   return (
     <div className="flex flex-col gap-[20px]">
       <div className="flex justify-between">
@@ -11,7 +12,7 @@ const Container = ({ title, subTitle }: ContainerProps) => {
       </div>
       <div className="px-[20px] py-[22px] border-[#E9E9E9] border-[2px]">
         <div className="detail2 text-gray3">{subTitle}</div>
-        <div>표</div>
+        {children}
       </div>
     </div>
   );
