@@ -1,3 +1,4 @@
+import { SalaryType } from "@/types";
 import apiInstance from "../apiInstance";
 
 export interface PostBody {
@@ -6,10 +7,10 @@ export interface PostBody {
     jobTitle: string;
     jobContent: string;
     jobEndDate: "2024-06-22";
-    salaryAmount: 0;
+    salaryAmount: number;
     sex: string;
     address: string;
-    salaryType: "DAILY";
+    salaryType: SalaryType;
   };
 }
 

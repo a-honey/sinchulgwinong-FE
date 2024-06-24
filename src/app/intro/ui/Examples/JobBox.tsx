@@ -5,10 +5,13 @@ import Container from "./Container";
 import JobCard from "./JobCard";
 import SearchObject from "@/assets/icons/SearchObject";
 import getJobInfoPosts from "@/api/job-info/getJobInfoPosts";
+import { useCallback } from "react";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
 
 const JobBox = () => {
-  const { data } = useUpdateFetch(() => getJobInfoPosts({ page: 0, size: 3 }));
+  const { data } = useUpdateFetch(
+    useCallback(() => getJobInfoPosts({ page: 0, size: 3 }), [])
+  );
   return (
     <Container
       beforeTitle="주변"
@@ -26,6 +29,7 @@ const JobBox = () => {
         {data?.jobBoardResponseDTOS.map((job) => (
           <JobCard
             key={job.jobBoardId}
+            id={job.jobBoardId}
             title={job.jobTitle}
             content={job.jobContent}
             address={job.address}

@@ -1,7 +1,7 @@
 interface ContainerProps {
   title: string;
   subTitle: string;
-  children: React.ReactElement;
+  children: React.ReactNode;
 }
 const Container = ({ title, subTitle, children }: ContainerProps) => {
   return (

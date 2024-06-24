@@ -31,16 +31,69 @@ const JobInfo = () => {
       {mode === "filter" && (
         <div className="flex flex-col gap-[15px]">
           <div className="flex gap-[20px]">
-            <div>필터</div>
-            <div>필터</div>
-            <div>필터</div>
+            <div className="flex justify-center rounded-[10px] w-[200px] border px-[15px] py-[10px]">
+              지역
+            </div>
+            <div className="flex justify-center rounded-[10px] w-[200px] border px-[15px] py-[10px]">
+              업종
+            </div>
+            <div className="flex justify-center rounded-[10px] w-[200px] border px-[15px] py-[10px]">
+              상세 조건
+            </div>
           </div>
           <div className="border">
-            <div className="bg-gray1">
-              <input />
+            <div className="grid grid-cols-3 border-t border-b bg-[#F4F4F4]">
+              <div className="subTitle2 flex justify-center border-r p-[30px]">
+                시.도
+              </div>
+              <div className="subTitle2 flex justify-center border-r p-[30px]">
+                시구군
+              </div>
+              <div className="subTitle2 flex justify-center border-r p-[30px]">
+                동읍면
+              </div>
             </div>
-            <div className="bg-gray1">테이블</div>
-            <div className="bg-gray1">태그</div>
+            <div className="grid grid-cols-3">
+              <div className="flex flex-col">
+                <div className="subTitle2 flex justify-center border-r p-[30px]">
+                  서울
+                </div>
+                <div className="subTitle2 flex justify-center border-r p-[30px]">
+                  서울
+                </div>
+                <div className="subTitle2 flex justify-center border-r p-[30px]">
+                  서울
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <div className="subTitle2 flex justify-center border-r p-[30px]">
+                  서울전체
+                </div>
+                <div className="subTitle2 flex justify-center border-r p-[30px]">
+                  강남구
+                </div>
+              </div>
+              <div className="grid grid-cols-3">
+                <div className="subTitle2 flex justify-center p-[30px]">
+                  세곡동
+                </div>
+                <div className="subTitle2 flex justify-center p-[30px]">
+                  세곡동
+                </div>
+                <div className="subTitle2 flex justify-center p-[30px]">
+                  세곡동
+                </div>
+                <div className="subTitle2 flex justify-center p-[30px]">
+                  세곡동
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-left p-[30px] border-t">
+              <div className="flex justify-between min-w-[110px] bg-[#ECECEC] py-[5px] px-[10px] rounded-[3px] border">
+                <div>태그</div>
+                <div>X</div>
+              </div>
+            </div>
           </div>
         </div>
       )}

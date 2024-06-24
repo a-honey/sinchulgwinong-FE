@@ -1,10 +1,19 @@
+"use client";
+
 import BannerCard from "./BannerCard";
 import Container from "./Container";
 import Paths from "@/constants/paths";
 import ReviewCard from "./ReviewCard";
 import StoreObject from "@/assets/icons/StoreObject";
+import getOrgans from "@/api/organ/getOrgans";
+import { useCallback } from "react";
+import useUpdateFetch from "@/hooks/useUpdateFetch";
 
 const ReviewBox = () => {
+  const { data } = useUpdateFetch(
+    useCallback(() => getOrgans({ page: 0, size: 3 }), [])
+  );
+
   return (
     <Container
       beforeTitle="주변"

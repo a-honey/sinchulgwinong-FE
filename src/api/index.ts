@@ -11,12 +11,14 @@ class Api {
   private static instance: Api;
   private baseURL: string;
   private headers: HeadersInit;
+  private credentials: RequestCredentials;
 
   constructor(config: ApiConfig) {
     this.baseURL = config.baseURL || baseURL!;
     this.headers = config.headers || {
       "Content-Type": "application/json",
     };
+    this.credentials = "same-origin";
   }
 
   public setAuthorizationToken(token: string) {
@@ -49,6 +51,7 @@ class Api {
         ...this.headers,
         ...options.headers,
       },
+      credentials: this.credentials,
     });
 
     const data = await response.json();

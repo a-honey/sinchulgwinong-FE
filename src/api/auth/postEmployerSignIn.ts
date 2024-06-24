@@ -2,30 +2,28 @@ import apiInstance from "../apiInstance";
 import { baseURL } from "@/constants/env";
 import setTokenLocalStorage from "@/lib/setTokenLocalStorage";
 
-export interface EmployeeSignInBody {
-  email: string;
-  password: string;
+export interface EmployerSignInBody {
+  cpEmail: string;
+  cpPassword: string;
 }
 
-interface postEmployeeSignInProps {
-  body: EmployeeSignInBody;
+interface postEmployerSignInProps {
+  body: EmployerSignInBody;
   onSuccess?: () => void;
   onError?: (string?: any) => void;
 }
 
-export default async function postEmployeeSignIn({
+export default async function postEmployerSignIn({
   body,
   onError,
   onSuccess,
-}: postEmployeeSignInProps) {
+}: postEmployerSignInProps) {
   try {
-    const response = await fetch(`${baseURL}/auth/login`, {
+    const response = await fetch(`${baseURL}/auth/cp-login`, {
       method: "POST",
       body: JSON.stringify(body),
     });
 
-    const setCookieHeader = response.headers.get("Set-Cookie");
-    console.log(setCookieHeader);
     const authHeader = response.headers.get("Authorization");
 
     if (authHeader) {

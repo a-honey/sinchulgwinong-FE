@@ -35,7 +35,7 @@ const ListBox = () => {
               const data = [
                 `${row.boardId}`,
                 `${row.title} (${row.commentCount})`,
-                `${row.userId}`,
+                `${row.nickName}`,
                 `${getFormattedDate(row.createdAt)}`,
               ];
               return (

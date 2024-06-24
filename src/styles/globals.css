@@ -111,4 +111,9 @@
     line-height: auto;
     font-weight: bold;
   }
+  .label {
+    font-size: 16px;
+    line-height: auto;
+    font-weight: bold;
+  }
 }
