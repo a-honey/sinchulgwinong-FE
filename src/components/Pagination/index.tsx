@@ -12,13 +12,13 @@ const Pagination = ({
 }: PaginationProps) => {
   const handlePreviousPage = () => {
     if (currentPage > 1) {
-      onPageChange(currentPage - 1);
+      onPageChange(currentPage - 2);
     }
   };
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
-      onPageChange(currentPage + 1);
+      onPageChange(currentPage);
     }
   };
 
@@ -28,7 +28,19 @@ const Pagination = ({
 
   const renderPageNumbers = () => {
     const pageNumbers = [];
-    for (let i = 1; i <= totalPages; i++) {
+    const maxPagesToShow = 10;
+    const halfPagesToShow = Math.floor(maxPagesToShow / 2);
+
+    let startPage = Math.max(1, currentPage - halfPagesToShow);
+    let endPage = Math.min(totalPages, currentPage + halfPagesToShow);
+
+    if (currentPage <= halfPagesToShow) {
+      endPage = Math.min(totalPages, maxPagesToShow);
+    } else if (currentPage + halfPagesToShow >= totalPages) {
+      startPage = Math.max(1, totalPages - maxPagesToShow + 1);
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
       pageNumbers.push(
         <button
           key={i}
@@ -41,22 +53,19 @@ const Pagination = ({
         </button>
       );
     }
+
     return pageNumbers;
   };
 
   return (
     <div className="flex justify-center items-center space-x-2 mt-4">
-      {currentPage !== 1 && (
-        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
-          {"<"}
-        </button>
-      )}
+      <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+        {"<"}
+      </button>
       {renderPageNumbers()}
-      {currentPage !== totalPages && (
-        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-          {">"}
-        </button>
-      )}
+      <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+        {">"}
+      </button>
     </div>
   );
 };
