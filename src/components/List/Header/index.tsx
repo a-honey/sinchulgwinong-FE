@@ -14,8 +14,8 @@ export const Header = ({ count }: HeaderProps) => {
           <label>접수중</label>
         </div>
         <select>
-          <option>최신순</option>
-          <option>최신순</option>
+          <option value="서울특별시">최신순</option>
+          <option value="서울특별시">최신순</option>
         </select>
       </div>
     </div>

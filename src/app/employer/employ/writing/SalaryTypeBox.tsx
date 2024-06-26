@@ -1,3 +1,5 @@
+"use client";
+
 import { UseFormRegisterReturn } from "react-hook-form";
 
 const SalaryTypeBox = ({ register }: { register: UseFormRegisterReturn }) => {

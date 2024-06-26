@@ -13,7 +13,7 @@ import SalaryTypeBox from "./SalaryTypeBox";
 import { useForm } from "react-hook-form";
 
 const Writing = () => {
-  const { handleSubmit, register } = useForm<PostBody>();
+  const { control, handleSubmit, register } = useForm<PostBody>();
 
   const onSubmit = (data: PostBody) => {
     postJobInfoPost(data);
@@ -66,8 +66,9 @@ const Writing = () => {
               <div className="flex items-center gap-[10px]">
                 <label className="subTitle w-[60px]">내용</label>
                 <Editor
+                  control={control}
                   defaultValue={DefaultEditorValue}
-                  register={register("request.jobContent")}
+                  name="request.jobContent"
                 />
               </div>
             </div>

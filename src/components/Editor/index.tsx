@@ -2,9 +2,9 @@
 
 import "react-quill/dist/quill.snow.css";
 
-import React, { useMemo, useState } from "react";
+import { Control, Controller } from "react-hook-form";
+import React, { useMemo } from "react";
 
-import { UseFormRegisterReturn } from "react-hook-form";
 import dynamic from "next/dynamic";
 
 const formats = [
@@ -28,13 +28,13 @@ const formats = [
 
 const Editor = ({
   defaultValue,
-  register,
+  name,
+  control,
 }: {
+  control: Control<any>;
   defaultValue?: string;
-  register?: UseFormRegisterReturn;
+  name: string;
 }) => {
-  const [values, setValues] = useState(defaultValue ?? "");
-
   const ReactQuill = useMemo(
     () => dynamic(() => import("react-quill"), { ssr: false }),
     []
@@ -59,22 +59,23 @@ const Editor = ({
     };
   }, []);
 
-  const handleChange = (value: string) => {
-    setValues(value);
-    console.log(register?.onChange);
-    register?.onChange(value);
-  };
-
   return (
     <>
       {ReactQuill && (
-        <ReactQuill
-          className="w-full h-full"
-          theme="snow"
-          modules={modules}
-          value={values}
-          formats={formats}
-          onChange={handleChange}
+        <Controller
+          name={name}
+          defaultValue={defaultValue}
+          control={control}
+          render={({ field }) => (
+            <ReactQuill
+              className="w-full h-full"
+              theme="snow"
+              modules={modules}
+              value={field.value}
+              formats={formats}
+              onChange={(content: string) => field.onChange(content)}
+            />
+          )}
         />
       )}
     </>
