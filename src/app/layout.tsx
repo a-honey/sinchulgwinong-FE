@@ -27,6 +27,7 @@ export default function RootLayout({
           strategy="beforeInteractive"
           src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_API_KEY}&autoload=false`}
         />
+        <div id="portal" />
         <Header />
         {children}
         <Footer />

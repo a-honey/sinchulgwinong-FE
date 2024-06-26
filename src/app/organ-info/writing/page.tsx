@@ -18,7 +18,6 @@ const Writing = () => {
         </div>
         <div className="flex gap-[10px] items-center h-[500px] mb-[50px]">
           <label className="subTitle1 w-[45px]">내용</label>
-          <Editor />
         </div>
         <div className="flex items-center gap-[10px]">
           <label className="subTitle1 w-[45px]">파일</label>

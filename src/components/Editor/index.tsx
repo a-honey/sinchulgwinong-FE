@@ -2,7 +2,8 @@
 
 import "react-quill/dist/quill.snow.css";
 
-import React, { useEffect, useMemo, useState } from "react";
+import { Control, Controller } from "react-hook-form";
+import React, { useMemo } from "react";
 
 import dynamic from "next/dynamic";
 
@@ -25,9 +26,15 @@ const formats = [
   "h1",
 ];
 
-const Editor = ({ defaultValue }: { defaultValue?: string }) => {
-  const [values, setValues] = useState<any>(defaultValue ?? "");
-
+const Editor = ({
+  defaultValue,
+  name,
+  control,
+}: {
+  control: Control<any>;
+  defaultValue?: string;
+  name: string;
+}) => {
   const ReactQuill = useMemo(
     () => dynamic(() => import("react-quill"), { ssr: false }),
     []
@@ -55,13 +62,20 @@ const Editor = ({ defaultValue }: { defaultValue?: string }) => {
   return (
     <>
       {ReactQuill && (
-        <ReactQuill
-          className="w-full h-full"
-          theme="snow"
-          modules={modules}
-          value={values}
-          formats={formats}
-          onChange={setValues}
+        <Controller
+          name={name}
+          defaultValue={defaultValue}
+          control={control}
+          render={({ field }) => (
+            <ReactQuill
+              className="w-full h-full"
+              theme="snow"
+              modules={modules}
+              value={field.value}
+              formats={formats}
+              onChange={(content: string) => field.onChange(content)}
+            />
+          )}
         />
       )}
     </>

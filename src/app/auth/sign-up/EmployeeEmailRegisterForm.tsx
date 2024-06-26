@@ -6,6 +6,7 @@ import Button from "@/components/Button";
 import { Input } from "@/components/ui/input";
 import InputAgree from "../ui/InputAgree";
 import InputAuthenticationNumber from "../ui/InputAuthenticationNumber";
+import Overlay from "@/components/Overlay";
 import Paths from "@/constants/paths";
 import postSendAuthenticationNumber from "@/api/auth/postSendAuthenticationNumber";
 import postVerifyAuthenticationNumber from "@/api/auth/postVerifyAuthenticationNumber";
