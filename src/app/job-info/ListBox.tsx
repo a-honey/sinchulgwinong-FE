@@ -33,7 +33,7 @@ const ListBox = () => {
           data.jobBoardResponseDTOS.map((row) => {
             const data = [
               `${row.address}`,
-              <div key={row.jobBoardId}>
+              <div key={row.jobBoardId} className="flex gap-[10px]">
                 <Badge text={row.salaryType} />
                 {row.salaryAmount}
               </div>,
