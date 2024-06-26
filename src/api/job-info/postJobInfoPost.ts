@@ -2,7 +2,7 @@ import { SalaryType } from "@/types";
 import apiInstance from "../apiInstance";
 
 export interface PostBody {
-  images: ["string"];
+  images?: ["string"];
   request: {
     jobTitle: string;
     jobContent: string;
@@ -14,7 +14,7 @@ export interface PostBody {
   };
 }
 
-export default async function postCommunityPost(body: PostBody) {
+export default async function postJobInfoPost(body: PostBody) {
   try {
     const response = await apiInstance.post(`/job-boards`, body);
 

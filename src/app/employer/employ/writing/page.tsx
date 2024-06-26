@@ -1,126 +1,79 @@
 "use client";
 
+import postJobInfoPost, { PostBody } from "@/api/job-info/postJobInfoPost";
+
+import AddressBox from "./AddressBox";
+import Button from "@/components/Button";
+import DateBox from "./DateBox";
 import Editor from "@/components/Editor";
+import GenderBox from "./GenderBox";
 import { Input } from "@/components/ui/input";
+import OrganInfoBox from "./OrganInfoBox";
+import SalaryTypeBox from "./SalaryTypeBox";
+import { useForm } from "react-hook-form";
 
 const Writing = () => {
+  const { handleSubmit, register } = useForm<PostBody>();
+
+  const onSubmit = (data: PostBody) => {
+    postJobInfoPost(data);
+    return;
+  };
+
   return (
     <main>
       <h2 className="title1 mb-[50px]">채용 글 작성</h2>
       <div className="flex flex-col gap-[60px]">
-        <div className="flex flex-col gap-[20px]">
-          <div className="subTitle1">내 기업 정보</div>
-          <div className="border grid grid-cols-2 gap-[40px] p-[40px]">
-            <div className="flex flex-col gap-[10px]">
-              <label className="subTitle2 text-[#2D2D2D]">기업명</label>
-              <div className="subTitle2 border rounded rounded-[10px] p-[15px]">
-                성희네 사과 농장
-              </div>
-            </div>
-            <div className="flex flex-col gap-[10px]">
-              <label className="subTitle2 text-[#2D2D2D]">사업 내용</label>
-              <div className="subTitle2 border rounded rounded-[10px] p-[15px]">
-                과수 재배(사과)
-              </div>
-            </div>
-            <div className="flex flex-col gap-[10px]">
-              <label className="subTitle2 text-[#2D2D2D]">사업자등록번호</label>
-              <div className="subTitle2 border rounded rounded-[10px] p-[15px]">
-                12345
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col gap-[20px]">
+        <OrganInfoBox />
+        <form
+          className="flex flex-col gap-[20px]"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <div className="subTitle1">모집 내용</div>
           <div className="border grid grid-cols-2 gap-[40px] p-[40px]">
-            <div className="flex flex-col gap-[10px]">
-              <label className="subTitle2 text-[#2D2D2D]">모집 기간</label>
-              <div className="flex items-center gap-[10px]">
-                <label className="w-[80px] subTitle2 text-[#2D2D2D]">
-                  시작일
-                </label>
-                <Input type="date" />
-              </div>
-              <div className="flex items-center gap-[10px]">
-                <label className="w-[80px] subTitle2 text-[#2D2D2D]">
-                  시작일
-                </label>
-                <Input type="date" />
-              </div>
-            </div>
+            <DateBox register={register("request.jobEndDate")} />
             <div className="flex flex-col gap-[10px]">
               <label className="subTitle2 text-[#2D2D2D]">카테고리</label>
-              <div className="flex">
-                <label className="w-[80px] subTitle2 text-[#2D2D2D]">
-                  지역
-                </label>
-                <div className="flex">
-                  <select value={"시.도"}>
-                    <option>서울특별시</option>
-                  </select>
-                  <select value={"시.구.군"}>
-                    <option>서울특별시</option>
-                  </select>
-                </div>
-              </div>
-              <div className="flex">
-                <label className="w-[80px] subTitle2 text-[#2D2D2D]">
-                  업종
-                </label>
-                <div className="flex">
-                  <select value={"분류"}>
-                    <option>서울특별시</option>
-                  </select>
-                  <select value={"업직종"}>
-                    <option>서울특별시</option>
-                  </select>
-                </div>
-              </div>
-              <div className="flex">
+              <AddressBox register={register("request.address")} />
+              <div className="flex items-center">
                 <label className="w-[80px] subTitle2 text-[#2D2D2D]">
                   상세 조건
                 </label>
                 <div className="flex">
-                  <select value={"경력"}>
-                    <option>서울특별시</option>
-                  </select>
-                  <select value={"성별"}>
-                    <option>서울특별시</option>
-                  </select>
+                  <GenderBox register={register("request.sex")} />
                 </div>
               </div>
             </div>
             <div className="flex flex-col gap-[20px]">
-              <div className="flex flex-col gap-[10px]">
-                <label className="subTitle2 text-[#2D2D2D]">급여 형태</label>
-                <div className="grid grid-cols-4">
-                  <option>일급</option>
-                  <option>주급</option>
-                  <option>월급</option>
-                  <option>연봉</option>
-                </div>
-              </div>
+              <SalaryTypeBox register={register("request.salaryType")} />
               <div className="flex flex-col gap-[10px]">
                 <label className="subTitle2 text-[#2D2D2D]">연봉</label>
-                <Input placeholder="숫자를 입력하세요" />
+                <Input
+                  placeholder="숫자를 입력하세요"
+                  {...register("request.salaryAmount")}
+                />
               </div>
             </div>
           </div>
-        </div>
-        <div className="flex flex-col gap-[20px]">
-          <div className="subTitle1">모집 글 작성</div>
+
           <div className="flex flex-col gap-[20px]">
-            <div className="flex items-center gap-[10px]">
-              <label className="subTitle1 w-[60px]">제목</label>
-              <Input />
-            </div>
-            <div className="flex items-center gap-[10px]">
-              <label className="subTitle w-[60px]">내용</label>
-              <Editor defaultValue={DefaultEditorValue} />
+            <div className="subTitle1">모집 글 작성</div>
+            <div className="flex flex-col gap-[20px]">
+              <div className="flex items-center gap-[10px]">
+                <label className="subTitle1 w-[60px]">제목</label>
+                <Input {...register("request.jobTitle")} />
+              </div>
+              <div className="flex items-center gap-[10px]">
+                <label className="subTitle w-[60px]">내용</label>
+                <Editor
+                  defaultValue={DefaultEditorValue}
+                  register={register("request.jobContent")}
+                />
+              </div>
             </div>
           </div>
-        </div>
+          <Button variants="yellow" text="등록" />
+        </form>
       </div>
     </main>
   );
