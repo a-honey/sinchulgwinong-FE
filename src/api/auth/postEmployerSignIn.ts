@@ -22,14 +22,8 @@ export default async function postEmployerSignIn({
     const response = await fetch(`${baseURL}/auth/cp-login`, {
       method: "POST",
       body: JSON.stringify(body),
+      credentials: "include",
     });
-
-    const authHeader = response.headers.get("Authorization");
-
-    if (authHeader) {
-      setTokenLocalStorage(authHeader);
-      apiInstance.setAuthorizationToken(authHeader);
-    }
 
     if (!response.ok) {
       const res = await response.json();

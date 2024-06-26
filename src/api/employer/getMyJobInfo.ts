@@ -25,6 +25,7 @@ export default async function getMyJobInfo(
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
       }
     );
 
