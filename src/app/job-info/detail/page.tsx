@@ -8,6 +8,7 @@ import EmployerBox from "./EmployerBox";
 import InfoBox from "./InfoBox";
 import ScrapIcon from "@/assets/icons/ScrapIcon";
 import getJobInfoPost from "@/api/job-info/getJobInfoPost";
+import postJobInfoScrap from "@/api/scrap/postJobInfoScraps";
 import { useSearchParams } from "next/navigation";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
 
@@ -45,7 +46,12 @@ const Detail = () => {
       <ContentBox content={data.jobContent} />
       <EmployerBox employeeId={data.cpUserId} />
       <div className="flex justify-center gap-[20px]">
-        <button className="w-[168px] flex gap-[30px] items-center p-[20px] border rounded rounded-[10px]">
+        <button
+          className="w-[168px] flex gap-[30px] items-center p-[20px] border rounded rounded-[10px]"
+          onClick={() => {
+            postJobInfoScrap(jobBoardId);
+          }}
+        >
           <ScrapIcon />
           스크랩
         </button>

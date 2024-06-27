@@ -5,6 +5,7 @@ import { Suspense, useCallback } from "react";
 import CommentBox from "./CommentBox";
 import getCommunityPost from "@/api/community/getCommunityPost";
 import { getFormattedDate } from "@/lib/utils";
+import postCommunityScrap from "@/api/scrap/postCommunityScraps";
 import { useSearchParams } from "next/navigation";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
 
@@ -41,7 +42,16 @@ const Detail = () => {
                 {getFormattedDate(data.createdAt)}
               </span>
             </div>
-            <div>댓글{data.commentCount}</div>
+            <div>
+              댓글{data.commentCount} |{0}
+              <span
+                onClick={() => {
+                  postCommunityScrap(boardId);
+                }}
+              >
+                스크랩
+              </span>
+            </div>
           </div>
         </div>
         <div className="my-[60px]">{data?.content}</div>
