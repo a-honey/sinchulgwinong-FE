@@ -1,10 +1,16 @@
 "use client";
 
+import Filter from "./Filter";
+import FilterListBox from "./FilterListBox";
+import JobTypeFilterBox from "./JobTypeFilterBox";
 import ListBox from "./ListBox";
 import Map from "../../components/Map";
 import { useState } from "react";
 
 const JobInfo = () => {
+  const [filterType, setFilterType] = useState<"region" | "job">("region");
+  const [address, setAddress] = useState({ city: "", district: "", dong: "" });
+  const [category, setCategory] = useState({ category: "", subCategory: "" });
   const [mode, setMode] = useState<"filter" | "map">("filter");
 
   return (
@@ -31,75 +37,37 @@ const JobInfo = () => {
       {mode === "filter" && (
         <div className="flex flex-col gap-[15px]">
           <div className="flex gap-[20px]">
-            <div className="flex justify-center rounded-[10px] w-[200px] border px-[15px] py-[10px]">
+            <div
+              className="flex justify-center rounded-[10px] w-[200px] border px-[15px] py-[10px]"
+              onClick={() => {
+                setFilterType("region");
+              }}
+            >
               지역
             </div>
-            <div className="flex justify-center rounded-[10px] w-[200px] border px-[15px] py-[10px]">
+            <div
+              className="flex justify-center rounded-[10px] w-[200px] border px-[15px] py-[10px]"
+              onClick={() => {
+                setFilterType("job");
+              }}
+            >
               업종
             </div>
-            <div className="flex justify-center rounded-[10px] w-[200px] border px-[15px] py-[10px]">
-              상세 조건
-            </div>
           </div>
-          <div className="border">
-            <div className="grid grid-cols-3 border-t border-b bg-[#F4F4F4]">
-              <div className="subTitle2 flex justify-center border-r p-[30px]">
-                시.도
-              </div>
-              <div className="subTitle2 flex justify-center border-r p-[30px]">
-                시구군
-              </div>
-              <div className="subTitle2 flex justify-center border-r p-[30px]">
-                동읍면
-              </div>
-            </div>
-            <div className="grid grid-cols-3">
-              <div className="flex flex-col">
-                <div className="subTitle2 flex justify-center border-r p-[30px]">
-                  서울
-                </div>
-                <div className="subTitle2 flex justify-center border-r p-[30px]">
-                  서울
-                </div>
-                <div className="subTitle2 flex justify-center border-r p-[30px]">
-                  서울
-                </div>
-              </div>
-              <div className="flex flex-col">
-                <div className="subTitle2 flex justify-center border-r p-[30px]">
-                  서울전체
-                </div>
-                <div className="subTitle2 flex justify-center border-r p-[30px]">
-                  강남구
-                </div>
-              </div>
-              <div className="grid grid-cols-3">
-                <div className="subTitle2 flex justify-center p-[30px]">
-                  세곡동
-                </div>
-                <div className="subTitle2 flex justify-center p-[30px]">
-                  세곡동
-                </div>
-                <div className="subTitle2 flex justify-center p-[30px]">
-                  세곡동
-                </div>
-                <div className="subTitle2 flex justify-center p-[30px]">
-                  세곡동
-                </div>
-              </div>
-            </div>
-            <div className="flex justify-left p-[30px] border-t">
-              <div className="flex justify-between min-w-[110px] bg-[#ECECEC] py-[5px] px-[10px] rounded-[3px] border">
-                <div>태그</div>
-                <div>X</div>
-              </div>
-            </div>
-          </div>
+          {filterType === "job" ? (
+            <JobTypeFilterBox category={category} setCategory={setCategory} />
+          ) : (
+            <Filter address={address} setAddress={setAddress} />
+          )}
         </div>
       )}
       {mode === "map" && <Map />}
       <div className="flex flex-col">
-        <ListBox />
+        {filterType === "region" && address.dong ? (
+          <FilterListBox address={address} />
+        ) : (
+          <ListBox />
+        )}
       </div>
     </main>
   );
