@@ -33,7 +33,7 @@ const DetailOrgan = () => {
       <div className="flex flex-col gap-[20px]">
         <div className="flex justify-between">
           <h1 className="text-[36px]">기업 정보 상세 보기</h1>
-          <div>수정</div>
+          <div></div>
         </div>
         <div className="flex flex-col gap-[15px] p-[40px] border">
           <div className="title1">{data.cpName}</div>

@@ -6,6 +6,11 @@ export interface PostBody {
   request: {
     jobTitle: string;
     jobContent: string;
+    regionName: string;
+    subRegionName: string;
+    localityName: string;
+    majorCategoryName: string;
+    minorCategoryName: string;
     jobEndDate: "2024-06-22";
     salaryAmount: number;
     sex: string;

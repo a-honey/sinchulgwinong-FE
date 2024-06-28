@@ -1,14 +1,23 @@
 "use client";
 
+import Button from "@/components/Button";
 import Pagination from "@/components/Pagination";
 import ReviewItem from "./ReviewItem";
 import getReviews from "@/api/organ/review/getReviews";
+import postBuyReview from "@/api/organ/review/postBuyReview";
 import { useCallback } from "react";
+import usePagination from "@/hooks/usePagination";
+import { useRouter } from "next/navigation";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
 
 const ReviewList = ({ organId }: { organId: number }) => {
+  const router = useRouter();
+  const { currentPage, onPageChange } = usePagination();
   const { data } = useUpdateFetch(
-    useCallback(() => getReviews({ organId, page: 0, size: 2 }), [organId])
+    useCallback(
+      () => getReviews({ organId, page: currentPage, size: 2 }),
+      [organId, currentPage]
+    )
   );
 
   if (!data) return;
@@ -24,21 +33,32 @@ const ReviewList = ({ organId }: { organId: number }) => {
         </button>
       </div>
       <div className="flex flex-col gap-[25px]">
-        {data.reviews.map((review) => (
-          <ReviewItem
-            key={review.reviewId}
-            reviewTitle={review.reviewTitle}
-            reviewContent={review.reviewContent}
-          />
-        ))}
+        {data.reviews.map((review) =>
+          review.isPrivate ? (
+            <div
+              key={review.reviewId}
+              className="flex flex-col justify-center bg-[#f4f4f4] min-h-[200px]"
+            >
+              <Button
+                onClick={() => {
+                  postBuyReview(review.reviewId);
+                  router.refresh();
+                }}
+                text="포인트로 리뷰 보기"
+                className="w-[270px] h-[55px]"
+              />
+            </div>
+          ) : (
+            <ReviewItem
+              ratingStars={"★".repeat(review.rating)}
+              key={review.reviewId}
+              reviewTitle={review.reviewTitle}
+              reviewContent={review.reviewContent}
+            />
+          )
+        )}
       </div>
-      <Pagination
-        onPageChange={() => {
-          console.log("45");
-        }}
-        currentPage={1}
-        totalPages={1}
-      />
+      <Pagination onPageChange={onPageChange} currentPage={1} totalPages={1} />
     </div>
   );
 };

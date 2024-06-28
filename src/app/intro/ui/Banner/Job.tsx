@@ -1,26 +1,36 @@
+import Button from "@/components/Button";
 import Container from "./Container";
+import Image from "next/image";
+import Link from "next/link";
+import communityIcon from "@/assets/images/community.png";
 
 const Job = () => {
   return (
     <Container
+      className="flex flex-col justify-between bg-primary2"
       textElement={
         <h3 className="text-[32px]">
           “원하는{" "}
           <span className="text-[32px] font-semibold text-[#7C3B00]">
             농촌 일자리
           </span>
-          를 찾아봐요!“
+          를 공유해요!“
         </h3>
       }
     >
-      <div>
-        <div>
-          <div className="flex">
-            <label>원하는 지역은?</label>
-            <div>선택</div>
-          </div>
-        </div>
-        <button>검색</button>
+      <div className="flex items-end justify-between gap-[70px]">
+        <Link href="/community">
+          <Button
+            className="SubTitle1 w-[202px] text-point1 bg-white"
+            text="커뮤니티 바로가기>"
+          />
+        </Link>
+        <Image
+          src={communityIcon}
+          alt="커뮤니티 아이콘"
+          width={162}
+          height={125}
+        />
       </div>
     </Container>
   );

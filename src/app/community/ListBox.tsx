@@ -11,14 +11,22 @@ import { useRouter } from "next/navigation";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
 
 const THEAD = ["번호", "제목", "작성자", "작성일"];
-const ListBox = () => {
+const ListBox = ({
+  keyword,
+  currentPage,
+  onPageChange,
+}: {
+  currentPage: number;
+  onPageChange: (page: number) => void;
+  keyword: string;
+  clearKeyword: () => void;
+}) => {
   const router = useRouter();
 
-  const { currentPage, onPageChange } = usePagination();
   const { data } = useUpdateFetch(
     useCallback(
-      () => getCommunityPosts({ page: currentPage, size: 10 }),
-      [currentPage]
+      () => getCommunityPosts({ page: currentPage, size: 10, keyword }),
+      [currentPage, keyword]
     )
   );
 

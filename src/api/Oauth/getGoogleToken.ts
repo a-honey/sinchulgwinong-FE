@@ -1,11 +1,11 @@
 import { JobPostType, ResponseDTO } from "@/types";
 
-import apiInstance from "../../apiInstance";
+import apiInstance from "../apiInstance";
 
-export default async function getJobInfoPost(jobPostId: number) {
+export default async function getGoogleToken(code: string) {
   try {
     const response = await apiInstance.get<ResponseDTO<JobPostType>>(
-      `/reviews/1/view`
+      `/social-login/callback?code=${code}`
     );
 
     return response.data;

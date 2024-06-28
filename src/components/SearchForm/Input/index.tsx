@@ -1,5 +1,3 @@
-const Input = () => {
-  return <input className="w-full p-[20px] border " />;
-};
+import { Input } from "@/components/ui/input";
 
 export default Input;
