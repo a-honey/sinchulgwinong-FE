@@ -4,8 +4,19 @@ import postReview, { PostReviewType } from "@/api/organ/review/postReview";
 
 import Editor from "@/components/Editor";
 import { Input } from "@/components/ui/input";
+import { Suspense } from "react";
 import { useForm } from "react-hook-form";
 import { useSearchParams } from "next/navigation";
+
+const Page = () => {
+  return (
+    <Suspense fallback={<div>로딩중</div>}>
+      <Writing />
+    </Suspense>
+  );
+};
+
+export default Page;
 
 const Writing = () => {
   const { register, handleSubmit, control } = useForm<PostReviewType>();
@@ -43,5 +54,3 @@ const Writing = () => {
     </main>
   );
 };
-
-export default Writing;
