@@ -9,12 +9,7 @@ export const Header = ({ count }: HeaderProps) => {
         총 {count} 개
       </div>
       <div className="absolute right-0 bottom-[20px] flex gap-[20px]">
-        <div>
-          <input type="checkbox" />
-          <label>접수중</label>
-        </div>
         <select>
-          <option value="서울특별시">최신순</option>
           <option value="서울특별시">최신순</option>
         </select>
       </div>
