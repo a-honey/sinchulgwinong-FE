@@ -82,5 +82,5 @@ export interface ReviewType {
   reviewTitle: "친절한 사장님!";
   reviewContent: "사장님이 맛있고 사과가 친절해요.";
   rating: number;
-  visibility: "PRIVATE";
+  isPrivate: boolean;
 }
