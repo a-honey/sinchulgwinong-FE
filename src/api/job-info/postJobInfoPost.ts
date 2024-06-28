@@ -19,9 +19,11 @@ export interface PostBody {
   };
 }
 
-export default async function postJobInfoPost(body: PostBody) {
+export default async function postJobInfoPost(body: FormData) {
   try {
-    const response = await apiInstance.post(`/job-boards`, body);
+    const response = await apiInstance.post(`/job-boards`, body, {
+      "Content-Type": "multipart/form-data",
+    });
 
     return response;
   } catch (e) {

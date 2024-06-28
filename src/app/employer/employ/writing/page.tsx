@@ -11,12 +11,26 @@ import { Input } from "@/components/ui/input";
 import OrganInfoBox from "./OrganInfoBox";
 import SalaryTypeBox from "./SalaryTypeBox";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 const Writing = () => {
+  const [image, setImage] = useState<File | null>();
   const { control, handleSubmit, register } = useForm<PostBody>();
 
   const onSubmit = (data: PostBody) => {
-    postJobInfoPost(data);
+    const formData = new FormData();
+    formData.append(
+      "request",
+      new Blob([JSON.stringify(data)], {
+        type: "application/json",
+      })
+    );
+
+    if (image) {
+      formData.append("images", image);
+    }
+
+    postJobInfoPost(formData);
     return;
   };
 
@@ -72,6 +86,14 @@ const Writing = () => {
                 />
               </div>
             </div>
+          </div>
+          <div className="flex items-center gap-[10px]">
+            <label className="subTitle1 w-[45px]">파일</label>
+            <input
+              type="file"
+              accept=".png, .jpg, .jpeg, .gif"
+              onChange={(e) => setImage(e.target.files && e.target.files[0])}
+            />
           </div>
           <Button variants="yellow" text="등록" />
         </form>
