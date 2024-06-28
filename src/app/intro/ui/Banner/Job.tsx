@@ -21,7 +21,7 @@ const Job = () => {
       <div className="flex items-end justify-between gap-[70px]">
         <Link href="/community">
           <Button
-            className="SubTitle1 text-point bg-white"
+            className="SubTitle1 w-[202px] text-point1 bg-white"
             text="커뮤니티 바로가기>"
           />
         </Link>
