@@ -11,7 +11,7 @@ const ReviewItem = ({
   ratingStars,
 }: ReviewItemProps) => {
   return (
-    <div className="p-[40px] flex flex-col gap-[40px] border rounded-[5px] bg-[#000000] min-h-[200px]">
+    <div className="p-[40px] flex flex-col gap-[40px] border rounded-[5px] min-h-[200px]">
       <div className="subTitle1">
         {reviewTitle} | {ratingStars}
       </div>

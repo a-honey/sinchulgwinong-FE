@@ -8,7 +8,7 @@ import apiInstance from "../apiInstance";
 
 interface QnaListType extends ResponseOffsetPagination {
   faqs: QnaType[];
-  totalElement: number;
+  totalFaqCount: number;
 }
 
 interface QnaProps extends PaginationProps {

@@ -19,6 +19,6 @@ export default async function getMyProfile() {
 
     return response.data;
   } catch (e) {
-    console.log(e, "잡았따");
+    console.log(e);
   }
 }

@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 
+import ChatFloat from "@/components/ChatFloat";
 import ChatObject from "@/assets/icons/ChatObject";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -29,9 +30,7 @@ export default function RootLayout({
           src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_API_KEY}&autoload=false`}
         />
         <div id="portal" />
-        <div className="z-[9999] fixed right-[100px] bottom-[40px]">
-          <ChatObject width={97.5} height={96.85} />
-        </div>
+        <ChatFloat />
         <Header />
         {children}
         <Footer />

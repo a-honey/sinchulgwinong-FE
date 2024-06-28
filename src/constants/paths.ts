@@ -13,3 +13,17 @@ enum Paths {
 }
 
 export default Paths;
+
+export enum EmployerPaths {
+  USER = "/employer/user",
+  EMPLOY = "/employer/employ",
+  ORGAN = "/employer/my-organ",
+  CHAT = "/employer/chat",
+}
+
+export enum EmployeePaths {
+  CHAT = "/my-page/chat",
+  POSTS = "/my-page/posts",
+  SCRAPS = "/my-page/scraps",
+  USER = "/my-page/user",
+}

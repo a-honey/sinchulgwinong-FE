@@ -1,7 +1,7 @@
 import { ResponseDTO } from "@/types";
 import apiInstance from "../apiInstance";
 
-export default async function getQna(qnaId: number) {
+export default async function getQnaContent(qnaId: number) {
   try {
     const response = await apiInstance.get<ResponseDTO<QnaType>>(
       `/faqs/${qnaId}`

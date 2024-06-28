@@ -34,7 +34,7 @@ const Community = () => {
         </SearchForm>
         <Link
           href="/community/writing"
-          className="bg-primary2 px-[36px] py-[25px] text-[20px]"
+          className="w-[200px] subTitle1 bg-primary2 px-[36px] py-[25px] text-[20px] rounded-[5px]"
         >
           게시글 등록
         </Link>

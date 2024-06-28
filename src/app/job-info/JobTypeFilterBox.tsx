@@ -17,23 +17,25 @@ const JobTypeFilterBox = ({
   setCategory: React.Dispatch<React.SetStateAction<CategoryType>>;
 }) => {
   const { data: categoryNames } = useUpdateFetch(getJobCategory);
+  console.log(category.category);
+  console.log(category.category);
   return (
     <div className="border">
-      <div className="grid grid-cols-2 border-t border-b bg-[#F4F4F4]">
-        <div className="subTitle2 flex justify-center border-r p-[30px]">
+      <div className="flex border-t border-b bg-[#F4F4F4]">
+        <div className="w-[200px] subTitle2 flex justify-center border-r p-[30px]">
           분류
         </div>
-        <div className="subTitle2 flex justify-center border-r p-[30px]">
+        <div className="flex-grow subTitle2 flex justify-center border-r p-[30px]">
           업직종
         </div>
       </div>
-      <div className="grid grid-cols-2">
-        <div className="flex flex-col h-[400px] overflow-y-auto">
+      <div className="flex">
+        <div className="w-[200px] flex flex-col h-[400px] overflow-y-auto">
           {categoryNames?.map((name) => (
             <div
               key={name}
               onClick={() => {
-                setCategory((prev) => ({ ...prev, name }));
+                setCategory((prev) => ({ ...prev, category: name }));
               }}
               className={cn(
                 "subTitle2 flex justify-center border-r p-[30px]",
@@ -44,7 +46,7 @@ const JobTypeFilterBox = ({
             </div>
           ))}
         </div>
-        <div className="flex flex-col h-[400px] overflow-y-auto">
+        <div className="flex-grow items-center grid grid-rows-[50px]-[50px]-[50px] grid-cols-2 overflow-y-auto">
           {category.category && (
             <SubCategoryBox category={category} setCategory={setCategory} />
           )}
@@ -95,7 +97,7 @@ const SubCategoryBox = ({
         <div
           key={name}
           className={cn(
-            "subTitle2 flex justify-center p-[30px]",
+            "w-[323px] h-[50px] subTitle2 flex justify-center p-[30px]",
             category.subCategory === name && "bg-primary3"
           )}
           onClick={() => {

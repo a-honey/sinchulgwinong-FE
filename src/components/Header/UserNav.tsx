@@ -6,8 +6,10 @@ import Link from "next/link";
 import Paths from "@/constants/paths";
 import { checkIsLogin } from "@/lib/authUtils";
 import postLogout from "@/api/auth/postLogout";
+import { usePathname } from "next/navigation";
 
 const UserNav = () => {
+  const pathName = usePathname();
   const [isLogin, setIsLogin] = useState(false);
 
   useEffect(() => {
@@ -17,6 +19,8 @@ const UserNav = () => {
     };
     checkLogin();
   }, []);
+
+  useEffect(() => {}, [pathName]);
 
   return (
     <div className="flex justify-end gap-[20px] pt-[30px] pb-[16px] pr-[60px] border-b border-[#B0B0B0]">

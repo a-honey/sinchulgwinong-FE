@@ -2,6 +2,7 @@
 
 import postReview, { PostReviewType } from "@/api/organ/review/postReview";
 
+import Button from "@/components/Button";
 import Editor from "@/components/Editor";
 import { Input } from "@/components/ui/input";
 import { Suspense } from "react";
@@ -50,6 +51,7 @@ const Writing = () => {
           <label className="subTitle1 w-[45px]">내용</label>
           <Editor control={control} name="reviewContent" />
         </div>
+        <Button type="submit" text="등록" />
       </form>
     </main>
   );

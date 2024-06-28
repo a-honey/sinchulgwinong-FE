@@ -24,19 +24,19 @@ const Filter = ({
   const { data: cityNames } = useUpdateFetch(getCityNames);
   return (
     <div className="border">
-      <div className="grid grid-cols-3 border-t border-b bg-[#F4F4F4]">
-        <div className="subTitle2 flex justify-center border-r p-[30px]">
+      <div className="flex border-t border-b bg-[#F4F4F4]">
+        <div className="w-[220px] subTitle2 flex justify-center border-r p-[30px]">
           시.도
         </div>
-        <div className="subTitle2 flex justify-center border-r p-[30px]">
+        <div className="w-[350px] subTitle2 flex justify-center border-r p-[30px]">
           시구군
         </div>
-        <div className="subTitle2 flex justify-center border-r p-[30px]">
+        <div className="flex-grow subTitle2 flex justify-center border-r p-[30px]">
           동읍면
         </div>
       </div>
-      <div className="grid grid-cols-3">
-        <div className="flex flex-col h-[400px] overflow-y-auto">
+      <div className="flex">
+        <div className="w-[220px] flex flex-col h-[400px] overflow-y-auto">
           {cityNames?.map((city) => (
             <div
               key={city}
@@ -52,12 +52,12 @@ const Filter = ({
             </div>
           ))}
         </div>
-        <div className="flex flex-col h-[400px] overflow-y-auto">
+        <div className="w-[350px] flex flex-col h-[400px] overflow-y-auto">
           {address.city && (
             <DistrictBox address={address} setAddress={setAddress} />
           )}
         </div>
-        <div className="grid grid-cols-3  h-[400px] overflow-y-auto">
+        <div className="flex-grow grid grid-cols-3  h-[400px] overflow-y-auto">
           {address.city && address.district && (
             <DongBox address={address} setAddress={setAddress} />
           )}
