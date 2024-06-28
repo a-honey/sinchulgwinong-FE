@@ -12,13 +12,20 @@ export interface CommunityPostsType extends ResponseOffsetPagination {
   boards: CommunityPostType[];
 }
 
+interface PostProps extends PaginationProps {
+  keyword?: string;
+}
+
 export default async function getCommunityPosts({
   page,
   size,
-}: PaginationProps) {
+  keyword,
+}: PostProps) {
   try {
     const response = await apiInstance.get<ResponseDTO<CommunityPostsType>>(
-      `/boards?page=${page}&size=${size}`
+      keyword
+        ? `/boards/find-boards?board-title=${keyword}&page=${page}&size=${size}`
+        : `/boards?page=${page}&size=${size}`
     );
 
     return response.data;

@@ -15,7 +15,7 @@ const Badge = ({ text }: { text: SalaryType }) => {
 
 export default Badge;
 
-const getName = (text: string) => {
+export const getName = (text: string) => {
   switch (text) {
     case "DAILY":
       return { name: "일급", bgColor: "primary1" };

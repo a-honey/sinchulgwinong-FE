@@ -1,14 +1,36 @@
+"use client";
+
 import Link from "next/link";
 import ListBox from "./ListBox";
 import SearchForm from "../../components/SearchForm";
+import usePagination from "@/hooks/usePagination";
+import { useState } from "react";
 
 const Community = () => {
+  const { currentPage, onPageChange } = usePagination();
+  const [keyword, setKeyword] = useState("");
+  const [searchKeyword, setSearchKeyword] = useState("");
+
+  const clearKeyword = () => {
+    setKeyword("");
+  };
+
+  const handleSearchSubmit = () => {
+    onPageChange(0);
+    setSearchKeyword(keyword);
+  };
+
   return (
     <main className="mt-[72px]">
       <h1 className="text-[36px]">커뮤니티</h1>
       <div className="flex gap-[20px]">
-        <SearchForm>
-          <SearchForm.Input />
+        <SearchForm onClick={handleSearchSubmit}>
+          <SearchForm.Input
+            value={keyword}
+            onChange={(e) => {
+              setKeyword(e.target.value);
+            }}
+          />
         </SearchForm>
         <Link
           href="/community/writing"
@@ -17,7 +39,12 @@ const Community = () => {
           게시글 등록
         </Link>
       </div>
-      <ListBox />
+      <ListBox
+        currentPage={currentPage}
+        onPageChange={onPageChange}
+        keyword={searchKeyword ?? undefined}
+        clearKeyword={clearKeyword}
+      />
     </main>
   );
 };

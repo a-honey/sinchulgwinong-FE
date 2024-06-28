@@ -21,7 +21,7 @@ export default async function getQnA({ page, size, sort }: QnaProps) {
       size: size.toString(),
     });
     const response = await apiInstance.get<ResponseDTO<QnaListType>>(
-      `/faqs${params}&sort=${sort}`
+      `/faqs?${params}&sort=${sort}`
     );
 
     return response.data;

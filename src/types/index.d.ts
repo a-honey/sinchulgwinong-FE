@@ -35,6 +35,7 @@ export interface CommunityPostType {
 }
 
 export interface JobPostType {
+  cpName: string;
   jobBoardId: number;
   cpUserId: number;
   jobTitle: "string";

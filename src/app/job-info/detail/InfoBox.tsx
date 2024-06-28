@@ -5,12 +5,14 @@ interface InfoBoxProps {
   salaryType: string;
   salaryAmount: number;
   sex: string;
+  cpName: string;
 }
 const InfoBox = ({
   date,
   sex,
   title,
   region,
+  cpName,
   salaryType,
   salaryAmount,
 }: InfoBoxProps) => {
@@ -44,7 +46,9 @@ const InfoBox = ({
             <div className="flex justify-center subTitle1 py-[25px] bg-[#F4F4F4]">
               기업 정보
             </div>
-            <div className="min-h-[300px] p-[20px]"></div>
+            <div className="min-h-[300px] p-[20px]">
+              <div>기업명 |{cpName}</div>
+            </div>
           </div>
         </article>
       </div>
