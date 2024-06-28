@@ -18,3 +18,13 @@ export function getFormattedDate(date: Date | string, joiner: string = ".") {
 export function getIsLogin() {
   return true;
 }
+
+export function checkIsActive(
+  pathName: string,
+  pathTo: string,
+  turn: number = 1
+) {
+  const firstPathName = pathName.split("/")[turn];
+  const firstPathTo = pathTo.split("/")[turn];
+  return firstPathName === firstPathTo;
+}

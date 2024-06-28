@@ -1,6 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { checkIsActive, cn } from "@/lib/utils";
+
 import { usePathname } from "next/navigation";
 
 interface LabelProps {
@@ -15,7 +16,7 @@ const Label = ({ icon, text, value }: LabelProps) => {
     <div
       className={cn(
         "flex items-center gap-[10px] py-[15px] pl-[50px]",
-        value === pathname && "bg-[#FFDB80]"
+        value && pathname && checkIsActive(value, pathname, 2) && "bg-[#FFDB80]"
       )}
     >
       {icon}
