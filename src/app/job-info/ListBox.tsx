@@ -33,11 +33,14 @@ const ListBox = () => {
           data.jobBoardResponseDTOS.map((row) => {
             const data = [
               `${row.address}`,
-              <div key={row.jobBoardId} className="flex gap-[10px]">
+              `${row.jobTitle}`,
+              <div
+                key={row.jobBoardId}
+                className="flex items-center gap-[10px]"
+              >
                 <Badge text={row.salaryType} />
                 {row.salaryAmount}
               </div>,
-              `${row.jobTitle}`,
               `${getFormattedDate(row.createdAt)}`,
             ];
             return (

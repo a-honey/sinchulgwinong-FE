@@ -1,6 +1,7 @@
 "use client";
 
 import Button from "@/components/Button";
+import Link from "next/link";
 import Pagination from "@/components/Pagination";
 import ReviewItem from "./ReviewItem";
 import getReviews from "@/api/organ/review/getReviews";
@@ -28,16 +29,18 @@ const ReviewList = ({ organId }: { organId: number }) => {
         <div className="subTitle1">
           리뷰 모아보기 | 전체 리뷰 통계({data.totalReviewCount}명)
         </div>
-        <button className="px-[25px] py-[15px] bg-primary2 rounded rounded-[5px]">
-          리뷰 작성하기
-        </button>
+        <Link href={`/organ-info/writing?organId=${organId}`}>
+          <button className="px-[25px] py-[15px] bg-primary2 rounded rounded-[5px]">
+            리뷰 작성하기
+          </button>
+        </Link>
       </div>
       <div className="flex flex-col gap-[25px]">
         {data.reviews.map((review) =>
           review.isPrivate ? (
             <div
               key={review.reviewId}
-              className="flex flex-col justify-center bg-[#f4f4f4] min-h-[200px]"
+              className="flex flex-col items-center justify-center bg-[#f4f4f4] min-h-[200px]"
             >
               <Button
                 onClick={() => {
@@ -45,7 +48,7 @@ const ReviewList = ({ organId }: { organId: number }) => {
                   router.refresh();
                 }}
                 text="포인트로 리뷰 보기"
-                className="w-[270px] h-[55px]"
+                className="bg-primary2 w-[270px] h-[55px]"
               />
             </div>
           ) : (
@@ -58,7 +61,11 @@ const ReviewList = ({ organId }: { organId: number }) => {
           )
         )}
       </div>
-      <Pagination onPageChange={onPageChange} currentPage={1} totalPages={1} />
+      <Pagination
+        onPageChange={onPageChange}
+        currentPage={!data ? 1 : data.currentPage + 1}
+        totalPages={!data ? 1 : data.totalPages}
+      />
     </div>
   );
 };

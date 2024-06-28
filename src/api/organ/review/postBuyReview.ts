@@ -4,8 +4,9 @@ import apiInstance from "../../apiInstance";
 
 export default async function postBuyReview(reviewId: number) {
   try {
-    const response = await apiInstance.get<ResponseDTO<ReviewType>>(
-      `/reviews/${reviewId}/view`
+    const response = await apiInstance.post<ResponseDTO<ReviewType>>(
+      `/reviews/${reviewId}/view`,
+      ""
     );
 
     return response.data;
