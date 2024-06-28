@@ -2,7 +2,7 @@ import { LoginType, ResponseDTO } from "@/types";
 
 import apiInstance from "../apiInstance";
 
-interface MyProfileType {
+export interface MyProfileType {
   userId: number;
   username: string;
   nickname: string;
@@ -19,6 +19,6 @@ export default async function getMyProfile() {
 
     return response.data;
   } catch (e) {
-    console.log(e);
+    console.log(e, "잡았따");
   }
 }
