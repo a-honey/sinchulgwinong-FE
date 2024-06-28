@@ -1,6 +1,7 @@
 import Button from "@/components/Button";
 import Container from "./Container";
 import Image from "next/image";
+import Link from "next/link";
 import communityIcon from "@/assets/images/community.png";
 
 const Job = () => {
@@ -18,7 +19,12 @@ const Job = () => {
       }
     >
       <div className="flex items-end justify-between gap-[70px]">
-        <Button className="bg-white" text="커뮤니티 바로가기>" />
+        <Link href="/community">
+          <Button
+            className="SubTitle1 text-point bg-white"
+            text="커뮤니티 바로가기>"
+          />
+        </Link>
         <Image
           src={communityIcon}
           alt="커뮤니티 아이콘"

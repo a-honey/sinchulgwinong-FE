@@ -4,11 +4,14 @@ import Button from "@/components/Button";
 import Pagination from "@/components/Pagination";
 import ReviewItem from "./ReviewItem";
 import getReviews from "@/api/organ/review/getReviews";
+import postBuyReview from "@/api/organ/review/postBuyReview";
 import { useCallback } from "react";
 import usePagination from "@/hooks/usePagination";
+import { useRouter } from "next/navigation";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
 
 const ReviewList = ({ organId }: { organId: number }) => {
+  const router = useRouter();
   const { currentPage, onPageChange } = usePagination();
   const { data } = useUpdateFetch(
     useCallback(
@@ -37,6 +40,10 @@ const ReviewList = ({ organId }: { organId: number }) => {
               className="flex flex-col justify-center bg-[#f4f4f4] min-h-[200px]"
             >
               <Button
+                onClick={() => {
+                  postBuyReview(review.reviewId);
+                  router.refresh();
+                }}
                 text="포인트로 리뷰 보기"
                 className="w-[270px] h-[55px]"
               />
