@@ -14,6 +14,9 @@ const Page = () => {
     </Suspense>
   );
 };
+
+export default Page;
+
 const Detail = () => {
   const searchParams = useSearchParams();
 
