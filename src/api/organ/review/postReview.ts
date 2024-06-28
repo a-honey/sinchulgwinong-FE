@@ -2,10 +2,18 @@ import { JobPostType, ResponseDTO } from "@/types";
 
 import apiInstance from "../../apiInstance";
 
-export default async function getJobInfoPost(jobPostId: number) {
+export interface PostReviewType {
+  cpUserId: number;
+  reviewTitle: string;
+  reviewContent: string;
+  rating: number;
+}
+
+export default async function postReview(body: PostReviewType) {
   try {
-    const response = await apiInstance.get<ResponseDTO<JobPostType>>(
-      `/reviews/1/view`
+    const response = await apiInstance.post<ResponseDTO<JobPostType>>(
+      `/reviews`,
+      body
     );
 
     return response.data;
