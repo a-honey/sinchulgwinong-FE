@@ -10,7 +10,6 @@ import postEmployerSignIn, {
 import Button from "@/components/Button";
 import { Input } from "@/components/ui/input";
 import { UserAuthType } from "./UserTypeSelectBox";
-import useIsLogin from "@/hooks/useIsLogin";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -28,10 +27,7 @@ const EmailLoginForm = ({ mode }: { mode: UserAuthType }) => {
         }
   );
 
-  const { handleIsLogin } = useIsLogin();
-
   const onLoginSuccess = () => {
-    handleIsLogin(true);
     router.push(mode === "employee" ? "/" : "/employer/user");
   };
 
