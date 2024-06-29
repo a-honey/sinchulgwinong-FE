@@ -13,7 +13,7 @@ export async function checkIsLogin() {
   }
 }
 
-export async function checkIsEmployeeLogin() {
+export async function checkIsEmployerLogin() {
   try {
     const response = await apiInstance.get<ResponseDTO<EmployerType>>(
       `/cpUsers/profile`

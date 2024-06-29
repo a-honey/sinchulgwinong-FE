@@ -1,6 +1,6 @@
 "use client";
 
-import { checkIsEmployeeLogin, checkIsLogin } from "@/lib/authUtils";
+import { checkIsEmployerLogin, checkIsLogin } from "@/lib/authUtils";
 import { useEffect, useState } from "react";
 
 import Nav from "./ui/Nav";
@@ -18,8 +18,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         router.push("/");
         return;
       }
-      const isEmployee = await checkIsEmployeeLogin();
-      if (!isEmployee) router.push("/employer/user");
+      const isEmployer = await checkIsEmployerLogin();
+      if (isEmployer) router.push("/employer/user");
       setIsLogin(loginStatus);
     };
     checkLogin();
