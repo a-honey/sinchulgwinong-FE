@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 import ChatObject from "@/assets/icons/ChatObject";
 import { Client } from "@stomp/stompjs";
@@ -12,7 +12,6 @@ import useIsLogin from "@/hooks/useIsLogin";
 let webSocket = null;
 
 const ChatFloat = () => {
-  const [isShowNotice, setIsShowNotice] = useState(false);
   const clientRef = useRef<Client | null>(null);
   const { isLogin } = useIsLogin();
 
@@ -29,12 +28,11 @@ const ChatFloat = () => {
       });
 
       clientRef.current.onConnect = (frame) => {
+        console.log("온커넥트");
         webSocket = clientRef.current;
-        console.log("소켓이 연결되었습니다.", frame);
-        clientRef.current?.subscribe("/topic/notifications", (message) => {
+        clientRef.current?.subscribe("/topic/chatrooms", (message) => {
           const notification = JSON.parse(message.body);
           console.log("받은 알림:", notification);
-          setIsShowNotice(true);
         });
       };
 

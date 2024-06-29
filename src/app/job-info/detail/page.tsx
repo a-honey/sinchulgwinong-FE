@@ -4,8 +4,10 @@ import { Suspense, useCallback } from "react";
 
 import ChatIcon from "@/assets/icons/ChatIcon";
 import ContentBox from "./ContentBox";
+import { EmployeePaths } from "@/constants/paths";
 import EmployerBox from "./EmployerBox";
 import InfoBox from "./InfoBox";
+import Link from "next/link";
 import ScrapIcon from "@/assets/icons/ScrapIcon";
 import getJobInfoPost from "@/api/job-info/getJobInfoPost";
 import { getName } from "@/components/Badge";
@@ -58,10 +60,12 @@ const Detail = () => {
           <ScrapIcon />
           스크랩
         </button>
-        <button className="w-[168px] flex gap-[30px] items-center p-[20px] bg-[#FFDB80] rounded rounded-[10px]">
-          <ChatIcon />
-          채팅
-        </button>
+        <Link href={`${EmployeePaths.CHAT}?employeeId=${data.cpUserId}`}>
+          <button className="w-[168px] flex gap-[30px] items-center p-[20px] bg-[#FFDB80] rounded rounded-[10px]">
+            <ChatIcon />
+            채팅
+          </button>
+        </Link>
       </div>
     </main>
   );

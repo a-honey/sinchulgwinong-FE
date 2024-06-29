@@ -5,7 +5,6 @@ import Link from "next/link";
 const ChatListBlack = () => {
   return (
     <>
-      <h2 className="title1 mb-[50px]">채팅</h2>
       <div className="flex flex-col min-h-[500px] gap-[20px] justify-center items-center">
         <ChatNoBackgroundObject />
         <div className="flex flex-col justify-center items-center">
