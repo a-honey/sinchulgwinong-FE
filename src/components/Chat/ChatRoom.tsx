@@ -1,7 +1,13 @@
 import ArrowIcon from "@/assets/icons/ArrowIcon";
 import ChatRoomItem from "./ChatRoomItem";
+import getChatRoomHistory from "@/api/chat/getChatRoomHistory";
+import { useCallback } from "react";
+import useUpdateFetch from "@/hooks/useUpdateFetch";
 
-const ChatRoom = () => {
+const ChatRoom = ({ roomId }: { roomId: number }) => {
+  const { data } = useUpdateFetch(
+    useCallback(() => getChatRoomHistory(roomId), [roomId])
+  );
   return (
     <div className="flex flex-col gap-[20px] w-full pl-[40px]">
       <div className="flex gap-[5px] items-center">
@@ -9,11 +15,14 @@ const ChatRoom = () => {
         <div className="title1">야옹이</div>
       </div>
       <div>
-        <ChatRoomItem type="sender" content="하이하이" name="나" />
-        <ChatRoomItem type="receiver" content="일하고 싶어요~" name="애용이" />
-        <ChatRoomItem type="receiver" content="일하고 싶어요~" name="애용이" />
-        <ChatRoomItem type="receiver" content="일하고 싶어요~" name="애용이" />
-        <ChatRoomItem type="sender" content="하이하이" name="나" />
+        {data?.map((chat) => (
+          <ChatRoomItem
+            key={chat.chatMessageId}
+            type="sender"
+            content={chat.message}
+            name="나"
+          />
+        ))}
       </div>
       <div className="flex">
         <input className="border w-full" />

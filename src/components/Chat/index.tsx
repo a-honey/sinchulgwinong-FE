@@ -1,13 +1,32 @@
+"use client";
+
 import ChatList from "./ChatList";
 import ChatListBlack from "./ChatListBlack";
 import ChatRoom from "./ChatRoom";
+import getChatRoomList from "@/api/chat/getChatRoomList";
+import { useState } from "react";
+import useUpdateFetch from "@/hooks/useUpdateFetch";
 
 const Chat = () => {
-  const isChat = true;
+  const [currentRoomId, setCurrentRoomId] = useState(0);
+  const { data } = useUpdateFetch(getChatRoomList);
+
+  const handleCurrentRoomId = (roomId: number) => {
+    setCurrentRoomId(roomId);
+  };
+
   return (
     <div className="flex">
-      {isChat ? <ChatList /> : <ChatListBlack />}
-      <ChatRoom />
+      {data ? (
+        <ChatList
+          list={data}
+          currentRoomId={currentRoomId}
+          handleCurrentRoomId={handleCurrentRoomId}
+        />
+      ) : (
+        <ChatListBlack />
+      )}
+      {currentRoomId && <ChatRoom roomId={currentRoomId} />}
     </div>
   );
 };
