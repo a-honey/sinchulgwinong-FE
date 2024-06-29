@@ -1,46 +1,62 @@
 "use client";
 
-import { Socket, io } from "socket.io-client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import ChatObject from "@/assets/icons/ChatObject";
+import { Client } from "@stomp/stompjs";
 import { EmployeePaths } from "@/constants/paths";
 import Link from "next/link";
 import { domain } from "@/constants/env";
 import useIsLogin from "@/hooks/useIsLogin";
 
+let webSocket = null;
+
 const ChatFloat = () => {
-  const socketRef = useRef<Socket | null>(null);
+  const [isShowNotice, setIsShowNotice] = useState(false);
+  const clientRef = useRef<Client | null>(null);
   const { isLogin } = useIsLogin();
 
   useEffect(() => {
     if (isLogin) {
-      socketRef.current = io(`wss://${domain}/`, {
-        path: "/ws",
-        transports: ["websocket"],
-        withCredentials: true,
+      clientRef.current = new Client({
+        brokerURL: `wss://${domain}/ws`,
+        debug: (str) => {
+          console.log(str);
+        },
+        reconnectDelay: 5000,
+        heartbeatIncoming: 4000,
+        heartbeatOutgoing: 4000,
       });
 
-      socketRef.current.on("connect", () => {
-        console.log("소켓이 연결되었습니다.");
-      });
+      clientRef.current.onConnect = (frame) => {
+        webSocket = clientRef.current;
+        console.log("소켓이 연결되었습니다.", frame);
+        clientRef.current?.subscribe("/topic/notifications", (message) => {
+          const notification = JSON.parse(message.body);
+          console.log("받은 알림:", notification);
+          setIsShowNotice(true);
+        });
+      };
 
-      socketRef.current.on("connect_error", (error) => {
-        console.log("소켓 연결 에러:", error);
-      });
+      clientRef.current.onStompError = (frame) => {
+        console.error("소켓 연결 에러:", frame.headers["message"], frame.body);
+      };
 
-      socketRef.current.on("error", (error) => {
-        console.log("소켓 에러:", error);
-      });
+      clientRef.current.onWebSocketError = (event) => {
+        console.error("소켓 에러:", event);
+      };
 
-      socketRef.current.on("disconnect", (reason) => {
-        console.log("소켓이 연결이 끊어졌습니다. 사유:", reason);
-      });
+      clientRef.current.onDisconnect = (frame) => {
+        console.log("소켓이 연결이 끊어졌습니다. 사유:", frame);
+        webSocket = null;
+      };
+
+      clientRef.current.activate();
     }
 
     return () => {
-      if (socketRef.current) {
-        socketRef.current.disconnect();
+      if (clientRef.current) {
+        clientRef.current.deactivate();
       }
     };
   }, [isLogin]);
