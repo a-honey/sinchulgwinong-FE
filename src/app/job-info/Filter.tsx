@@ -41,7 +41,11 @@ const Filter = ({
             <div
               key={city}
               onClick={() => {
-                setAddress((prev) => ({ ...prev, city }));
+                setAddress({
+                  city,
+                  district: "",
+                  dong: "",
+                });
               }}
               className={cn(
                 "subTitle2 flex justify-center border-r p-[30px]",
@@ -68,7 +72,7 @@ const Filter = ({
           ([key, value]) =>
             value && (
               <div
-                key={key}
+                key={value}
                 className="flex justify-between min-w-[110px] bg-[#ECECEC] py-[5px] px-[10px] rounded-[3px] border"
               >
                 <div>{value}</div>
@@ -112,7 +116,7 @@ const DistrictBox = ({
             address.district === district && "bg-primary3"
           )}
           onClick={() => {
-            setAddress((prev) => ({ ...prev, district }));
+            setAddress((prev) => ({ ...prev, district, dong: "" }));
           }}
         >
           {district}

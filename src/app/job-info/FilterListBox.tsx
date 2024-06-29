@@ -6,7 +6,6 @@ import Badge from "@/components/Badge";
 import Blank from "@/components/Blank";
 import List from "../../components/List";
 import { getFormattedDate } from "@/lib/utils";
-import getJobInfoPosts from "@/api/job-info/getJobInfoPosts";
 import { useCallback } from "react";
 import usePagination from "@/hooks/usePagination";
 import { useRouter } from "next/navigation";

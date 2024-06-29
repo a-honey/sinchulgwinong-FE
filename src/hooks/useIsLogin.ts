@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import { checkIsLogin } from "@/lib/authUtils";
+
 const useIsLogin = () => {
   const [isLogin, setIsLogin] = useState(false);
 
@@ -8,15 +10,11 @@ const useIsLogin = () => {
   };
 
   useEffect(() => {
-    if (typeof window !== "undefined" && localStorage) {
-      const accessToken = localStorage.getItem("accessToken");
-      if (accessToken) {
-        setIsLogin(true);
-      }
-      if (!accessToken) {
-        setIsLogin(false);
-      }
-    }
+    const checkLogin = async () => {
+      const loginStatus = await checkIsLogin();
+      setIsLogin(loginStatus);
+    };
+    checkLogin();
   }, [setIsLogin]);
 
   return { isLogin, handleIsLogin };

@@ -23,7 +23,7 @@ const ReviewBox = () => {
     >
       <div className="grid grid-cols-4 h-[362px] w-full gap-[25px]">
         <BannerCard
-          moveTo={Paths.QNA}
+          moveTo={Paths.ORGAN_INFO}
           color="primary4"
           title="기업 정보"
           description="기업 정보를 확인하세요"

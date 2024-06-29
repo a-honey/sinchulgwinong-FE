@@ -24,7 +24,7 @@ const Container = ({
           </div>
           <div className="text-[20px]">{description}</div>
         </div>
-        <div className="absolute top-[65px] right-[65px]">슬라이더</div>
+        <div className="absolute top-[65px] right-[65px]"></div>
       </div>
       {children}
     </section>

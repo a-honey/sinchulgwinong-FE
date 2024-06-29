@@ -17,8 +17,7 @@ const JobTypeFilterBox = ({
   setCategory: React.Dispatch<React.SetStateAction<CategoryType>>;
 }) => {
   const { data: categoryNames } = useUpdateFetch(getJobCategory);
-  console.log(category.category);
-  console.log(category.category);
+
   return (
     <div className="border">
       <div className="flex border-t border-b bg-[#F4F4F4]">
@@ -35,7 +34,7 @@ const JobTypeFilterBox = ({
             <div
               key={name}
               onClick={() => {
-                setCategory((prev) => ({ ...prev, category: name }));
+                setCategory({ category: name, subCategory: "" });
               }}
               className={cn(
                 "subTitle2 flex justify-center border-r p-[30px]",
@@ -57,7 +56,7 @@ const JobTypeFilterBox = ({
           ([key, value]) =>
             value && (
               <div
-                key={key}
+                key={value}
                 className="flex justify-between min-w-[110px] bg-[#ECECEC] py-[5px] px-[10px] rounded-[3px] border"
               >
                 <div>{value}</div>

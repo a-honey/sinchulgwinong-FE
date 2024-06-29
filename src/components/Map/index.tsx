@@ -12,12 +12,32 @@ const Map = () => {
   useEffect(() => {
     window.kakao.maps.load(() => {
       const options = {
-        center: new window.kakao.maps.LatLng(33.450701, 126.570667),
-        level: 3,
+        center: new window.kakao.maps.LatLng(37.5662952, 126.9779451),
+        level: 11,
       };
 
       if (mapRef.current) {
-        new window.kakao.maps.Map(mapRef.current, options);
+        const map = new window.kakao.maps.Map(mapRef.current, options);
+
+        const seoulCityHallPosition = new window.kakao.maps.LatLng(
+          37.5662952,
+          126.9779451
+        );
+        const gangnamTerminalPosition = new window.kakao.maps.LatLng(
+          37.5040675,
+          127.0252931
+        );
+
+        const seoulCityHallMarker = new window.kakao.maps.Marker({
+          position: seoulCityHallPosition,
+        });
+
+        const gangnamTerminalMarker = new window.kakao.maps.Marker({
+          position: gangnamTerminalPosition,
+        });
+
+        seoulCityHallMarker.setMap(map);
+        gangnamTerminalMarker.setMap(map);
       }
     });
   }, []);

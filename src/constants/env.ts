@@ -2,6 +2,11 @@ export const KAKAO_MAP_KEY = process.env.NEXT_PUBLIC_KAKAO_MAP_API_KEY;
 
 export const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
+export const domain = (() => {
+  const url = new URL(process.env.NEXT_PUBLIC_BASE_URL!);
+  return url.hostname;
+})();
+
 export const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
 
 let googleRedirectUrl: string;
