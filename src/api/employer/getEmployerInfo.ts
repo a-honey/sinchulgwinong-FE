@@ -20,7 +20,7 @@ interface EmployerType {
 export default async function getEmployerInfo(employerId: number) {
   try {
     const response = await apiInstance.get<ResponseDTO<EmployerType>>(
-      `/cpUsers/${employerId}/profile`
+      `/cpUsers/${employerId}/details`
     );
 
     return response.data;

@@ -18,9 +18,7 @@ const UserNav = () => {
       setIsLogin(loginStatus);
     };
     checkLogin();
-  }, []);
-
-  useEffect(() => {}, [pathName]);
+  }, [pathName]);
 
   return (
     <div className="flex justify-end gap-[20px] pt-[30px] pb-[16px] pr-[60px] border-b border-[#B0B0B0]">

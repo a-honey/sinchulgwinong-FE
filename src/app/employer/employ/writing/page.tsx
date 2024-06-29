@@ -1,6 +1,9 @@
 "use client";
 
-import postJobInfoPost, { PostBody } from "@/api/job-info/postJobInfoPost";
+import postJobInfoPost, {
+  Payload,
+  PostBody,
+} from "@/api/job-info/postJobInfoPost";
 
 import AddressBox from "./AddressBox";
 import Button from "@/components/Button";
@@ -8,6 +11,7 @@ import DateBox from "./DateBox";
 import Editor from "@/components/Editor";
 import GenderBox from "./GenderBox";
 import { Input } from "@/components/ui/input";
+import JobTypeBox from "./JobTypeBox";
 import OrganInfoBox from "./OrganInfoBox";
 import SalaryTypeBox from "./SalaryTypeBox";
 import { useForm } from "react-hook-form";
@@ -15,13 +19,23 @@ import { useState } from "react";
 
 const Writing = () => {
   const [image, setImage] = useState<File | null>();
-  const { control, handleSubmit, register } = useForm<PostBody>();
+  const { control, watch, handleSubmit, register } = useForm<Payload>();
 
-  const onSubmit = (data: PostBody) => {
+  const onSubmit = (data: Payload) => {
+    const combinedAddress = [
+      data.regionName,
+      data.subRegionName,
+      data.localityName,
+      data.address,
+    ].join(" ");
+
+    const payload = { ...data, address: combinedAddress };
+    console.log(payload);
+
     const formData = new FormData();
     formData.append(
       "request",
-      new Blob([JSON.stringify(data)], {
+      new Blob([JSON.stringify(payload)], {
         type: "application/json",
       })
     );
@@ -45,26 +59,31 @@ const Writing = () => {
         >
           <div className="subTitle1">모집 내용</div>
           <div className="border grid grid-cols-2 gap-[40px] p-[40px]">
-            <DateBox register={register("request.jobEndDate")} />
+            <DateBox register={register("jobEndDate")} />
             <div className="flex flex-col gap-[10px]">
               <label className="subTitle2 text-[#2D2D2D]">카테고리</label>
-              <AddressBox register={register("request.address")} />
+              <AddressBox watch={watch} register={register} />
+              <JobTypeBox
+                watch={watch}
+                categoryRegister={register("majorCategoryName")}
+                subCategoryRegister={register("minorCategoryName")}
+              />
               <div className="flex items-center">
                 <label className="w-[80px] subTitle2 text-[#2D2D2D]">
                   상세 조건
                 </label>
                 <div className="flex">
-                  <GenderBox register={register("request.sex")} />
+                  <GenderBox register={register("sex")} />
                 </div>
               </div>
             </div>
             <div className="flex flex-col gap-[20px]">
-              <SalaryTypeBox register={register("request.salaryType")} />
+              <SalaryTypeBox register={register("salaryType")} />
               <div className="flex flex-col gap-[10px]">
                 <label className="subTitle2 text-[#2D2D2D]">연봉</label>
                 <Input
                   placeholder="숫자를 입력하세요"
-                  {...register("request.salaryAmount")}
+                  {...register("salaryAmount")}
                 />
               </div>
             </div>
@@ -75,14 +94,14 @@ const Writing = () => {
             <div className="flex flex-col gap-[20px]">
               <div className="flex items-center gap-[10px]">
                 <label className="subTitle1 w-[60px]">제목</label>
-                <Input {...register("request.jobTitle")} />
+                <Input {...register("jobTitle")} />
               </div>
               <div className="flex items-center gap-[10px]">
                 <label className="subTitle w-[60px]">내용</label>
                 <Editor
                   control={control}
                   defaultValue={DefaultEditorValue}
-                  name="request.jobContent"
+                  name="jobContent"
                 />
               </div>
             </div>

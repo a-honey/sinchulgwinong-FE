@@ -1,6 +1,10 @@
 "use client";
 
+import getMyEmployerInfo from "@/api/employer/getMyEmployerInfo";
+import useUpdateFetch from "@/hooks/useUpdateFetch";
+
 const OrganInfoBox = () => {
+  const { data } = useUpdateFetch(getMyEmployerInfo);
   return (
     <div className="flex flex-col gap-[20px]">
       <div className="subTitle1">내 기업 정보</div>
@@ -8,19 +12,19 @@ const OrganInfoBox = () => {
         <div className="flex flex-col gap-[10px]">
           <label className="subTitle2 text-[#2D2D2D]">기업명</label>
           <div className="subTitle2 border rounded rounded-[10px] p-[15px]">
-            성희네 사과 농장
+            {data?.cpName}
           </div>
         </div>
         <div className="flex flex-col gap-[10px]">
-          <label className="subTitle2 text-[#2D2D2D]">사업 내용</label>
+          <label className="subTitle2 text-[#2D2D2D]">기업 이메일</label>
           <div className="subTitle2 border rounded rounded-[10px] p-[15px]">
-            과수 재배(사과)
+            {data?.cpEmail}
           </div>
         </div>
         <div className="flex flex-col gap-[10px]">
           <label className="subTitle2 text-[#2D2D2D]">사업자등록번호</label>
           <div className="subTitle2 border rounded rounded-[10px] p-[15px]">
-            12345
+            {data?.cpNum}
           </div>
         </div>
       </div>
