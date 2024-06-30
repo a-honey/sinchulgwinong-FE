@@ -4,29 +4,28 @@ import Blank from "@/components/Blank";
 import Button from "@/components/Button";
 import Container from "@/app/my-page/ui/Container";
 import Link from "next/link";
-import getMyJobInfo from "@/api/employer/getMyJobInfo";
-import getMyProfile from "@/api/user/getMyProfile";
+import getMyEmployerInfo from "@/api/employer/getMyEmployerInfo";
+import getMyJobInfoPosts from "@/api/employer/getMyJobInfoPosts";
 import { useCallback } from "react";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
 
 const Employ = () => {
-  const { data: userData } = useUpdateFetch(getMyProfile);
+  const { data: userData } = useUpdateFetch(getMyEmployerInfo);
 
   const { data } = useUpdateFetch(
-    useCallback(() => getMyJobInfo(userData?.userId ?? 0), [userData])
+    useCallback(() => getMyJobInfoPosts(userData?.cpUserId ?? 0), [userData])
   );
 
-  if (!data) return;
   return (
     <>
       <h2 className="title1 mb-[50px]">작성 목록</h2>
       <Container title="작성한 채용 글 목록" subTitle="작성한 글내역">
-        {data.data.jobBoardResponseDTOS.length === 0 && <Blank />}
-        {data.data.jobBoardResponseDTOS.map((job) => (
+        {data?.data.jobBoardResponseDTOS.length === 0 && <Blank />}
+        {data?.data.jobBoardResponseDTOS.map((job) => (
           <div key={job.jobBoardId}>{job.jobContent}</div>
         ))}
       </Container>
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-[20px] mt-[40px]">
         <div className="subTitle1">채용글 작성하기</div>
         <Link href="/employer/employ/writing">
           <Button

@@ -9,8 +9,6 @@ import Link from "next/link";
 import { domain } from "@/constants/env";
 import useIsLogin from "@/hooks/useIsLogin";
 
-let webSocket = null;
-
 const ChatFloat = () => {
   const clientRef = useRef<Client | null>(null);
   const { isLogin } = useIsLogin();
@@ -27,29 +25,29 @@ const ChatFloat = () => {
         heartbeatOutgoing: 4000,
       });
 
-      clientRef.current.onConnect = (frame) => {
+      const client = clientRef.current;
+
+      client.onConnect = (frame) => {
         console.log("온커넥트");
-        webSocket = clientRef.current;
-        clientRef.current?.subscribe("/topic/chatrooms", (message) => {
+        client.subscribe("/topic/chatrooms", (message) => {
           const notification = JSON.parse(message.body);
           console.log("받은 알림:", notification);
         });
       };
 
-      clientRef.current.onStompError = (frame) => {
+      client.onStompError = (frame) => {
         console.error("소켓 연결 에러:", frame.headers["message"], frame.body);
       };
 
-      clientRef.current.onWebSocketError = (event) => {
+      client.onWebSocketError = (event) => {
         console.error("소켓 에러:", event);
       };
 
-      clientRef.current.onDisconnect = (frame) => {
+      client.onDisconnect = (frame) => {
         console.log("소켓이 연결이 끊어졌습니다. 사유:", frame);
-        webSocket = null;
       };
 
-      clientRef.current.activate();
+      client.activate();
     }
 
     return () => {

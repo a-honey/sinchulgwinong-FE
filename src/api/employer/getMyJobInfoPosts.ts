@@ -12,7 +12,7 @@ interface ApiResponse {
   data: PostsType;
 }
 
-export default async function getMyJobInfo(
+export default async function getMyJobInfoPosts(
   userId: number
 ): Promise<ApiResponse | undefined> {
   if (userId === 0) return;

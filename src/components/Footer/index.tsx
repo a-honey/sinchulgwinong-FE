@@ -1,4 +1,4 @@
-import { 문의, 이용약관 } from "@/constants";
+import { 만족도조사, 문의, 이용약관 } from "@/constants";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -11,6 +11,7 @@ const Footer = () => {
         <Image src={logo} alt="신출귀농 로고" width={142} height={88} />
         <div className="flex gap-[20px]">
           <Link href={문의}>1:1 문의</Link>
+          <Link href={만족도조사}>만족도 조사</Link>
           <Link href={이용약관}>이용약관</Link>
         </div>
       </div>
