@@ -16,7 +16,7 @@ const ChatFloat = () => {
   useEffect(() => {
     if (isLogin) {
       clientRef.current = new Client({
-        brokerURL: `wss://${domain}/ws`,
+        brokerURL: `wss://${domain}/ws/chat`,
         debug: (str) => {
           console.log(str);
         },
