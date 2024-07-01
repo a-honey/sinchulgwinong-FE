@@ -15,9 +15,12 @@ import JobTypeBox from "./JobTypeBox";
 import OrganInfoBox from "./OrganInfoBox";
 import SalaryTypeBox from "./SalaryTypeBox";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const Writing = () => {
+  const router = useRouter();
+
   const [image, setImage] = useState<FileList | null>();
   const { control, watch, handleSubmit, register } = useForm<Payload>();
 
@@ -35,8 +38,6 @@ const Writing = () => {
       salaryAmount: +data.salaryAmount,
     };
 
-    console.log(payload);
-
     const formData = new FormData();
 
     if (image && image.length > 0) {
@@ -50,7 +51,12 @@ const Writing = () => {
       new Blob([JSON.stringify(payload)], { type: "application/json" })
     );
 
-    postJobInfoPost(formData);
+    postJobInfoPost({
+      body: formData,
+      onSuccess: () => {
+        router.back();
+      },
+    });
     return;
   };
 

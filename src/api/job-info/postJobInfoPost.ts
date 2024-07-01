@@ -21,7 +21,13 @@ export interface PostBody {
   request: Payload;
 }
 
-export default async function postJobInfoPost(body: FormData) {
+export default async function postJobInfoPost({
+  body,
+  onSuccess,
+}: {
+  body: FormData;
+  onSuccess: () => void;
+}) {
   try {
     const response = await fetch(`${baseURL}/job-boards`, {
       method: "POST",
@@ -29,6 +35,7 @@ export default async function postJobInfoPost(body: FormData) {
       credentials: "include",
     });
 
+    onSuccess();
     return response;
   } catch (e) {
     console.log(e);

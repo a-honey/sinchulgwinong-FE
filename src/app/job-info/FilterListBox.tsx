@@ -42,7 +42,7 @@ const FilterListBox = ({ address }: { address: AddressType }) => {
                 <Badge text={row.salaryType} />
                 {row.salaryAmount}
               </div>,
-              `${getFormattedDate(row.createdAt)}`,
+              `${getFormattedDate(row.jobEndDate)}`,
               `${getJobInfoStatus(row.jobStatus)}`,
             ];
             return (

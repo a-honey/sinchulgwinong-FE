@@ -1,3 +1,4 @@
+import HtmlRenderer from "@/components/HtmlRender";
 import Image from "next/image";
 
 interface ContentBoxProps {
@@ -12,7 +13,7 @@ const ContentBox = ({ content, imgURL }: ContentBoxProps) => {
         {imgURL && (
           <Image src={imgURL} alt="게시글 이미지" width={100} height={200} />
         )}
-        <div>{content}</div>
+        <HtmlRenderer htmlContent={content} />
       </div>
     </section>
   );
