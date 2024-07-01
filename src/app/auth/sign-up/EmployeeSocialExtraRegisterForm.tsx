@@ -1,6 +1,10 @@
 import postEmployeeSignUp, {
   EmployeeSignUpBody,
 } from "@/api/auth/postEmployeeSignUp";
+import postEmployeeSocialSignUpExtraInfo, {
+  EmployeeSocialSignUpExtraBody,
+} from "@/api/auth/postEmployeeSocialSignUpEtraInfo";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import Button from "@/components/Button";
 import { Input } from "@/components/ui/input";
@@ -10,26 +14,27 @@ import Paths from "@/constants/paths";
 import postSendAuthenticationNumber from "@/api/auth/postSendAuthenticationNumber";
 import postVerifyAuthenticationNumber from "@/api/auth/postVerifyAuthenticationNumber";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
 
 function allElementsOn(arr: string[]) {
   return arr.every((element) => element === "on");
 }
 
-const EmployeeEmailRegisterForm = () => {
+const EmployeeSocialExtraRegisterForm = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const type = searchParams.get("type")!;
+  const code = searchParams.get("code")!;
 
-  const {
-    watch,
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Omit<EmployeeSignUpBody, "loginType">>();
+  const { register, handleSubmit } =
+    useForm<Omit<EmployeeSocialSignUpExtraBody, "loginType">>();
 
-  const email = watch("email");
-
-  const onSubmit = (data: Omit<EmployeeSignUpBody, "loginType">) => {
-    postEmployeeSignUp({ ...data, loginType: "NORMAL", agreeToTerms: true });
+  const onSubmit = (data: Omit<EmployeeSocialSignUpExtraBody, "loginType">) => {
+    postEmployeeSocialSignUpExtraInfo({
+      ...data,
+      code,
+      loginType: "GOOGLE",
+      agreeToTerms: true,
+    });
 
     router.push(Paths.LOGIN);
   };
@@ -39,24 +44,6 @@ const EmployeeEmailRegisterForm = () => {
       className="flex flex-col gap-[25px]"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <InputAuthenticationNumber
-        placeholder="이메일 입력"
-        onCompletedAuthentication={register("email", { required: true })}
-        onSubmitAuthentication={() => {
-          postSendAuthenticationNumber({ email, userType: "USER" });
-        }}
-        onSubmitAuthenticationNumber={(code: string) => {
-          postVerifyAuthenticationNumber({ email, code });
-        }}
-      />
-      <Input
-        placeholder="비밀번호 입력"
-        {...register("password", { required: true })}
-      />
-      <Input
-        placeholder="비밀번호 확인 입력"
-        {...register("confirmPassword", { required: true })}
-      />
       <Input
         placeholder="이름 입력"
         {...register("username", { required: true })}
@@ -96,4 +83,4 @@ const EmployeeEmailRegisterForm = () => {
   );
 };
 
-export default EmployeeEmailRegisterForm;
+export default EmployeeSocialExtraRegisterForm;

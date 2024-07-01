@@ -25,7 +25,7 @@ const HOC = () => {
       try {
         getGoogleToken(code as string);
       } catch (e) {
-        router.push(`${Paths.REGISTER}?type=google`);
+        router.push(`${Paths.REGISTER}?code=${code}&type=google`);
       }
     }
   }, [code, router]);

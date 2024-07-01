@@ -3,19 +3,17 @@ import apiInstance from "../apiInstance";
 
 export type LoginType = "GOOGLE";
 
-export interface EmployeeSignUpBody {
+export interface EmployeeSocialSignUpExtraBody {
   username: string;
   nickname: string;
-  password: string;
-  confirmPassword: string;
-  email: string;
+  code: string;
   phoneNumber: string;
   agreeToTerms: boolean;
   loginType: LoginType;
 }
 
 export default async function postEmployeeSocialSignUpExtraInfo(
-  body: EmployeeSignUpBody
+  body: EmployeeSocialSignUpExtraBody
 ) {
   try {
     const response = await apiInstance.post<ResponseDTO<string>>(

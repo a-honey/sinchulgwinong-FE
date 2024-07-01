@@ -5,6 +5,7 @@ import UserTypeSelectBox, { UserAuthType } from "../sign-in/UserTypeSelectBox";
 
 import EmployeeEmailRegisterForm from "./EmployeeEmailRegisterForm";
 import EmployeeRegisterTypeButtons from "./EmployeeRegisterTypeButtons";
+import EmployeeSocialExtraRegisterForm from "./EmployeeSocialExtraRegisterForm";
 import EmployerRegisterForm from "./EmployerRegisterForm";
 import Loading from "@/components/StatusComponents/Loading";
 import { useSearchParams } from "next/navigation";
@@ -23,6 +24,7 @@ export default Page;
 const SignUp = () => {
   const searchParams = useSearchParams();
   const type = searchParams.get("type");
+  const code = searchParams.get("code");
 
   const [mode, setMode] = useState<UserAuthType>("employee");
 
@@ -38,7 +40,6 @@ const SignUp = () => {
   useEffect(() => {
     if (type) {
       setMode("employee");
-      toggleIsEmailRegisterFormOpen();
     }
   }, [type, toggleIsEmailRegisterFormOpen]);
 
@@ -46,14 +47,15 @@ const SignUp = () => {
     <>
       <UserTypeSelectBox mode={mode} changeMode={changeMode} />
       <div className="w-[688px]">
-        {mode === "employee" &&
-          (isEmailRegisterFormOpen ? (
-            <EmployeeEmailRegisterForm />
-          ) : (
-            <EmployeeRegisterTypeButtons
-              toggleIsEmailRegisterFormOpen={toggleIsEmailRegisterFormOpen}
-            />
-          ))}
+        {mode === "employee" && code ? (
+          <EmployeeSocialExtraRegisterForm />
+        ) : isEmailRegisterFormOpen ? (
+          <EmployeeEmailRegisterForm />
+        ) : (
+          <EmployeeRegisterTypeButtons
+            toggleIsEmailRegisterFormOpen={toggleIsEmailRegisterFormOpen}
+          />
+        )}
         {mode === "employer" && <EmployerRegisterForm />}
       </div>
     </>

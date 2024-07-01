@@ -10,6 +10,6 @@ export default async function getGoogleToken(code: string) {
 
     return response.data;
   } catch (e) {
-    console.log(e);
+    throw new Error("계정없음");
   }
 }
