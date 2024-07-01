@@ -1,18 +1,20 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+// import { useEffect, useRef } from "react";
 
 import ChatObject from "@/assets/icons/ChatObject";
-import { Client } from "@stomp/stompjs";
 import { EmployeePaths } from "@/constants/paths";
 import Link from "next/link";
-import { domain } from "@/constants/env";
 import useIsLogin from "@/hooks/useIsLogin";
 
-const ChatFloat = () => {
-  const clientRef = useRef<Client | null>(null);
-  const { isLogin } = useIsLogin();
+//import { Client } from "@stomp/stompjs";
 
+//import { domain } from "@/constants/env";
+
+const ChatFloat = () => {
+  // const clientRef = useRef<Client | null>(null);
+  const { isLogin } = useIsLogin();
+  /*
   useEffect(() => {
     if (isLogin) {
       clientRef.current = new Client({
@@ -55,7 +57,8 @@ const ChatFloat = () => {
         clientRef.current.deactivate();
       }
     };
-  }, [isLogin]);
+  }, [isLogin]); 
+  */
 
   if (!isLogin) return null;
 

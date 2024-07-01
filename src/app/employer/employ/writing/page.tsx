@@ -18,7 +18,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 
 const Writing = () => {
-  const [image, setImage] = useState<File | null>();
+  const [image, setImage] = useState<FileList | null>();
   const { control, watch, handleSubmit, register } = useForm<Payload>();
 
   const onSubmit = (data: Payload) => {
@@ -42,7 +42,7 @@ const Writing = () => {
     formData.append("request", JSON.stringify(payload));
 
     if (image) {
-      formData.append("images", image);
+      formData.append("images", image[0]);
     }
 
     postJobInfoPost(formData);
@@ -112,7 +112,7 @@ const Writing = () => {
             <input
               type="file"
               accept=".png, .jpg, .jpeg, .gif"
-              onChange={(e) => setImage(e.target.files && e.target.files[0])}
+              onChange={(e) => setImage(e.target.files && e.target.files)}
             />
           </div>
           <Button variants="yellow" text="등록" />

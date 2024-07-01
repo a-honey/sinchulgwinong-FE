@@ -11,7 +11,7 @@ const ChatList = ({
   handleCurrentRoomId: (roomID: number) => void;
 }) => {
   return (
-    <div className="mt-[100px] flex flex-col border-r-[1px]">
+    <div className="mt-[100px] w-[300px] flex flex-col border-r-[1px]">
       <h2 className="title1 mt-[100px]">채팅</h2>
       <div>
         {list.map((room) => (

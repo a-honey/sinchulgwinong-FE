@@ -17,7 +17,7 @@ const Chat = () => {
 
   return (
     <div className="flex h-full">
-      {data && data.length >= 0 ? (
+      {data && data.length > 0 ? (
         <ChatList
           list={data}
           currentRoomId={currentRoomId}

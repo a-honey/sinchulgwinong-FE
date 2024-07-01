@@ -11,6 +11,7 @@ import Link from "next/link";
 import ScrapIcon from "@/assets/icons/ScrapIcon";
 import getJobInfoPost from "@/api/job-info/getJobInfoPost";
 import { getName } from "@/components/Badge";
+import postChatRoom from "@/api/chat/postChatRoom";
 import postJobInfoScrap from "@/api/scrap/postJobInfoScraps";
 import { useSearchParams } from "next/navigation";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
@@ -60,8 +61,13 @@ const Detail = () => {
           <ScrapIcon />
           스크랩
         </button>
-        <Link href={`${EmployeePaths.CHAT}?employeeId=${data.cpUserId}`}>
-          <button className="w-[168px] flex gap-[30px] items-center p-[20px] bg-[#FFDB80] rounded rounded-[10px]">
+        <Link href={`${EmployeePaths.CHAT}?employerId=${data.cpUserId}`}>
+          <button
+            onClick={() => {
+              postChatRoom(data.cpUserId);
+            }}
+            className="w-[168px] flex gap-[30px] items-center p-[20px] bg-[#FFDB80] rounded rounded-[10px]"
+          >
             <ChatIcon />
             채팅
           </button>

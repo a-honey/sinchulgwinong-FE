@@ -1,13 +1,20 @@
+"use client";
+
+import { useCallback, useState } from "react";
+
 import ArrowIcon from "@/assets/icons/ArrowIcon";
 import ChatRoomItem from "./ChatRoomItem";
 import getChatRoomHistory from "@/api/chat/getChatRoomHistory";
-import { useCallback } from "react";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
+import useWebSocket from "@/hooks/useWebSocket";
 
 const ChatRoom = ({ roomId }: { roomId: number }) => {
+  const [message, setMessage] = useState("");
   const { data } = useUpdateFetch(
     useCallback(() => getChatRoomHistory(roomId), [roomId])
   );
+
+  const { messages, sendMessage } = useWebSocket();
   return (
     <div className="flex flex-col gap-[20px] w-full pl-[40px]">
       <div className="flex gap-[5px] items-center">
@@ -24,9 +31,25 @@ const ChatRoom = ({ roomId }: { roomId: number }) => {
           />
         ))}
       </div>
+      {messages.map((chat) => (
+        <ChatRoomItem key={chat} type="sender" content={chat} name="나" />
+      ))}
       <div className="flex">
-        <input className="border w-full" />
-        <button className="bg-[#FFB600]">보내기</button>
+        <input
+          className="border w-full"
+          value={message}
+          onChange={(e) => {
+            setMessage(e.target.value);
+          }}
+        />
+        <button
+          className="bg-[#FFB600]"
+          onClick={() => {
+            sendMessage(message);
+          }}
+        >
+          보내기
+        </button>
       </div>
     </div>
   );
