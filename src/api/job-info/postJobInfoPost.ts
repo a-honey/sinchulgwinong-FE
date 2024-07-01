@@ -1,5 +1,6 @@
 import { SalaryType } from "@/types";
 import apiInstance from "../apiInstance";
+import { baseURL } from "@/constants/env";
 
 export interface Payload {
   jobTitle: string;
@@ -22,7 +23,11 @@ export interface PostBody {
 
 export default async function postJobInfoPost(body: FormData) {
   try {
-    const response = await apiInstance.post(`/job-boards`, body);
+    const response = await fetch(`${baseURL}/job-boards`, {
+      method: "POST",
+      body,
+      credentials: "include",
+    });
 
     return response;
   } catch (e) {
