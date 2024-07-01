@@ -46,7 +46,8 @@ const Writing = () => {
 
     if (image && image.length > 0) {
       const file = image[0];
-      formData.append("images", file);
+
+      formData.append("images", file, file.name);
     }
 
     postJobInfoPost(formData);

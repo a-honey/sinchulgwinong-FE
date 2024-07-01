@@ -49,14 +49,15 @@ const SignUp = () => {
       <div className="w-[688px]">
         {mode === "employee" && code ? (
           <EmployeeSocialExtraRegisterForm />
-        ) : isEmailRegisterFormOpen ? (
+        ) : mode === "employee" && isEmailRegisterFormOpen ? (
           <EmployeeEmailRegisterForm />
-        ) : (
+        ) : mode === "employee" ? (
           <EmployeeRegisterTypeButtons
             toggleIsEmailRegisterFormOpen={toggleIsEmailRegisterFormOpen}
           />
-        )}
-        {mode === "employer" && <EmployerRegisterForm />}
+        ) : mode === "employer" ? (
+          <EmployerRegisterForm />
+        ) : null}
       </div>
     </>
   );
