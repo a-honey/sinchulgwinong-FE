@@ -36,7 +36,7 @@ const ListBox = () => {
               `${row.jobTitle}`,
               <div
                 key={row.jobBoardId}
-                className="flex items-center gap-[10px]"
+                className="flex items-center justify-center gap-[10px]"
               >
                 <Badge text={row.salaryType} />
                 {row.salaryAmount}

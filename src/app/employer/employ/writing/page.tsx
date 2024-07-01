@@ -38,12 +38,8 @@ const Writing = () => {
     console.log(payload);
 
     const formData = new FormData();
-    formData.append(
-      "request",
-      new Blob([JSON.stringify(payload)], {
-        type: "application/json",
-      })
-    );
+
+    formData.append("request", JSON.stringify(payload));
 
     if (image) {
       formData.append("images", image);
