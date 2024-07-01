@@ -17,13 +17,14 @@ const ChatRoom = ({ roomId }: { roomId: number }) => {
   );
 
   const { messages, sendMessage } = useWebSocket();
+
   return (
     <div className="flex flex-col gap-[20px] w-full pl-[40px]">
       <div className="flex gap-[5px] items-center">
         <ArrowIcon type="left" width={20} height={20} color="black" />
         <div className="title1">야옹이</div>
       </div>
-      <div>
+      <div className="flex flex-col gap-[5px] min-h-[500px]">
         {data?.map((chat) => (
           <ChatRoomItem
             key={chat.chatMessageId}
@@ -32,10 +33,10 @@ const ChatRoom = ({ roomId }: { roomId: number }) => {
             name="나"
           />
         ))}
+        {messages.map((chat) => (
+          <ChatRoomItem key={chat} type="sender" content={chat} name="나" />
+        ))}
       </div>
-      {messages.map((chat) => (
-        <ChatRoomItem key={chat} type="sender" content={chat} name="나" />
-      ))}
       <div className="flex">
         <input
           className="border w-full"
@@ -47,12 +48,7 @@ const ChatRoom = ({ roomId }: { roomId: number }) => {
         <button
           className="bg-[#FFB600]"
           onClick={() => {
-            sendMessage({
-              cpUserId: null,
-              userId: myData?.userId ?? 0,
-              chatRoomId: roomId,
-              content: message,
-            });
+            sendMessage(message);
           }}
         >
           보내기

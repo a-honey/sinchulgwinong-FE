@@ -24,7 +24,8 @@ const ChatList = ({
             <ChatListItem
               roomId={room.chatRoomId}
               currentRoomId={currentRoomId}
-              userName={room.userName}
+              userName={room.cpName}
+              isRead={room.userRead}
             />
           </div>
         ))}

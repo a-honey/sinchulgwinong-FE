@@ -5,10 +5,12 @@ const ChatListItem = ({
   roomId,
   userName,
   currentRoomId,
+  isRead,
 }: {
   roomId: number;
   currentRoomId: number;
   userName: string;
+  isRead: boolean;
 }) => {
   return (
     <div
@@ -22,7 +24,11 @@ const ChatListItem = ({
         <div className="detail2 text-gray3">오후 08:12</div>
       </div>
       <div className="detail1 text-gray3">구인 글 보고 연략드렸</div>
-      <div className="absolute right-[30px] bottom-[20px]">1</div>
+      {!isRead && (
+        <div className="absolute right-[30px] bottom-[20px] text-primary4">
+          N
+        </div>
+      )}
     </div>
   );
 };

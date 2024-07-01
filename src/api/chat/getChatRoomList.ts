@@ -9,7 +9,10 @@ export interface ChatRoomInfoType {
   cpName: string;
   chatName: string;
   chatCheck: false;
+  userRead: boolean;
+  companyUserRead: boolean;
 }
+
 export default async function getChatRoomList() {
   try {
     const response = await apiInstance.get<ResponseDTO<ChatRoomInfoType[]>>(

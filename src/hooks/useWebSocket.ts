@@ -37,7 +37,7 @@ const useWebSocket = () => {
     };
   }, []);
 
-  const sendMessage = (message: MessageType) => {
+  const sendMessage = (message: string) => {
     if (ws && ws.readyState === WebSocket.OPEN) {
       ws.send(JSON.stringify(message));
     } else {

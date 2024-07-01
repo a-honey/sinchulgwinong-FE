@@ -1,13 +1,12 @@
 import postEmployeeSignUp, {
   EmployeeSignUpBody,
 } from "@/api/auth/postEmployeeSignUp";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import Button from "@/components/Button";
 import { Input } from "@/components/ui/input";
 import InputAgree from "../ui/InputAgree";
 import InputAuthenticationNumber from "../ui/InputAuthenticationNumber";
-import Overlay from "@/components/Overlay";
 import Paths from "@/constants/paths";
 import postEmployeeSocialSignUpExtraInfo from "@/api/auth/postEmployeeSocialSignUpEtraInfo";
 import postSendAuthenticationNumber from "@/api/auth/postSendAuthenticationNumber";
@@ -20,8 +19,8 @@ function allElementsOn(arr: string[]) {
 
 const EmployeeEmailRegisterForm = () => {
   const router = useRouter();
-  const params = useParams();
-  const type = params.type;
+  const searchParams = useSearchParams();
+  const type = searchParams.get("type");
 
   const {
     watch,

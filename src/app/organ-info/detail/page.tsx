@@ -3,6 +3,7 @@
 import { Suspense, useCallback } from "react";
 
 import Button from "@/components/Button";
+import Loading from "@/components/StatusComponents/Loading";
 import ReviewList from "./ReviewList";
 import getEmployerInfo from "@/api/employer/getEmployerInfo";
 import postOrganScrap from "@/api/scrap/postOrganScraps";
@@ -11,7 +12,7 @@ import useUpdateFetch from "@/hooks/useUpdateFetch";
 
 const Page = () => {
   return (
-    <Suspense fallback={<div>로딩중</div>}>
+    <Suspense fallback={<Loading />}>
       <DetailOrgan />
     </Suspense>
   );
