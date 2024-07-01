@@ -2,8 +2,10 @@
 
 import { Suspense, useCallback } from "react";
 
+import Button from "@/components/Button";
 import ReviewList from "./ReviewList";
 import getEmployerInfo from "@/api/employer/getEmployerInfo";
+import postOrganScrap from "@/api/scrap/postOrganScraps";
 import { useSearchParams } from "next/navigation";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
 
@@ -33,7 +35,14 @@ const DetailOrgan = () => {
       <div className="flex flex-col gap-[20px]">
         <div className="flex justify-between">
           <h1 className="text-[36px]">기업 정보 상세 보기</h1>
-          <div></div>
+          <Button
+            text="스크랩"
+            variants="yellow"
+            className="w-[150px]"
+            onClick={() => {
+              postOrganScrap(organId);
+            }}
+          />
         </div>
         <div className="flex flex-col gap-[15px] p-[40px] border">
           <div className="title1">{data.cpName}</div>

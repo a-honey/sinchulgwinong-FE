@@ -1,6 +1,6 @@
 import { cn, getFormattedDate } from "@/lib/utils";
 
-import Blank from "@/components/Blank";
+import Blank from "@/components/StatusComponents/Empty";
 import Button from "@/components/Button";
 import CommentForm from "./CommentForm";
 import { Input } from "@/components/ui/input";

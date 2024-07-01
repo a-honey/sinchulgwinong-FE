@@ -1,8 +1,8 @@
 import "../styles/globals.css";
 
-import ChatFloat from "@/components/ChatFloat";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+import ChatFloat from "@/components/Layout/ChatFloat";
+import Footer from "../components/Layout/Footer";
+import Header from "../components/Layout/Header";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import Script from "next/script";

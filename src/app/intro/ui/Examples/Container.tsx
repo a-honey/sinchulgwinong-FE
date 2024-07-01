@@ -1,27 +1,15 @@
 interface ContainerProps {
-  beforeTitle: string;
-  pointTitle: string;
-  afterTitle: string;
   description: string;
+  titleElement: React.ReactNode;
   children: React.ReactNode;
 }
 
-const Container = ({
-  children,
-  description,
-  beforeTitle,
-  pointTitle,
-  afterTitle,
-}: ContainerProps) => {
+const Container = ({ children, titleElement, description }: ContainerProps) => {
   return (
-    <section className="relative flex flex-col p-[65px] gap-[70px]">
+    <section className="relative flex flex-col p-[65px] gap-[30px]">
       <div>
-        <div>
-          <div className="flex text-[36px]">
-            <div>{beforeTitle}</div>
-            <div>{pointTitle}</div>
-            <div>{afterTitle}</div>
-          </div>
+        <div className="flex flex-col gap-[10px]">
+          {titleElement}
           <div className="text-[20px]">{description}</div>
         </div>
         <div className="absolute top-[65px] right-[65px]"></div>

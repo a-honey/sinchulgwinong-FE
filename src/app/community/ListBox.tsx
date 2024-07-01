@@ -2,7 +2,7 @@
 
 import { Suspense, useCallback } from "react";
 
-import Blank from "@/components/Blank";
+import Blank from "@/components/StatusComponents/Empty";
 import List from "../../components/List";
 import getCommunityPosts from "@/api/community/getCommunityPosts";
 import { getFormattedDate } from "@/lib/utils";

@@ -1,7 +1,7 @@
 "use client";
 
 import Badge from "@/components/Badge";
-import Blank from "@/components/Blank";
+import Blank from "@/components/StatusComponents/Empty";
 import List from "../../components/List";
 import { getFormattedDate } from "@/lib/utils";
 import getJobInfoPosts from "@/api/job-info/getJobInfoPosts";
@@ -10,7 +10,7 @@ import usePagination from "@/hooks/usePagination";
 import { useRouter } from "next/navigation";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
 
-const THEAD = ["지역", "모집제목/모집자명", "급여", "모집기간"];
+const THEAD = ["지역", "모집제목 / 모집자명", "급여", "모집종료일"];
 
 const ListBox = () => {
   const router = useRouter();
@@ -33,7 +33,7 @@ const ListBox = () => {
           data.jobBoardResponseDTOS.map((row) => {
             const data = [
               `${row.address}`,
-              `${row.jobTitle}`,
+              `${row.jobTitle} / ${row.cpName}`,
               <div
                 key={row.jobBoardId}
                 className="flex items-center gap-[10px]"

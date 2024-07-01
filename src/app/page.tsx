@@ -5,8 +5,8 @@ import ReviewBox from "./intro/ui/Examples/ReviewBox";
 
 export default function Home() {
   return (
-    <main className="flex flex-col gap-[120px]">
-      <div className="flex flex-col mt-[130px] gap-[50px]">
+    <main className="flex flex-col gap-[50px]">
+      <div className="flex flex-col mt-[72px] gap-[40px]">
         <AdSlider />
         <BannerBox />
       </div>

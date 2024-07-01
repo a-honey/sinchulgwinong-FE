@@ -1,6 +1,6 @@
 "use client";
 
-import Blank from "@/components/Blank";
+import Blank from "@/components/StatusComponents/Empty";
 import Container from "../ui/Container";
 import getCommunityPostsScrap from "@/api/scrap/getCommunityPostsScrap";
 import useUpdateFetch from "@/hooks/useUpdateFetch";

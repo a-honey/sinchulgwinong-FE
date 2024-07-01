@@ -1,6 +1,11 @@
 "use client";
 
-import Blank from "@/components/Blank";
+import {
+  transformRatingToStar,
+  transformRoundToTwoDecimalPlaces,
+} from "@/lib/transformUtils";
+
+import Blank from "@/components/StatusComponents/Empty";
 import List from "../../components/List";
 import getOrgans from "@/api/organ/getOrgans";
 import { useCallback } from "react";
@@ -16,7 +21,7 @@ const OrganInfo = () => {
   const { data } = useUpdateFetch(
     useCallback(() => getOrgans({ page: currentPage, size: 10 }), [currentPage])
   );
-  
+
   return (
     <main className="mt-[72px]">
       <h1 className="text-[36px]">전체 기업 정보</h1>
@@ -31,7 +36,11 @@ const OrganInfo = () => {
               const data = [
                 `${organ.cpName}`,
                 `${organ.reviewCount} 개`,
-                `${organ.averageRating} 점`,
+                `${transformRatingToStar(
+                  organ.averageRating ?? 0
+                )}(${transformRoundToTwoDecimalPlaces(
+                  organ.averageRating ?? 0
+                )} 점)`,
               ];
               return (
                 <List.Table.Row

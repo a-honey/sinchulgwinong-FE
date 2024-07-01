@@ -12,7 +12,7 @@ const ReviewBox = () => {
       <div className="subTitle1">
         전체 리뷰 통계({data?.totalReviewCount ?? 0}개)
       </div>
-      <div className="mt-[40px]">
+      <div className="mt-[40px] flex flex-col gap-[10px]">
         {data?.reviews.map((review) => (
           <ReviewItem
             reviewId={review.reviewId}

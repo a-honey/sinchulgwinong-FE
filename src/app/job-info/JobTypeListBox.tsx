@@ -3,7 +3,7 @@
 import getAddressSearch, { AddressType } from "@/api/category/getAddressSearch";
 
 import Badge from "@/components/Badge";
-import Blank from "@/components/Blank";
+import Blank from "@/components/StatusComponents/Empty";
 import { CategoryType } from "./JobTypeFilterBox";
 import List from "../../components/List";
 import getCategorySearch from "@/api/category/getCategorySearch";

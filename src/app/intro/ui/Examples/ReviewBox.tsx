@@ -16,9 +16,15 @@ const ReviewBox = () => {
 
   return (
     <Container
-      beforeTitle="인기있는"
-      pointTitle="기업 정보"
-      afterTitle="를 확인하세요!"
+      titleElement={
+        <div className="title1 text-[32px]">
+          “ 인기있는{" "}
+          <span className="text-[32px] font-semibold text-[#7C3B00]">
+            기업 정보
+          </span>
+          를 확인하세요! “
+        </div>
+      }
       description="리뷰 확인하고 일 시작하세요"
     >
       <div className="grid grid-cols-4 h-[362px] w-full gap-[25px]">

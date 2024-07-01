@@ -12,6 +12,7 @@ const UserNav = () => {
   const pathName = usePathname();
   const [isLogin, setIsLogin] = useState(false);
 
+  const onLogoutSuccess = () => {};
   useEffect(() => {
     const checkLogin = async () => {
       const loginStatus = await checkIsLogin();
@@ -25,7 +26,14 @@ const UserNav = () => {
       {isLogin && (
         <>
           <Link href={Paths.USER}>마이페이지</Link>
-          <div onClick={postLogout}>로그아웃</div>
+          <div
+            onClick={() => {
+              postLogout(onLogoutSuccess);
+            }}
+            className="cursor-pointer"
+          >
+            로그아웃
+          </div>
         </>
       )}
       {!isLogin && (

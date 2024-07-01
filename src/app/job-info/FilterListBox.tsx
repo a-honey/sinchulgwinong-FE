@@ -3,7 +3,7 @@
 import getAddressSearch, { AddressType } from "@/api/category/getAddressSearch";
 
 import Badge from "@/components/Badge";
-import Blank from "@/components/Blank";
+import Blank from "@/components/StatusComponents/Empty";
 import List from "../../components/List";
 import { getFormattedDate } from "@/lib/utils";
 import { useCallback } from "react";

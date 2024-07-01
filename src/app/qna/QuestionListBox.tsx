@@ -1,6 +1,6 @@
 "use client";
 
-import Blank from "@/components/Blank";
+import Blank from "@/components/StatusComponents/Empty";
 import List from "../../components/List";
 import { getFormattedDate } from "@/lib/utils";
 import getQnA from "@/api/qna/getQnA";

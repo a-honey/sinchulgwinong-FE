@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 import Job from "./Job";
 import ReviewBlack from "./ReviewBlank";
 import ReviewBox from "./Review";

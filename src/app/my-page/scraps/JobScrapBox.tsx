@@ -1,6 +1,6 @@
 "use client";
 
-import Blank from "@/components/Blank";
+import Blank from "@/components/StatusComponents/Empty";
 import Container from "../ui/Container";
 import getJobInfoPostsScrap from "@/api/scrap/getJobInfoPostsScrap";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
