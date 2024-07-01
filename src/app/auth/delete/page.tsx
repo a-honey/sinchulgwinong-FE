@@ -10,18 +10,13 @@ import getMyProfile from "@/api/user/getMyProfile";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
 
 const Posts = () => {
-  const { data: employerData } = useUpdateFetch(getMyEmployerInfo);
   const { data: employeeData } = useUpdateFetch(getMyProfile);
   const [password, setPassword] = useState("");
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (employeeData) {
-      deleteAccount({ password, userId: employeeData.userId });
-    }
-    if (employerData) {
-      deleteAccount({ password, userId: employerData.cpUserId });
-    }
+
+    deleteAccount({ password, type: employeeData ? "employee" : "employer" });
   };
 
   return (

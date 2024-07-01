@@ -3,22 +3,25 @@
 import { baseURL } from "@/constants/env";
 
 export default async function deleteAccount({
-  userId,
+  type,
   password,
   onError,
   onSuccess,
 }: {
-  userId: number;
+  type: "employee" | "employer";
   password: string;
   onError?: (e: any) => void;
   onSuccess?: () => void;
 }) {
   try {
-    const response = await fetch(`${baseURL}/users/${userId}`, {
-      method: "DELETE",
-      body: JSON.stringify({ password }),
-      credentials: "include",
-    });
+    const response = await fetch(
+      `${baseURL}${type === "employee" ? "/users" : "/cpUsers"}`,
+      {
+        method: "DELETE",
+        body: JSON.stringify({ password }),
+        credentials: "include",
+      }
+    );
 
     if (!response.ok) {
       const res = await response.json();

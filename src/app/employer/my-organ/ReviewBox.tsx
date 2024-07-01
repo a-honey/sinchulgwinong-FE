@@ -15,6 +15,7 @@ const ReviewBox = () => {
       <div className="mt-[40px]">
         {data?.reviews.map((review) => (
           <ReviewItem
+            reviewId={review.reviewId}
             key={review.reviewId}
             title={review.reviewTitle}
             content={review.reviewContent}

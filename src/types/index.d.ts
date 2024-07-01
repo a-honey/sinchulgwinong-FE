@@ -63,18 +63,20 @@ export interface CommentType {
 }
 
 export interface OrganInfoType {
-  cpUserId: 1;
-  cpName: "고양이탕후루";
-  cpEmail: "xixixo5344@lisoren.com";
-  cpPhoneNumber: "01012345678";
-  cpUsername: "김고양이";
-  hiringStatus: true;
-  employeeCount: 10;
+  cpUserId: number;
+  cpName: string;
+  cpEmail: string;
+  cpPhoneNumber: string;
+  cpUsername: string;
+  hiringStatus: boolean;
+  employeeCount: number;
   foundationDate: "1999-10-06";
-  description: "고양이는 세상을 움직이는 혁신입니다.";
-  cpNum: "1oYvE2NbRKqsre7wjP7fiWGDFheaKt2N";
-  averageRating: null;
-  reviewCount: null;
+  description: string;
+  cpNum: string;
+  averageRating: number | null;
+  reviewCount: number | null;
+  averageRating: number;
+  viewCount: number;
 }
 
 export interface ReviewType {

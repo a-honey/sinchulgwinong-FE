@@ -1,14 +1,18 @@
 "use client";
 
 import UserTypeSelectBox, { UserAuthType } from "../sign-in/UserTypeSelectBox";
+import { useEffect, useState } from "react";
 
 import EmployeeEmailRegisterForm from "./EmployeeEmailRegisterForm";
 import EmployeeRegisterTypeButtons from "./EmployeeRegisterTypeButtons";
 import EmployerRegisterForm from "./EmployerRegisterForm";
-import { useState } from "react";
+import { useParams } from "next/navigation";
 import useToggle from "@/hooks/useToggle";
 
 const SignUp = () => {
+  const params = useParams();
+  const type = params.type;
+
   const [mode, setMode] = useState<UserAuthType>("employee");
 
   const changeMode = (mode: UserAuthType) => {
@@ -19,6 +23,13 @@ const SignUp = () => {
     isOpen: isEmailRegisterFormOpen,
     toggleIsOpen: toggleIsEmailRegisterFormOpen,
   } = useToggle();
+
+  useEffect(() => {
+    if (type) {
+      setMode("employee");
+      toggleIsEmailRegisterFormOpen();
+    }
+  }, [type, toggleIsEmailRegisterFormOpen]);
 
   return (
     <>

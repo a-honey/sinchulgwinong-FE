@@ -1,6 +1,7 @@
 import postEmployeeSignUp, {
   EmployeeSignUpBody,
 } from "@/api/auth/postEmployeeSignUp";
+import { useParams, useRouter } from "next/navigation";
 
 import Button from "@/components/Button";
 import { Input } from "@/components/ui/input";
@@ -8,10 +9,10 @@ import InputAgree from "../ui/InputAgree";
 import InputAuthenticationNumber from "../ui/InputAuthenticationNumber";
 import Overlay from "@/components/Overlay";
 import Paths from "@/constants/paths";
+import postEmployeeSocialSignUpExtraInfo from "@/api/auth/postEmployeeSocialSignUpEtraInfo";
 import postSendAuthenticationNumber from "@/api/auth/postSendAuthenticationNumber";
 import postVerifyAuthenticationNumber from "@/api/auth/postVerifyAuthenticationNumber";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
 
 function allElementsOn(arr: string[]) {
   return arr.every((element) => element === "on");
@@ -19,6 +20,9 @@ function allElementsOn(arr: string[]) {
 
 const EmployeeEmailRegisterForm = () => {
   const router = useRouter();
+  const params = useParams();
+  const type = params.type;
+
   const {
     watch,
     register,
@@ -29,7 +33,16 @@ const EmployeeEmailRegisterForm = () => {
   const email = watch("email");
 
   const onSubmit = (data: Omit<EmployeeSignUpBody, "loginType">) => {
-    postEmployeeSignUp({ ...data, loginType: "NORMAL", agreeToTerms: true });
+    if (!type) {
+      postEmployeeSignUp({ ...data, loginType: "NORMAL", agreeToTerms: true });
+    } else {
+      postEmployeeSocialSignUpExtraInfo({
+        ...data,
+        loginType: "GOOGLE",
+        agreeToTerms: true,
+      });
+    }
+
     router.push(Paths.LOGIN);
   };
 

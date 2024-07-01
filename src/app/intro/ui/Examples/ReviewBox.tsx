@@ -11,13 +11,13 @@ import useUpdateFetch from "@/hooks/useUpdateFetch";
 
 const ReviewBox = () => {
   const { data } = useUpdateFetch(
-    useCallback(() => getOrgans({ page: 0, size: 3 }), [])
+    useCallback(() => getOrgans({ page: 0, size: 3, sort: "reviewDesc" }), [])
   );
 
   return (
     <Container
-      beforeTitle="주변"
-      pointTitle="최신 리뷰"
+      beforeTitle="인기있는"
+      pointTitle="기업 정보"
       afterTitle="를 확인하세요!"
       description="리뷰 확인하고 일 시작하세요"
     >
@@ -29,9 +29,15 @@ const ReviewBox = () => {
           description="기업 정보를 확인하세요"
           icon={<StoreObject width={85} height={94.11} />}
         />
-        <ReviewCard />
-        <ReviewCard />
-        <ReviewCard />
+        {data?.cpUsers.map((organ) => (
+          <ReviewCard
+            key={organ.cpUserId}
+            organId={organ.cpUserId}
+            name={organ.cpName}
+            viewCount={organ.viewCount}
+            reviewCount={organ.reviewCount ?? 0}
+          />
+        ))}
       </div>
     </Container>
   );

@@ -2,7 +2,7 @@ import apiInstance from "../apiInstance";
 
 export default async function postLogout() {
   try {
-    const response = await apiInstance.post(`/로그아웃`, "");
+    const response = await apiInstance.post(`/auth/logout`, "");
 
     return response;
   } catch (e) {
