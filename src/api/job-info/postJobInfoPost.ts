@@ -24,6 +24,7 @@ export default async function postJobInfoPost(body: FormData) {
   try {
     const response = await apiInstance.post(`/job-boards`, body, {
       "Content-Type": "multipart/form-data",
+      Accept: "application/json, text/html",
     });
 
     return response;
