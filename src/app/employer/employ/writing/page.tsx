@@ -44,10 +44,11 @@ const Writing = () => {
       new Blob([JSON.stringify(payload)], { type: "application/json" })
     );
 
-    if (image) {
-      formData.append("images", image[0]);
+    if (image && image.length > 0) {
+      const file = image[0];
+      const imageBlob = new Blob([file], { type: "image/jpeg" });
+      formData.append("images", imageBlob);
     }
-
     postJobInfoPost(formData);
     return;
   };

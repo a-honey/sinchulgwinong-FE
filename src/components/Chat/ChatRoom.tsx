@@ -59,6 +59,7 @@ const ChatRoom = ({ roomId }: { roomId: number }) => {
               chatRoomId: roomId,
               content: message,
             });
+            setMessage("");
           }}
         >
           보내기
