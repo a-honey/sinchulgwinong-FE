@@ -21,13 +21,18 @@ const HOC = () => {
   const code = searchParams.get("code")!;
 
   useEffect(() => {
-    if (code) {
-      try {
-        getGoogleToken(code as string);
-      } catch (e) {
-        router.push(`${Paths.REGISTER}?code=${code}&type=google`);
+    const fetchGoogleToken = async () => {
+      if (code) {
+        try {
+          await getGoogleToken(code);
+        } catch (e) {
+          router.push(`${Paths.REGISTER}?code=${code}&type=google`);
+        }
       }
-    }
+    };
+
+    fetchGoogleToken();
   }, [code, router]);
+
   return <div>로딩중</div>;
 };
