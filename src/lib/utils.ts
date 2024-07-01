@@ -28,3 +28,14 @@ export function checkIsActive(
   const firstPathTo = pathTo.split("/")[turn];
   return firstPathName === firstPathTo;
 }
+
+export function getJobInfoStatus(status: string) {
+  switch (status) {
+    case "JOBOPEN":
+      return "채용중";
+    case "JOBCLOSED":
+      return "채용마감";
+    default:
+      return "채용중";
+  }
+}

@@ -1,16 +1,17 @@
 "use client";
 
+import { getFormattedDate, getJobInfoStatus } from "@/lib/utils";
+
 import Badge from "@/components/Badge";
 import Blank from "@/components/StatusComponents/Empty";
 import List from "../../components/List";
-import { getFormattedDate } from "@/lib/utils";
 import getJobInfoPosts from "@/api/job-info/getJobInfoPosts";
 import { useCallback } from "react";
 import usePagination from "@/hooks/usePagination";
 import { useRouter } from "next/navigation";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
 
-const THEAD = ["지역", "모집제목", "급여", "모집종료일"];
+const THEAD = ["지역", "모집제목", "급여", "모집종료일", ""];
 
 const ListBox = () => {
   const router = useRouter();
@@ -42,6 +43,7 @@ const ListBox = () => {
                 {row.salaryAmount}
               </div>,
               `${getFormattedDate(row.createdAt)}`,
+              `${getJobInfoStatus(row.jobStatus)}`,
             ];
             return (
               <List.Table.Row

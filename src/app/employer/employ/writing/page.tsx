@@ -46,9 +46,10 @@ const Writing = () => {
 
     if (image && image.length > 0) {
       const file = image[0];
-      const imageBlob = new Blob([file], { type: "image/jpeg" });
+      const imageBlob = new Blob([file], { type: "multipart/form-data" });
       formData.append("images", imageBlob);
     }
+
     postJobInfoPost(formData);
     return;
   };
