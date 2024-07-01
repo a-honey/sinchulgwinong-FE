@@ -41,10 +41,11 @@ const Writing = () => {
 
     formData.append("request", JSON.stringify(payload));
 
+    /*
     if (image) {
       formData.append("images", image[0]);
     }
-
+    */
     postJobInfoPost(formData);
     return;
   };

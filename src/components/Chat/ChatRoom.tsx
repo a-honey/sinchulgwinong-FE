@@ -5,10 +5,12 @@ import { useCallback, useState } from "react";
 import ArrowIcon from "@/assets/icons/ArrowIcon";
 import ChatRoomItem from "./ChatRoomItem";
 import getChatRoomHistory from "@/api/chat/getChatRoomHistory";
+import getMyProfile from "@/api/user/getMyProfile";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
 import useWebSocket from "@/hooks/useWebSocket";
 
 const ChatRoom = ({ roomId }: { roomId: number }) => {
+  const { data: myData } = useUpdateFetch(getMyProfile);
   const [message, setMessage] = useState("");
   const { data } = useUpdateFetch(
     useCallback(() => getChatRoomHistory(roomId), [roomId])
@@ -45,7 +47,12 @@ const ChatRoom = ({ roomId }: { roomId: number }) => {
         <button
           className="bg-[#FFB600]"
           onClick={() => {
-            sendMessage(message);
+            sendMessage({
+              cpUserId: null,
+              userId: myData?.userId ?? 0,
+              chatRoomId: roomId,
+              content: message,
+            });
           }}
         >
           보내기

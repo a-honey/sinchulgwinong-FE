@@ -2,6 +2,12 @@ import { useEffect, useState } from "react";
 
 import { domain } from "@/constants/env";
 
+export interface MessageType {
+  cpUserId: null | number;
+  userId: null | number;
+  chatRoomId: number;
+  content: string;
+}
 const url = `wss://${domain}/ws/chat`;
 
 const useWebSocket = () => {
@@ -31,7 +37,7 @@ const useWebSocket = () => {
     };
   }, []);
 
-  const sendMessage = (message: string) => {
+  const sendMessage = (message: MessageType) => {
     if (ws && ws.readyState === WebSocket.OPEN) {
       ws.send(JSON.stringify(message));
     } else {
