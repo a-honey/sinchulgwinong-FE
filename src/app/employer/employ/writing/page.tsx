@@ -46,8 +46,7 @@ const Writing = () => {
 
     if (image && image.length > 0) {
       const file = image[0];
-      const imageBlob = new Blob([file], { type: "multipart/form-data" });
-      formData.append("images", imageBlob);
+      formData.append("images", file);
     }
 
     postJobInfoPost(formData);
@@ -116,7 +115,7 @@ const Writing = () => {
             <label className="subTitle1 w-[45px]">파일</label>
             <input
               type="file"
-              accept=".png, .jpg, .jpeg, .gif"
+              accept=".png, .jpg, .jpeg"
               onChange={(e) => setImage(e.target.files && e.target.files)}
             />
           </div>

@@ -30,8 +30,17 @@ const useWebSocket = () => {
       }
     };
 
-    socket.onclose = () => {
-      console.log("WebSocket disconnected");
+    socket.onclose = (event) => {
+      console.log("onClose", event);
+      if (event.wasClean) {
+        console.log(
+          `WebSocket connection closed cleanly, code=${event.code}, reason=${event.reason}`
+        );
+      } else {
+        console.error(
+          `WebSocket connection died, code=${event.code}, reason=${event.reason}`
+        );
+      }
     };
 
     setWs(socket);
@@ -43,7 +52,9 @@ const useWebSocket = () => {
 
   const sendMessage = (message: MessageType) => {
     if (ws && ws.readyState === WebSocket.OPEN) {
+      console.log("전송한 메시지", message);
       ws.send(JSON.stringify(message));
+      console.log("전송성공");
     } else {
       console.error("WebSocket not connected");
     }
