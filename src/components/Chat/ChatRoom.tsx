@@ -33,8 +33,13 @@ const ChatRoom = ({ roomId }: { roomId: number }) => {
             name="나"
           />
         ))}
-        {messages.map((chat) => (
-          <ChatRoomItem key={chat} type="sender" content={chat} name="나" />
+        {messages.map((chat, index) => (
+          <ChatRoomItem
+            key={index}
+            type="sender"
+            content={chat.content}
+            name="나"
+          />
         ))}
       </div>
       <div className="flex">
@@ -48,7 +53,12 @@ const ChatRoom = ({ roomId }: { roomId: number }) => {
         <button
           className="bg-[#FFB600]"
           onClick={() => {
-            sendMessage(message);
+            sendMessage({
+              cpUserId: null,
+              userId: myData?.userId ?? 0,
+              chatRoomId: roomId,
+              content: message,
+            });
           }}
         >
           보내기

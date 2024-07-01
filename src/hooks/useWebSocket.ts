@@ -12,7 +12,7 @@ const url = `wss://${domain}/ws/chat`;
 
 const useWebSocket = () => {
   const [ws, setWs] = useState<WebSocket | null>(null);
-  const [messages, setMessages] = useState<string[]>([]);
+  const [messages, setMessages] = useState<MessageType[]>([]);
 
   useEffect(() => {
     const socket = new WebSocket(url);
@@ -22,8 +22,12 @@ const useWebSocket = () => {
     };
 
     socket.onmessage = (event) => {
-      const message = JSON.parse(event.data);
-      setMessages((prevMessages) => [...prevMessages, message]);
+      try {
+        const message: MessageType = JSON.parse(event.data);
+        setMessages((prevMessages) => [...prevMessages, message]);
+      } catch (error) {
+        console.error("Error parsing message", error);
+      }
     };
 
     socket.onclose = () => {
@@ -37,7 +41,7 @@ const useWebSocket = () => {
     };
   }, []);
 
-  const sendMessage = (message: string) => {
+  const sendMessage = (message: MessageType) => {
     if (ws && ws.readyState === WebSocket.OPEN) {
       ws.send(JSON.stringify(message));
     } else {

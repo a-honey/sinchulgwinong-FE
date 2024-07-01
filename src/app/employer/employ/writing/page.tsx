@@ -39,13 +39,15 @@ const Writing = () => {
 
     const formData = new FormData();
 
-    formData.append("request", JSON.stringify(payload));
+    formData.append(
+      "request",
+      new Blob([JSON.stringify(payload)], { type: "application/json" })
+    );
 
-    /*
     if (image) {
       formData.append("images", image[0]);
     }
-    */
+
     postJobInfoPost(formData);
     return;
   };
