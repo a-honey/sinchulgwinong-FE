@@ -11,7 +11,7 @@ import usePagination from "@/hooks/usePagination";
 import { useRouter } from "next/navigation";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
 
-const THEAD = ["지역", "모집제목/모집자명", "급여", "모집기간"];
+const THEAD = ["지역", "모집제목", "급여", "모집종료일"];
 
 const FilterListBox = ({ address }: { address: AddressType }) => {
   const router = useRouter();

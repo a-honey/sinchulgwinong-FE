@@ -43,8 +43,9 @@ const Detail = () => {
               </span>
             </div>
             <div>
-              댓글{data.commentCount} |{0}
+              댓글{data.commentCount} |{" "}
               <span
+                className="cursor-pointer"
                 onClick={() => {
                   postCommunityScrap(boardId);
                 }}

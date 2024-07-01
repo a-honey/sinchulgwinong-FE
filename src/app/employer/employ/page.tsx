@@ -4,6 +4,7 @@ import Blank from "@/components/StatusComponents/Empty";
 import Button from "@/components/Button";
 import Container from "@/app/my-page/ui/Container";
 import Link from "next/link";
+import { getFormattedDate } from "@/lib/utils";
 import getMyEmployerInfo from "@/api/employer/getMyEmployerInfo";
 import getMyJobInfoPosts from "@/api/employer/getMyJobInfoPosts";
 import { useCallback } from "react";
@@ -21,11 +22,14 @@ const Employ = () => {
       <h2 className="title1 mb-[50px]">작성 목록</h2>
       <Container title="작성한 채용 글 목록" subTitle="작성한 글내역">
         {data?.data.jobBoardResponseDTOS.length === 0 && <Blank />}
-        <div className="flex flex-col gap-[5px]">
+        <div className="mt-[10px] flex flex-col gap-[5px]">
           {data?.data.jobBoardResponseDTOS.map((job) => (
             <div key={job.jobBoardId}>
-              {job.jobContent}{" "}
-              <span className="text-gray2">{job.createdAt}</span>
+              {job.jobContent}
+              {"   "}
+              <span className="text-gray2">
+                {getFormattedDate(job.createdAt)}
+              </span>
             </div>
           ))}
         </div>

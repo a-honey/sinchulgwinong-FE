@@ -1,18 +1,21 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 import Link from "next/link";
 import Paths from "@/constants/paths";
 import { checkIsLogin } from "@/lib/authUtils";
 import postLogout from "@/api/auth/postLogout";
-import { usePathname } from "next/navigation";
 
 const UserNav = () => {
+  const router = useRouter();
   const pathName = usePathname();
   const [isLogin, setIsLogin] = useState(false);
 
-  const onLogoutSuccess = () => {};
+  const onLogoutSuccess = () => {
+    router.push("/");
+  };
   useEffect(() => {
     const checkLogin = async () => {
       const loginStatus = await checkIsLogin();

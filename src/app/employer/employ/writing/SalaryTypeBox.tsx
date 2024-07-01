@@ -19,10 +19,6 @@ const SalaryTypeBox = ({ register }: { register: UseFormRegisterReturn }) => {
           <input type="radio" value="MONTHLY" {...register} />
           월급
         </label>
-        <label>
-          <input type="radio" value="YEAR" {...register} />
-          연봉
-        </label>
       </div>
     </div>
   );

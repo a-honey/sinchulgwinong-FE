@@ -13,13 +13,17 @@ import usePagination from "@/hooks/usePagination";
 import { useRouter } from "next/navigation";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
 
-const THEAD = ["기업명", "기업리뷰", "별점"];
+const THEAD = ["번호", "기업명", "기업리뷰", "별점"];
+const SIZE = 10;
 
 const OrganInfo = () => {
   const router = useRouter();
   const { currentPage, onPageChange } = usePagination();
   const { data } = useUpdateFetch(
-    useCallback(() => getOrgans({ page: currentPage, size: 10 }), [currentPage])
+    useCallback(
+      () => getOrgans({ page: currentPage, size: SIZE }),
+      [currentPage]
+    )
   );
 
   return (
@@ -32,8 +36,9 @@ const OrganInfo = () => {
           {!data || data?.cpUsers.length === 0 ? (
             <Blank />
           ) : (
-            data.cpUsers.map((organ) => {
+            data.cpUsers.map((organ, index) => {
               const data = [
+                `${currentPage * SIZE + index + 1}`,
                 `${organ.cpName}`,
                 `${organ.reviewCount} 개`,
                 `${transformRatingToStar(

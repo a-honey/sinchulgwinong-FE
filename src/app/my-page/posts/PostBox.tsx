@@ -9,7 +9,7 @@ const PostBox = () => {
   const { data } = useUpdateFetch(getCommunityPostsScrap);
   return (
     <Container title="작성한 글 목록" subTitle="작성한 글 내역">
-      <div>
+      <div className="flex flex-col gap-[5px]">
         {data?.boards.length === 0 && <Blank />}
         {data?.boards.map((community) => (
           <div key={community.boardId}>{community.title}</div>

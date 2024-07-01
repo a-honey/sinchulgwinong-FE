@@ -29,7 +29,12 @@ const Writing = () => {
       data.address,
     ].join(" ");
 
-    const payload = { ...data, address: combinedAddress };
+    const payload = {
+      ...data,
+      address: combinedAddress,
+      salaryAmount: +data.salaryAmount,
+    };
+
     console.log(payload);
 
     const formData = new FormData();
@@ -80,7 +85,7 @@ const Writing = () => {
             <div className="flex flex-col gap-[20px]">
               <SalaryTypeBox register={register("salaryType")} />
               <div className="flex flex-col gap-[10px]">
-                <label className="subTitle2 text-[#2D2D2D]">연봉</label>
+                <label className="subTitle2 text-[#2D2D2D]">금액</label>
                 <Input
                   placeholder="숫자를 입력하세요"
                   {...register("salaryAmount")}

@@ -10,7 +10,7 @@ import usePagination from "@/hooks/usePagination";
 import { useRouter } from "next/navigation";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
 
-const THEAD = ["지역", "모집제목 / 모집자명", "급여", "모집종료일"];
+const THEAD = ["지역", "모집제목", "급여", "모집종료일"];
 
 const ListBox = () => {
   const router = useRouter();
@@ -33,7 +33,7 @@ const ListBox = () => {
           data.jobBoardResponseDTOS.map((row) => {
             const data = [
               `${row.address}`,
-              `${row.jobTitle} / ${row.cpName}`,
+              `${row.jobTitle}`,
               <div
                 key={row.jobBoardId}
                 className="flex items-center gap-[10px]"
