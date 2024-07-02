@@ -6,6 +6,7 @@ export interface MessageType {
   cpUserId: null | number;
   userId: null | number;
   chatRoomId: number;
+  sendUserType?: "USER" | "COMPANY";
   content: string;
 }
 const url = `wss://${domain}/ws/chat`;

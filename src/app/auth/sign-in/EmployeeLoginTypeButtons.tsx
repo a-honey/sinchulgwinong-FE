@@ -1,4 +1,8 @@
-import { googleClientId, googleRedirectUrl } from "@/constants/env";
+import {
+  googleClientId,
+  googleOAuthUrl,
+  googleRedirectUrl,
+} from "@/constants/env";
 
 import Button from "@/components/Button";
 import Link from "next/link";
@@ -10,13 +14,7 @@ const EmployeeLoginTypeButtons = ({
 }) => {
   return (
     <div className="flex flex-col gap-[30px]">
-      <Link
-        href={`https://accounts.google.com/o/oauth2/v2/auth?
-client_id=${googleClientId}
-&redirect_uri=${googleRedirectUrl}
-&response_type=code
-&scope=email+profile`}
-      >
+      <Link href={googleOAuthUrl}>
         <Button
           className="bg-[#EEEEEE] py-[25px] w-[700px]"
           text="구글 계정으로 로그인"

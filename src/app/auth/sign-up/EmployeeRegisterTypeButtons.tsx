@@ -1,6 +1,8 @@
 "use client";
 
 import Button from "@/components/Button";
+import Link from "next/link";
+import { googleOAuthUrl } from "@/constants/env";
 
 const onClick = () => {
   alert("준비중입니다.");
@@ -13,12 +15,14 @@ const EmployeeRegisterTypeButtons = ({
 }) => {
   return (
     <div className="flex flex-col gap-[30px]">
-      <Button
-        onClick={onClick}
-        className="bg-[#EEEEEE] py-[25px] w-[700px]"
-        text="구글 계정으로 회원가입"
-        isRound
-      />
+      <Link href={googleOAuthUrl}>
+        <Button
+          onClick={onClick}
+          className="bg-[#EEEEEE] py-[25px] w-[700px]"
+          text="구글 계정으로 회원가입"
+          isRound
+        />
+      </Link>
       <Button
         onClick={onClick}
         className="bg-[#FFD600] py-[25px] w-[700px]"

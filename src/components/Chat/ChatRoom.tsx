@@ -5,12 +5,17 @@ import { useCallback, useState } from "react";
 import ArrowIcon from "@/assets/icons/ArrowIcon";
 import ChatRoomItem from "./ChatRoomItem";
 import getChatRoomHistory from "@/api/chat/getChatRoomHistory";
+import getMyEmployerInfo from "@/api/employer/getMyEmployerInfo";
 import getMyProfile from "@/api/user/getMyProfile";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
 import useWebSocket from "@/hooks/useWebSocket";
 
 const ChatRoom = ({ roomId }: { roomId: number }) => {
   const { data: myData } = useUpdateFetch(getMyProfile);
+  const { data: cpUserData } = useUpdateFetch(getMyEmployerInfo);
+
+  const isUser = myData?.userId;
+
   const [message, setMessage] = useState("");
   const { data } = useUpdateFetch(
     useCallback(() => getChatRoomHistory(roomId), [roomId])
@@ -28,17 +33,19 @@ const ChatRoom = ({ roomId }: { roomId: number }) => {
         {data?.map((chat) => (
           <ChatRoomItem
             key={chat.chatMessageId}
-            type="sender"
+            type={
+              isUser && chat.sendUserType === "USER" ? "sender" : "receiver"
+            }
             content={chat.message}
-            name="나"
           />
         ))}
         {messages.map((chat, index) => (
           <ChatRoomItem
             key={index}
-            type="sender"
+            type={
+              isUser && chat.sendUserType === "USER" ? "sender" : "receiver"
+            }
             content={chat.content}
-            name="나"
           />
         ))}
       </div>
@@ -54,8 +61,8 @@ const ChatRoom = ({ roomId }: { roomId: number }) => {
           className="bg-[#FFB600]"
           onClick={() => {
             sendMessage({
-              cpUserId: null,
-              userId: myData?.userId ?? 0,
+              cpUserId: cpUserData?.cpUserId ?? null,
+              userId: myData?.userId ?? null,
               chatRoomId: roomId,
               content: message,
             });
