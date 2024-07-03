@@ -47,7 +47,7 @@ const Community = () => {
             }}
           />
         </SearchForm>
-        {!isLogin && (
+        {isLogin && (
           <Link
             href="/community/writing"
             className="w-[200px] subTitle1 bg-primary2 px-[36px] py-[25px] text-[20px] rounded-[5px]"
