@@ -2,6 +2,7 @@
 
 import BannerCard from "./BannerCard";
 import Container from "./Container";
+import { OrganSortEnum } from "@/api/organ";
 import Paths from "@/constants/paths";
 import ReviewCard from "./ReviewCard";
 import StoreObject from "@/assets/icons/StoreObject";
@@ -11,7 +12,11 @@ import useUpdateFetch from "@/hooks/useUpdateFetch";
 
 const ReviewBox = () => {
   const { data } = useUpdateFetch(
-    useCallback(() => getOrgans({ page: 0, size: 3, sort: "reviewDesc" }), [])
+    useCallback(
+      () =>
+        getOrgans({ page: 0, size: 3, sort: OrganSortEnum.ReviewsDesc.value }),
+      []
+    )
   );
 
   return (

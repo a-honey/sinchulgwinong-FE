@@ -1,3 +1,5 @@
+export type LabelValue<T> = { label: string; value: T };
+
 export interface ResponseDTO<T> {
   message: string;
   data: T;
