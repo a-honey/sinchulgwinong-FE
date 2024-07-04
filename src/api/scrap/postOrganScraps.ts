@@ -5,7 +5,5 @@ export default async function postOrganScrap(organId: number) {
     const response = await apiInstance.post(`/scraps/cp-user/${organId}`, "");
 
     return response;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

@@ -11,7 +11,5 @@ export default async function postQna(body: PostQnaType) {
     const response = await apiInstance.post<ResponseDTO<string>>(`/faqs`, body);
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

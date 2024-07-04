@@ -11,7 +11,5 @@ export default async function getMyPoint() {
     const response = await apiInstance.get<ResponseDTO<MyPointType>>(`/points`);
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

@@ -8,7 +8,5 @@ export default async function getDongNames(city: string, district: string) {
     );
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

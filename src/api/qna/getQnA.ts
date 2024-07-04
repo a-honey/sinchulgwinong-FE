@@ -25,7 +25,5 @@ export default async function getQnA({ page, size, sort }: QnaProps) {
     );
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

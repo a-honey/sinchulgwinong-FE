@@ -16,7 +16,5 @@ export default async function postSendAuthenticationNumber(
     );
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

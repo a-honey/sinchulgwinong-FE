@@ -10,7 +10,5 @@ export default async function postCommunityPost(body: PostBody) {
     const response = await apiInstance.post(`/boards`, body);
 
     return response;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

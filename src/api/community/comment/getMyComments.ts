@@ -19,7 +19,5 @@ export default async function getMyComments() {
     );
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

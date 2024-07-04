@@ -5,7 +5,5 @@ export default async function postChatRoom(employerId: number) {
     const response = await apiInstance.post(`/chats/cp-user/${employerId}`, "");
 
     return response;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

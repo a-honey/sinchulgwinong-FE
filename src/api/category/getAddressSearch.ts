@@ -33,7 +33,5 @@ export default async function getAddressSearch({ address, page, size }: Props) {
     );
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

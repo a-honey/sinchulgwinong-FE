@@ -8,7 +8,5 @@ export default async function postJobInfoScrap(boardId: number) {
     );
 
     return response;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

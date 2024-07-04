@@ -6,7 +6,5 @@ export default async function postLogout(onSuccess?: () => void) {
 
     onSuccess?.();
     return response;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

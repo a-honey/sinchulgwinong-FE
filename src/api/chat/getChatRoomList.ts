@@ -20,7 +20,5 @@ export default async function getChatRoomList() {
     );
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

@@ -15,7 +15,5 @@ export default async function postComment(
     );
 
     return response;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

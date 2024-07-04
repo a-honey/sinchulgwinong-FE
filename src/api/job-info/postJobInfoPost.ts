@@ -37,7 +37,5 @@ export default async function postJobInfoPost({
 
     onSuccess();
     return response;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

@@ -15,7 +15,5 @@ export default async function postVerifyAuthenticationNumber(
     );
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

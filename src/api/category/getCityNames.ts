@@ -8,7 +8,5 @@ export default async function getCityNames() {
     );
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

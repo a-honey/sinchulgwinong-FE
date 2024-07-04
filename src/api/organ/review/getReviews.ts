@@ -30,7 +30,5 @@ export default async function getReviews({
     );
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

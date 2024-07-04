@@ -31,7 +31,5 @@ export default async function getCategorySearch({
     );
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

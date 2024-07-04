@@ -8,7 +8,5 @@ export default async function deleteCommunityPost(postId: number) {
     );
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

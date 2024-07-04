@@ -23,7 +23,5 @@ export default async function getJobInfoPosts({ page, size }: PaginationProps) {
     );
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

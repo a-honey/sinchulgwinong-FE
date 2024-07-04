@@ -8,7 +8,5 @@ export default async function postJobBoardBannerAd(jobBoardId: number) {
     );
 
     return response;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

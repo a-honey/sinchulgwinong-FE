@@ -15,7 +15,5 @@ export default async function postReviewSuspends(body: ReviewSuspendsBody) {
     );
 
     return response;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

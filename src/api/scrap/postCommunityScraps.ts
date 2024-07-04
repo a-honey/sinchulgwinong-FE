@@ -5,7 +5,5 @@ export default async function postCommunityScrap(boardId: number) {
     const response = await apiInstance.post(`/scraps/boards/${boardId}`, "");
 
     return response;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

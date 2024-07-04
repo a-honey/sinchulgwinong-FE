@@ -31,7 +31,5 @@ export default async function getMyJobInfoPosts(
 
     const res = response.json();
     return res;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

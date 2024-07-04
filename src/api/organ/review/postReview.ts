@@ -17,7 +17,5 @@ export default async function postReview(body: PostReviewType) {
     );
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

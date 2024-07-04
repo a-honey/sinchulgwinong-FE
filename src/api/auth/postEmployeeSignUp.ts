@@ -23,7 +23,5 @@ export default async function postEmployeeSignUp(body: EmployeeSignUpBody) {
     );
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

@@ -23,7 +23,5 @@ export default async function getMyEmployerInfo() {
     );
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

@@ -22,7 +22,5 @@ export default async function postEmployeeSocialSignUpExtraInfo(
     );
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

@@ -15,7 +15,5 @@ export default async function getUsedPointHistory() {
     >(`/points/used`);
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

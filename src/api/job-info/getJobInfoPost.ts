@@ -9,7 +9,5 @@ export default async function getJobInfoPost(jobPostId: number) {
     );
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

@@ -32,7 +32,5 @@ export default async function getOrgans({
     );
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

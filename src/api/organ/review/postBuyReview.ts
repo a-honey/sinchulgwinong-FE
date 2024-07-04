@@ -10,7 +10,5 @@ export default async function postBuyReview(reviewId: number) {
     );
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

@@ -13,7 +13,5 @@ export default async function patchCommunityPost(
     );
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

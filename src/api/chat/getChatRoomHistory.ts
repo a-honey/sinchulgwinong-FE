@@ -18,7 +18,5 @@ export default async function getChatRoomHistory(chatRoomId: number) {
     );
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

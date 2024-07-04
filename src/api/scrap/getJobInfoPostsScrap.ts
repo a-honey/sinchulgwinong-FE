@@ -14,7 +14,5 @@ export default async function getJobInfoPostsScrap() {
     );
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }

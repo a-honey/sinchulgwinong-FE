@@ -15,7 +15,5 @@ export default async function getSavedPointHistory() {
     >(`/points/saved`);
 
     return response.data;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }
