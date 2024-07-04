@@ -3,9 +3,9 @@
 import AdBanner from "./AdBanner";
 import ArrowIcon from "@/assets/icons/ArrowIcon";
 import SearchObject from "@/assets/icons/SearchObject";
-import banner1 from "@/assets/images/banner1.png";
-import banner2 from "@/assets/images/banner2.png";
-import banner3 from "@/assets/images/banner3.png";
+import banner1 from "@/assets/images/banner1.webp";
+import banner2 from "@/assets/images/banner2.webp";
+import banner3 from "@/assets/images/banner3.webp";
 import { useState } from "react";
 
 const Images = [banner1, banner2, banner3];

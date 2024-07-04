@@ -5,9 +5,9 @@ import AdBannerSlider from "./AdBannerSlider";
 import AdSlide from "./AdSlide";
 import ArrowIcon from "@/assets/icons/ArrowIcon";
 import SearchObject from "@/assets/icons/SearchObject";
-import banner1 from "@/assets/images/banner1.png";
-import banner2 from "@/assets/images/banner2.png";
-import banner3 from "@/assets/images/banner3.png";
+import banner1 from "@/assets/images/banner1.webp";
+import banner2 from "@/assets/images/banner2.webp";
+import banner3 from "@/assets/images/banner3.webp";
 import getAdJobInfoPosts from "@/api/job-info/getAdJobInfoPosts";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
 
