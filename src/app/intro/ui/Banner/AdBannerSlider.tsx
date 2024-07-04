@@ -32,6 +32,7 @@ const AdBannerSlider = () => {
   return (
     <div className="relative flex w-full h-[200px] py-[40px] px-[120px] justify-between items-center bg-white relative">
       <button
+        aria-label="왼쪽 배너 이동"
         onClick={onDecreaseIndex}
         className="absolute z-[88] left-[40px] flex justify-center items-center w-[40px] h-[40px] rounded rounded-[50px]"
       >
@@ -39,6 +40,7 @@ const AdBannerSlider = () => {
       </button>
       <AdBanner src={Images[currentSrcIndex]} />
       <button
+        aria-label="오른쪽 배너 이동"
         onClick={onIncreaseIndex}
         className="absolute right-[40px] flex justify-center items-center w-[40px] h-[40px] rounded rounded-[50px]"
       >
