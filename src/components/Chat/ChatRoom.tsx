@@ -36,7 +36,7 @@ const ChatRoom = ({ roomId }: { roomId: number }) => {
             type={
               isUser && chat.sendUserType === "USER" ? "sender" : "receiver"
             }
-            content={chat.message}
+            content={chat.content}
           />
         ))}
         {messages.map((chat, index) => (

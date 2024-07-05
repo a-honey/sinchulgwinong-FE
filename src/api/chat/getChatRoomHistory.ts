@@ -6,7 +6,7 @@ export interface ChatContentType {
   chatRoomId: 1;
   cpUserId: number | null;
   userId: number | null;
-  message: string;
+  content: string;
   sendUserType: string;
   createAt: "2024-06-29T21:41:08.619056";
 }
