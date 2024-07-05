@@ -17,8 +17,6 @@ const Footer = () => {
       </div>
       <div>
         대표자: 9502 | 대표메일: 9502team@gmail.com
-        <br />
-        사업자등록번호 : 123-12-12345 | 서울특별시
         <br />ⓒ 2024. 9502 all rights reserved.
       </div>
     </footer>
