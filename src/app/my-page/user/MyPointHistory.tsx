@@ -1,10 +1,15 @@
 "use client";
 
+import { useCallback, useState } from "react";
+
 import PointItem from "./PointItem";
 import getSavedPointHistory from "@/api/user/getSavedPointHistory";
 import getUsedPointHistory from "@/api/user/getUsedPointHistory";
-import { useState } from "react";
+import useIntersectObserver from "@/hooks/useIntersectionObserver";
+import usePagination from "@/hooks/usePagination";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
+
+const SIZE = 6;
 
 enum PointHistoryTypeEnum {
   Saved = "적립 내역",
@@ -46,7 +51,24 @@ const MyPointHistory = () => {
 export default MyPointHistory;
 
 const SavedPointHistory = () => {
-  const { data } = useUpdateFetch(getSavedPointHistory);
+  const { currentPage, onPageChange } = usePagination();
+  const { data } = useUpdateFetch(
+    useCallback(
+      () => getSavedPointHistory({ cursorId: currentPage, limit: SIZE }),
+      [currentPage]
+    )
+  );
+
+  const { ref } = useIntersectObserver<HTMLDivElement>({
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1,
+    onIntersect: ([entry]) => {
+      if (entry.isIntersecting && data?.hasNextPage) {
+        onPageChange(currentPage + SIZE);
+      }
+    },
+  });
   if (!data) return;
 
   return (
@@ -58,12 +80,30 @@ const SavedPointHistory = () => {
           date={commentHistory.createdAt}
         />
       ))}
+      {data.hasNextPage && <div ref={ref} />}
     </>
   );
 };
 
 const UsedPointHistory = () => {
-  const { data } = useUpdateFetch(getUsedPointHistory);
+  const { currentPage, onPageChange } = usePagination();
+  const { data } = useUpdateFetch(
+    useCallback(
+      () => getUsedPointHistory({ cursorId: currentPage, limit: SIZE }),
+      [currentPage]
+    )
+  );
+
+  const { ref } = useIntersectObserver<HTMLDivElement>({
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1,
+    onIntersect: ([entry]) => {
+      if (entry.isIntersecting && data?.hasNextPage) {
+        onPageChange(currentPage + SIZE);
+      }
+    },
+  });
   if (!data) return;
 
   return (
@@ -75,6 +115,7 @@ const UsedPointHistory = () => {
           date={commentHistory.createdAt}
         />
       ))}
+      {data.hasNextPage && <div ref={ref} />}
     </>
   );
 };

@@ -19,6 +19,11 @@ export interface PaginationProps {
   size: number;
 }
 
+export interface CursorPaginationProps {
+  cursorId: number;
+  limit?: number;
+}
+
 export type LoginType = "EMAIL" | "USER" | "GOOGLE" | "NORMAL";
 
 export type SalaryType = "DAILY" | "WEEKLY" | "MONTHLY" | "YEAR";

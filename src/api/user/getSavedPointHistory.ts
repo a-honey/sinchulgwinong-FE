@@ -1,4 +1,9 @@
-import { LoginType, ResponseCursorPagination, ResponseDTO } from "@/types";
+import {
+  CursorPaginationProps,
+  LoginType,
+  ResponseCursorPagination,
+  ResponseDTO,
+} from "@/types";
 
 import apiInstance from "../apiInstance";
 
@@ -8,11 +13,18 @@ interface PointHistoryType {
   createdAt: "2024-06-18";
 }
 
-export default async function getSavedPointHistory() {
+export default async function getSavedPointHistory({
+  cursorId,
+  limit = 6,
+}: CursorPaginationProps) {
+  const params = new URLSearchParams({
+    cursorId: cursorId.toString(),
+    limit: limit.toString(),
+  });
   try {
     const response = await apiInstance.get<
       ResponseDTO<ResponseCursorPagination<PointHistoryType>>
-    >(`/points/saved`);
+    >(`/points/saved?${params}`);
 
     return response.data;
   } catch (e) {}
