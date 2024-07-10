@@ -1,12 +1,19 @@
+import { Suspense, lazy } from "react";
+
 import Button from "../Button";
-import ChatNoBackgroundObject from "@/assets/icons/ChatNoBackgroundObject";
 import Link from "next/link";
+
+const ChatNoBackgroundObject = lazy(
+  () => import("@/assets/icons/ChatNoBackgroundObject")
+);
 
 const ChatListBlack = () => {
   return (
     <>
       <div className="flex flex-col min-h-[500px] gap-[20px] justify-center items-center">
-        <ChatNoBackgroundObject />
+        <Suspense fallback={<div>Loading...</div>}>
+          <ChatNoBackgroundObject width={111.93} height={82} />
+        </Suspense>
         <div className="flex flex-col justify-center items-center">
           <div className="title2 text-[#343434]">채팅을 시작해보세요!</div>
           <div className="title2 text-gray3">
