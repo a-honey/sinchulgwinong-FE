@@ -1,13 +1,13 @@
 import { Suspense, lazy } from "react";
 
+import Image from "next/image";
 import Link from "next/link";
 import PageNavItem from "@/components/PageNavItem";
 import Paths from "@/constants/paths";
-
-const NavWriting = lazy(() => import("@/assets/icons/NavWriting"));
-const NavUser = lazy(() => import("@/assets/icons/NavUser"));
-const NavScrap = lazy(() => import("@/assets/icons/NavScrap"));
-const NavChat = lazy(() => import("@/assets/icons/NavChat"));
+import navChat from "@/assets/svgs/navChat.svg";
+import navScrap from "@/assets/svgs/navScrap.svg";
+import navUser from "@/assets/svgs/navUser.svg";
+import navWriting from "@/assets/svgs/navWriting.svg";
 
 const Nav = () => {
   return (
@@ -17,9 +17,9 @@ const Nav = () => {
           <PageNavItem.Label
             value={Paths.USER}
             icon={
-              <Suspense fallback={<div>Loading...</div>}>
-                <NavUser />
-              </Suspense>
+              <svg width="26" height="30">
+                <use href="#navUser"></use>
+              </svg>
             }
             text="회원 정보"
           />
@@ -30,9 +30,9 @@ const Nav = () => {
           <PageNavItem.Label
             value={Paths.SCRAPS}
             icon={
-              <Suspense fallback={<div>Loading...</div>}>
-                <NavScrap />
-              </Suspense>
+              <svg width="23" height="29">
+                <use href="#navScrap"></use>
+              </svg>
             }
             text="스크랩"
           />
@@ -44,9 +44,9 @@ const Nav = () => {
           <PageNavItem.Label
             value={Paths.POSTS}
             icon={
-              <Suspense fallback={<div>Loading...</div>}>
-                <NavWriting />
-              </Suspense>
+              <svg width="25" height="30">
+                <use href="#navWriting"></use>
+              </svg>
             }
             text="작성 목록"
           />
@@ -56,9 +56,9 @@ const Nav = () => {
         <PageNavItem>
           <PageNavItem.Label
             icon={
-              <Suspense fallback={<div>Loading...</div>}>
-                <NavChat />
-              </Suspense>
+              <svg width="31" height="30">
+                <use href="#navScrap"></use>
+              </svg>
             }
             text="채팅"
           />
