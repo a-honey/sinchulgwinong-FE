@@ -11,6 +11,7 @@ export interface ChatRoomInfoType {
   chatCheck: false;
   userRead: boolean;
   companyUserRead: boolean;
+  lastContent: string;
 }
 
 export default async function getChatRoomList() {

@@ -1,17 +1,28 @@
-import { ChatRoomInfoType } from "@/api/chat/getChatRoomList";
+"use client";
+
 import { cn } from "@/lib/utils";
+import getMyEmployerInfo from "@/api/employer/getMyEmployerInfo";
+import getMyProfile from "@/api/user/getMyProfile";
+import useUpdateFetch from "@/hooks/useUpdateFetch";
 
 const ChatListItem = ({
   roomId,
   userName,
+  cpUserName,
   currentRoomId,
   isRead,
+  content,
 }: {
   roomId: number;
   currentRoomId: number;
   userName: string;
   isRead: boolean;
+  cpUserName: string;
+  content: string;
 }) => {
+  const { data: myData } = useUpdateFetch(getMyProfile);
+
+  const isUser = myData?.userId;
   return (
     <div
       className={cn(
@@ -20,10 +31,9 @@ const ChatListItem = ({
       )}
     >
       <div className="flex justify-between">
-        <div className="subTitle1">{userName}</div>
-        <div className="detail2 text-gray3">오후 08:12</div>
+        <div className="subTitle1">{isUser ? cpUserName : userName}</div>
       </div>
-      <div className="detail1 text-gray3">구인 글 보고 연략드렸</div>
+      <div className="detail1 text-gray3">{content}</div>
       {!isRead && (
         <div className="absolute right-[30px] bottom-[20px] text-primary4">
           N

@@ -9,25 +9,40 @@ import useUpdateFetch from "@/hooks/useUpdateFetch";
 
 const Chat = () => {
   const [currentRoomId, setCurrentRoomId] = useState(0);
+  const [currentRoomName, setCurrentRoomName] = useState("");
   const { data } = useUpdateFetch(getChatRoomList);
 
   const handleCurrentRoomId = (roomId: number) => {
     setCurrentRoomId(roomId);
   };
 
+  const handleCurrentRoomName = (roomName: string) => {
+    setCurrentRoomName(roomName);
+  };
+
   return (
     <div className="flex h-full">
-      {data && data.length > 0 ? (
+      {currentRoomId === 0 && data && data.length > 0 ? (
         <ChatList
           list={data}
           currentRoomId={currentRoomId}
           handleCurrentRoomId={handleCurrentRoomId}
+          handleCurrentRoomName={handleCurrentRoomName}
         />
       ) : (
         <h2 className="title1 w-[300px]">채팅</h2>
       )}
       {(!data || data.length === 0) && <ChatListBlack />}
-      {currentRoomId !== 0 && <ChatRoom roomId={currentRoomId} />}
+      {currentRoomId !== 0 && (
+        <ChatRoom
+          roomId={currentRoomId}
+          currentRoomName={currentRoomName}
+          cancelCurrentRoomId={() => {
+            handleCurrentRoomId(0);
+            handleCurrentRoomName("");
+          }}
+        />
+      )}
     </div>
   );
 };
