@@ -86,7 +86,9 @@ const SavedPointHistory = () => {
         <PointItem
           key={commentHistory.createdAt}
           isFirst={index === 0}
-          content={`${commentHistory.type} (+${commentHistory.savedPoint}p)`}
+          content={`${changePointType(commentHistory.type)} (+${
+            commentHistory.savedPoint
+          }p)`}
           date={commentHistory.createdAt}
         />
       ))}
@@ -122,7 +124,9 @@ const UsedPointHistory = () => {
         <PointItem
           key={commentHistory.createdAt}
           isFirst={index === 0}
-          content={`${commentHistory.type} (+${commentHistory.usedPoint}p)`}
+          content={`${changePointType(commentHistory.type)} (+${
+            commentHistory.usedPoint
+          }p)`}
           date={commentHistory.createdAt}
         />
       ))}
@@ -130,3 +134,14 @@ const UsedPointHistory = () => {
     </>
   );
 };
+
+function changePointType(type: string) {
+  switch (type) {
+    case "SIGNUP":
+      return "회원가입";
+    case "REVIEW":
+      return "리뷰작성";
+    default:
+      return "기타";
+  }
+}

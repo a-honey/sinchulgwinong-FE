@@ -22,15 +22,13 @@ const Chat = () => {
 
   return (
     <div className="flex h-full">
-      {currentRoomId === 0 && data && data.length > 0 ? (
+      {currentRoomId === 0 && data && data.length > 0 && (
         <ChatList
           list={data}
           currentRoomId={currentRoomId}
           handleCurrentRoomId={handleCurrentRoomId}
           handleCurrentRoomName={handleCurrentRoomName}
         />
-      ) : (
-        <h2 className="title1 w-[300px]">채팅</h2>
       )}
       {(!data || data.length === 0) && <ChatListBlack />}
       {currentRoomId !== 0 && (
