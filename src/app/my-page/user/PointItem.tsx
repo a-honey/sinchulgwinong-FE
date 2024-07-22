@@ -6,7 +6,7 @@ interface PointItemProps {
 
 const PointItem = ({ date, content, isFirst }: PointItemProps) => {
   return (
-    <div className="flex w-[430px]">
+    <div className="flex w-full">
       <div className="relative w-[60px]">
         <div className="absolute left-[0px] z-[99] top-[5px] bg-[#D9D9D9] w-[15px] h-[15px] rounded-[50px]" />
         {!isFirst && (
