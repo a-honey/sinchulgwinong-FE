@@ -22,9 +22,14 @@ const MyPointHistory = () => {
   );
 
   return (
-    <div className="flex flex-col items-end p-[40px] gap-[20px] border-[2px] border-[#E9E9E9] w-full">
-      <div>
+    <div className="flex flex-col p-[40px] gap-[20px] border-[2px] border-[#E9E9E9] w-full">
+      <div className="flex gap-[20px]">
         <button
+          className={
+            pointHistoryType === PointHistoryTypeEnum.Saved
+              ? "text-[#000000]"
+              : "text-gray3"
+          }
           onClick={() => {
             setPointHistoryType(PointHistoryTypeEnum.Saved);
           }}
@@ -32,6 +37,11 @@ const MyPointHistory = () => {
           {PointHistoryTypeEnum.Saved}
         </button>
         <button
+          className={
+            pointHistoryType === PointHistoryTypeEnum.Used
+              ? "text-[#000000]"
+              : "text-gray3"
+          }
           onClick={() => {
             setPointHistoryType(PointHistoryTypeEnum.Used);
           }}
@@ -69,18 +79,18 @@ const SavedPointHistory = () => {
       }
     },
   });
-  if (!data) return;
 
   return (
     <>
-      {data.data.map((commentHistory) => (
+      {data?.data.map((commentHistory, index) => (
         <PointItem
           key={commentHistory.createdAt}
+          isFirst={index === 0}
           content={`${commentHistory.type} (+${commentHistory.savedPoint}p)`}
           date={commentHistory.createdAt}
         />
       ))}
-      {data.hasNextPage && <div ref={ref} />}
+      {data?.hasNextPage && <div ref={ref} />}
     </>
   );
 };
@@ -108,9 +118,10 @@ const UsedPointHistory = () => {
 
   return (
     <>
-      {data.data.map((commentHistory) => (
+      {data.data.map((commentHistory, index) => (
         <PointItem
           key={commentHistory.createdAt}
+          isFirst={index === 0}
           content={`${commentHistory.type} (+${commentHistory.usedPoint}p)`}
           date={commentHistory.createdAt}
         />

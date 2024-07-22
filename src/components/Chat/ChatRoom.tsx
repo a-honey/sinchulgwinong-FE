@@ -10,7 +10,15 @@ import getMyProfile from "@/api/user/getMyProfile";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
 import useWebSocket from "@/hooks/useWebSocket";
 
-const ChatRoom = ({ roomId }: { roomId: number }) => {
+const ChatRoom = ({
+  roomId,
+  cancelCurrentRoomId,
+  currentRoomName,
+}: {
+  roomId: number;
+  currentRoomName: string;
+  cancelCurrentRoomId: () => void;
+}) => {
   const { data: myData } = useUpdateFetch(getMyProfile);
   const { data: cpUserData } = useUpdateFetch(getMyEmployerInfo);
 
@@ -26,8 +34,14 @@ const ChatRoom = ({ roomId }: { roomId: number }) => {
   return (
     <div className="flex flex-col gap-[20px] w-full pl-[40px]">
       <div className="flex gap-[5px] items-center">
-        <ArrowIcon type="left" width={20} height={20} color="black" />
-        <div className="title1">야옹이</div>
+        <ArrowIcon
+          type="left"
+          width={20}
+          height={20}
+          color="black"
+          onClick={cancelCurrentRoomId}
+        />
+        <div className="title1">{currentRoomName}</div>
       </div>
       <div className="flex flex-col gap-[5px] min-h-[500px]">
         {data?.map((chat) => (
