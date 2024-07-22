@@ -49,11 +49,13 @@ const MyPointHistory = () => {
           {PointHistoryTypeEnum.Used}
         </button>
       </div>
-      {pointHistoryType === PointHistoryTypeEnum.Saved ? (
-        <SavedPointHistory />
-      ) : (
-        <UsedPointHistory />
-      )}
+      <div className="flex flex-col gap-[20px] max-h-[440px] overflow-y-auto">
+        {pointHistoryType === PointHistoryTypeEnum.Saved ? (
+          <SavedPointHistory />
+        ) : (
+          <UsedPointHistory />
+        )}
+      </div>
     </div>
   );
 };
