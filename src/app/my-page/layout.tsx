@@ -10,6 +10,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   const [isLogin, setIsLogin] = useState(false);
   const router = useRouter();
 
+  /*
   useEffect(() => {
     const checkLogin = async () => {
       const loginStatus = await checkIsLogin();
@@ -26,7 +27,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   }, [router]);
 
   if (!isLogin) return null;
-
+*/
   return (
     <main>
       <div className="flex">

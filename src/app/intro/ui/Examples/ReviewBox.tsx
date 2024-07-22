@@ -1,14 +1,16 @@
 "use client";
 
+import { Suspense, lazy, useCallback } from "react";
+
 import BannerCard from "./BannerCard";
 import Container from "./Container";
 import { OrganSortEnum } from "@/api/organ";
 import Paths from "@/constants/paths";
 import ReviewCard from "./ReviewCard";
-import StoreObject from "@/assets/icons/StoreObject";
 import getOrgans from "@/api/organ/getOrgans";
-import { useCallback } from "react";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
+
+const StoreObject = lazy(() => import("@/assets/icons/StoreObject"));
 
 const ReviewBox = () => {
   const { data } = useUpdateFetch(
@@ -38,7 +40,11 @@ const ReviewBox = () => {
           color="primary4"
           title="기업 정보"
           description="기업 정보를 확인하세요"
-          icon={<StoreObject width={85} height={94.11} />}
+          icon={
+            <Suspense fallback={<div>Loading...</div>}>
+              <StoreObject width={85} height={94.11} />
+            </Suspense>
+          }
         />
         {data?.cpUsers.map((organ) => (
           <ReviewCard

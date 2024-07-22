@@ -1,10 +1,13 @@
+import { Suspense, lazy } from "react";
+
+import Image from "next/image";
 import Link from "next/link";
-import NavChat from "@/assets/icons/NavChat";
-import NavScrap from "@/assets/icons/NavScrap";
-import NavUser from "@/assets/icons/NavUser";
-import NavWriting from "@/assets/icons/NavWriting";
 import PageNavItem from "@/components/PageNavItem";
 import Paths from "@/constants/paths";
+import navChat from "@/assets/svgs/navChat.svg";
+import navScrap from "@/assets/svgs/navScrap.svg";
+import navUser from "@/assets/svgs/navUser.svg";
+import navWriting from "@/assets/svgs/navWriting.svg";
 
 const Nav = () => {
   return (
@@ -13,7 +16,11 @@ const Nav = () => {
         <PageNavItem>
           <PageNavItem.Label
             value={Paths.USER}
-            icon={<NavUser />}
+            icon={
+              <svg width="26" height="30">
+                <use href="#navUser"></use>
+              </svg>
+            }
             text="회원 정보"
           />
           <PageNavItem.Item moveTo={Paths.USER} text="내 포인트 현황" />
@@ -22,7 +29,11 @@ const Nav = () => {
         <PageNavItem>
           <PageNavItem.Label
             value={Paths.SCRAPS}
-            icon={<NavScrap />}
+            icon={
+              <svg width="23" height="29">
+                <use href="#navScrap"></use>
+              </svg>
+            }
             text="스크랩"
           />
           <PageNavItem.Item moveTo={Paths.SCRAPS} text="채용 정보 스크랩" />
@@ -32,14 +43,25 @@ const Nav = () => {
         <PageNavItem>
           <PageNavItem.Label
             value={Paths.POSTS}
-            icon={<NavWriting />}
+            icon={
+              <svg width="25" height="30">
+                <use href="#navWriting"></use>
+              </svg>
+            }
             text="작성 목록"
           />
           <PageNavItem.Item moveTo={Paths.POSTS} text="작성한 글 목록" />
           <PageNavItem.Item moveTo={Paths.POSTS} text="작성한 댓글 목록" />
         </PageNavItem>
         <PageNavItem>
-          <PageNavItem.Label icon={<NavChat />} text="채팅" />
+          <PageNavItem.Label
+            icon={
+              <svg width="31" height="30">
+                <use href="#navScrap"></use>
+              </svg>
+            }
+            text="채팅"
+          />
           <PageNavItem.Item moveTo="/my-page/chat" text="채팅 목록" />
         </PageNavItem>
       </div>

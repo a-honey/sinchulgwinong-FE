@@ -1,5 +1,10 @@
+import withBundleAnalyzer from "@next/bundle-analyzer";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "export",
+  trailingSlash: true,
+  images: { unoptimized: true },
   async headers() {
     return [
       {
@@ -15,4 +20,8 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+const configWithBundleAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+})(nextConfig);
+
+export default configWithBundleAnalyzer;

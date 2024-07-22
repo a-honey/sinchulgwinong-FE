@@ -1,13 +1,15 @@
 "use client";
 
+import { Suspense, lazy, useCallback } from "react";
+
 import BannerCard from "./BannerCard";
 import Container from "./Container";
 import JobCard from "./JobCard";
 import Paths from "@/constants/paths";
-import SearchObject from "@/assets/icons/SearchObject";
 import getJobInfoPosts from "@/api/job-info/getJobInfoPosts";
-import { useCallback } from "react";
 import useUpdateFetch from "@/hooks/useUpdateFetch";
+
+const SearchObject = lazy(() => import("@/assets/icons/SearchObject"));
 
 const JobBox = () => {
   const { data } = useUpdateFetch(
@@ -31,7 +33,11 @@ const JobBox = () => {
           moveTo={Paths.JOB_INFO}
           title="채용 정보"
           description="더 많은 주변 농촌 일자리 정보를 확인하세요"
-          icon={<SearchObject width={111.93} height={82} />}
+          icon={
+            <Suspense fallback={<div>Loading...</div>}>
+              <SearchObject width={111.93} height={82} />
+            </Suspense>
+          }
         />
         {data?.jobBoardResponseDTOS.map((job) => (
           <JobCard
