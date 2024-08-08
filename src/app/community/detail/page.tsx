@@ -3,6 +3,7 @@
 import { Suspense, useCallback } from "react";
 
 import CommentBox from "./CommentBox";
+import HtmlRenderer from "@/components/HtmlRender";
 import getCommunityPost from "@/api/community/getCommunityPost";
 import { getFormattedDate } from "@/lib/utils";
 import postCommunityScrap from "@/api/scrap/postCommunityScraps";
@@ -55,7 +56,9 @@ const Detail = () => {
             </div>
           </div>
         </div>
-        <div className="my-[60px]">{data?.content}</div>
+        <div className="my-[60px]">
+          <HtmlRenderer htmlContent={data?.content} />
+        </div>
         <CommentBox boardId={boardId} />
       </section>
     </main>
