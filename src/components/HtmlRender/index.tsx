@@ -10,7 +10,7 @@ const HtmlRenderer = ({ htmlContent }: Props) => {
   return (
     <div
       className="html-renderer"
-      dangerouslySetInnerHTML={{ __html: escapeHtml }}
+      dangerouslySetInnerHTML={{ __html: escapedHtml }}
     />
   );
 };
