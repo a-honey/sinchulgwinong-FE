@@ -3,12 +3,14 @@
 import postCommunityPost, { PostBody } from "@/api/community/postCommunityPost";
 
 import Button from "@/components/Button";
+import Editor from "@/components/Editor";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
 const Writing = () => {
   const router = useRouter();
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },
@@ -39,6 +41,7 @@ const Writing = () => {
           placeholder="글을 입력해주세요."
           {...register("boardContent", { required: true })}
         />
+        <Editor control={control} name="content" />
         {errors.boardContent && (
           <span className="text-red">내용을 입력해주세요</span>
         )}
