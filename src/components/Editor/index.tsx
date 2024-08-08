@@ -6,6 +6,7 @@ import { Control, Controller } from "react-hook-form";
 import React, { useMemo } from "react";
 
 import dynamic from "next/dynamic";
+import escapeHtml from "@/lib/escapeHTML";
 
 const formats = [
   "font",
@@ -73,7 +74,10 @@ const Editor = ({
               modules={modules}
               value={field.value}
               formats={formats}
-              onChange={(content: string) => field.onChange(content)}
+              onChange={(content: string) => {
+                const escapedContent = escapeHtml(content);
+                field.onChange(escapedContent);
+              }}
             />
           )}
         />
