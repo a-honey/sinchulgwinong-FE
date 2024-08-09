@@ -30,8 +30,3 @@ jobs:
           git checkout main
           git merge upstream/main --allow-unrelated-histories
           git push origin main
-      
-      - name: Push changes to forked repo
-        run: git push origin main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
