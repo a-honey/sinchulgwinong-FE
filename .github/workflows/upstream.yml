@@ -12,7 +12,7 @@ jobs:
       - name: Checkout Forked Repository
         uses: actions/checkout@v2
         with:
-          persist-credentials: false
+          persist-credentials: true
       
       - name: Add account
         run: |
