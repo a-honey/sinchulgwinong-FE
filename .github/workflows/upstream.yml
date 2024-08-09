@@ -13,7 +13,10 @@ jobs:
         uses: actions/checkout@v2
         with:
           persist-credentials: false
-
+      - name: Add account
+        run: |
+          git config --global user.email "jungahyeon0512@khu.ac.kr"
+          git config --global user.name "a-honey"
       - name: Add Upstream Remote
         run: git remote add upstream https://github.com/a-honey/sinchulgwinong-FE.git
 
