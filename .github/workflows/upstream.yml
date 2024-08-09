@@ -16,8 +16,8 @@ jobs:
       
       - name: Add account
         run: |
-          git config --global user.email "jungahyeon0512@khu.ac.kr"
-          git config --global user.name "a-honey"
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "github-actions"
       
       - name: Add Upstream Remote
         run: git remote add upstream https://github.com/a-honey/sinchulgwinong-FE.git
